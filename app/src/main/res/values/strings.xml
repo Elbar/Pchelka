@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">Пчелка</string>
+
+
+    <!--Frgaments-->
+    <string name="new_request">New Request</string>
+    <string name="my_request">My Request</string>
+
+
+
+    <!-- FontAwesome Icons -->
+    <string name="ic_phone">&#xf095;</string>
+    <string name="ic_refresh">&#xf021;</string>
+    <string name="ic_mapmarker">&#xf041;</string>
+
+
+    <!--NewRequestFragment strings-->
+    <string name="select_service"> Выберите услугу</string>
+    <string name="approx_cash"> Планируемый бюджет</string>
+    <string name="phone_number"> Номер телефона</string>
+    <string name="address"> Ваш адрес</string>
+    <string name="desc"> Опишите, что вы хотите сделать*</string>
+    <string name="send_button"> Отправить</string>
+    <string name="user_agreement"> Я согласен(-сна) с \n <string name="bold_text">Пользовательским соглашением</string></string>
+
+
+
+
+    <!--MyRequestFragment strings-->
+
+
+
+    <!--ChooseActivity Strings-->
+
+    <string name="choose_category">Выбор категории</string>
+
+
+    <!--MiddlewareActivity Strins-->
+
+    <string name="username">Ваше имя </string>
+    <string name="verification_code">Полученный код </string>
+    <string name="verification_text">Регистрация успешно пройдена! Введите Ваше имя и полученный код через смс.</string>
+    <string name="login">Войти</string>
+
+    
+
+
+</resources>

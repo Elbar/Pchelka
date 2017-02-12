@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "16944093486",
+    "firebase_url": "https://beeservice-dbfe8.firebaseio.com",
+    "project_id": "beeservice-dbfe8",
+    "storage_bucket": "beeservice-dbfe8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:16944093486:android:296b010e4ba553b5",
+        "android_client_info": {
+          "package_name": "com.kg.vista.beeservice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "16944093486-vi73p1mr1i85r38sgm640eo2vhgdptvv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kg.vista.beeservice",
+            "certificate_hash": "6D793715CECB176581DD9824CD99503DEAC263A1"
+          }
+        },
+        {
+          "client_id": "16944093486-6kvtok2a32mhmv1rmb12mfls27ra07e6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvLMdJ9DiSRXEKJQ9YPctLdAOm5lFJpNg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "16944093486-6kvtok2a32mhmv1rmb12mfls27ra07e6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

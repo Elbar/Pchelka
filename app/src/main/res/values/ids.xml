@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!--LoginActivity ids-->
+
+    <item name="login_button" type="id" />
+    <item name="input_phone_number" type="id" />
+
+
+    <!--New Request ids-->
+    <item name="get_phone_number" type="id" />
+    <item name="approx_cash" type="id" />
+    <item name="desc" type="id" />
+    <item name="address" type="id" />
+    <item name="select_service" type="id" />
+    <item name="new_request_send_button" type="id" />
+
+
+    <!--MyRequestFragment ids-->
+
+    <item name="my_request_date" type="id"/>
+    <item name="my_request_cardview" type="id"/>
+    <item name="my_request_cardview_cat" type="id" />
+    <item name="my_request_cardview_subcat" type="id" />
+
+
+
+
+    <!--Fonts-->
+
+    <item name="font_awesome_marker" type="id" />
+    <item name="font_awesome_phone" type="id" />
+
+
+    <item name="my_recycler_view" type="id" />
+
+
+
+
+    <!--MiddlewareActivity ids-->
+
+    <item name="middleware_name" type="id"/>
+    <item name="middleware_verification_code" type="id"/>
+    <item name="middleware_button" type="id" />
+    <item name="middleware_heading_text" type="id" />
+</resources>
