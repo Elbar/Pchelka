@@ -105,4 +105,10 @@ public class DrawerActivity extends AbstractActivity  {
         return mFragmentTitleList.get(position);
     }
 }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
 }
