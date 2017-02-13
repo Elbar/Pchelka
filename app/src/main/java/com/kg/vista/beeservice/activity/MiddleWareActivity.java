@@ -55,7 +55,7 @@ public class MiddleWareActivity extends AbstractActivity {
 
         Toast.makeText(getApplicationContext(), "User Login Status: " + session.isLoggedIn(), Toast.LENGTH_LONG).show();
 
-        session.checkLogin();
+        //session.checkLogin();
 
         HashMap<String, String> user = session.getUserDetails();
 

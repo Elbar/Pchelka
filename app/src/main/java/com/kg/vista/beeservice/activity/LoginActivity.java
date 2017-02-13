@@ -20,12 +20,26 @@ public class LoginActivity extends AbstractActivity {
 
     @BindView(R.id.login_button) Button mLoginButton;
     @BindView(R.id.input_phone_number) EditText mSendTelephoneNumber;
+    SessionManager session;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        session = new SessionManager(getApplicationContext());
+
+        session.checkLogin();
+
+        if(session.isLoggedIn()){
+
+            Intent intent = new Intent(this, DrawerActivity.class);
+            startActivity(intent);
+
+        }
+
+
 
 
 
