@@ -33,16 +33,12 @@ public class SessionManager {
      * Create login session
      * */
     public void createLoginSession(String name, String verification_code){
-        // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
 
-        // Storing name in pref
         editor.putString(KEY_NAME, name);
 
-        // Storing email in pref
         editor.putString(KEY_VERIFICATION_CODE, verification_code);
 
-        // commit changes
         editor.commit();
     }
 
@@ -52,17 +48,12 @@ public class SessionManager {
      * Else won't do anything
      * */
     public void checkLogin(){
-        // Check login status
         if(!this.isLoggedIn()){
-            // user is not logged in redirect him to Login Activity
             Intent i = new Intent(_context, LoginActivity.class);
-            // Closing all the Activities
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-            // Add new Flag to start new Activity
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-            // Starting Login Activity
             _context.startActivity(i);
         }
 
@@ -93,7 +84,6 @@ public class SessionManager {
 
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-        // Starting Login Activity
         _context.startActivity(i);
     }
 
