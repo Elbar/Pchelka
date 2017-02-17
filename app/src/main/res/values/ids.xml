@@ -8,7 +8,7 @@
     <item name="input_phone_number" type="id" />
 
 
-    <!--New Request ids-->
+    <!--NewRequestFragment ids-->
     <item name="get_phone_number" type="id" />
     <item name="approx_cash" type="id" />
     <item name="desc" type="id" />
@@ -24,6 +24,13 @@
     <item name="my_request_cardview_cat" type="id" />
     <item name="my_request_cardview_subcat" type="id" />
 
+
+
+    <!--MyProfileFragment ids-->
+
+    <item name="my_profile_name" type="id" />
+    <item name="my_profile_pass" type="id" />
+    <item name="my_profile_logout" type="id" />
 
 
 
