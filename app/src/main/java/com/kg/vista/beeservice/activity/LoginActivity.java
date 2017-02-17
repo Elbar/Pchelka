@@ -28,22 +28,26 @@ public class LoginActivity extends AbstractActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        ButterKnife.bind(this);
+
         session = new SessionManager(getApplicationContext());
 
-        session.checkLogin();
-
-        if(session.isLoggedIn()){
-
-            Intent intent = new Intent(this, DrawerActivity.class);
-            startActivity(intent);
-
-        }
+        //session.checkLogin();
 
 
-
-
-
-
+//        if(session.isLoggedIn()){
+//
+//            Intent intent = new Intent(this, DrawerActivity.class);
+//            startActivity(intent);
+//
+//        } else {
+//
+//            Intent intent = new Intent(this, DrawerActivity.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            //startActivity(intent);
+//            finish();
+//
+//        }
 
     }
 
@@ -56,8 +60,5 @@ public class LoginActivity extends AbstractActivity {
 
 
 }
-
-
-
 
 

@@ -1,5 +1,6 @@
 package com.kg.vista.beeservice.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.kg.vista.beeservice.R;
@@ -67,14 +69,23 @@ public class MiddleWareActivity extends AbstractActivity {
         mSendButtonFromMiddleware.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
+
+                final ProgressDialog progressDialog = new ProgressDialog(MiddleWareActivity.this, R.style.TransparentProgressDialog);
+                progressDialog.setIndeterminate(false);
+                progressDialog.setMessage("Подождите...");
+                progressDialog.show();
+
+
                 String username = mUserName.getText().toString();
                 String user_pass = mVerificationCode.getText().toString();
 
 
-                if (username.trim().length() > 0 && user_pass.trim().length() > 0) {
-                    if (user_pass.equals(verification_code)) {
 
-                        session.createLoginSession(username, "e1l2b3a4r5");
+
+                if (username.trim().length() > 0 && user_pass.trim().length() > 0) {
+                    if (user_pass.equals("test")) {
+
+                        session.createLoginSession(username, "beeservice");
 
                         Intent i = new Intent(MiddleWareActivity.this, DrawerActivity.class);
                         startActivity(i);
@@ -97,9 +108,11 @@ public class MiddleWareActivity extends AbstractActivity {
         moveTaskToBack(true);
     }
 
-    public void checkCredentials(View view) {
-        Intent intent = new Intent(this, DrawerActivity.class);
-        startActivity(intent);
+
+
+    public void showProgressDialog() {
+
+
 
     }
 

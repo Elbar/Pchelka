@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.kg.vista.beeservice.R;
+import com.kg.vista.beeservice.fragment.MyProfileFragment;
 import com.kg.vista.beeservice.fragment.MyRequestFragment;
 import com.kg.vista.beeservice.fragment.NewRequestFragment;
 
@@ -52,6 +53,7 @@ public class DrawerActivity extends AbstractActivity  {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new NewRequestFragment(), "Новая заявка");
         adapter.addFragment(new MyRequestFragment(), "Мои заявки");
+        adapter.addFragment(new MyProfileFragment(), "Мой Профиль");
         viewPager.setAdapter(adapter);
     }
 
