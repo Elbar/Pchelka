@@ -2,7 +2,7 @@
     <string name="app_name">Пчелка</string>
 
 
-    <!--Frgaments-->
+    <!--Fragments-->
     <string name="new_request">New Request</string>
     <string name="my_request">My Request</string>
 
@@ -12,6 +12,7 @@
     <string name="ic_phone">&#xf095;</string>
     <string name="ic_refresh">&#xf021;</string>
     <string name="ic_mapmarker">&#xf041;</string>
+
 
 
     <!--NewRequestFragment strings-->
@@ -24,23 +25,25 @@
     <string name="user_agreement"> Я согласен(-сна) с \n <string name="bold_text">Пользовательским соглашением</string></string>
 
 
-
-
     <!--MyRequestFragment strings-->
-
 
 
     <!--ChooseActivity Strings-->
 
-    <string name="choose_category">Выбор категории</string>
+    <string name="choose_category_toolbar_title">Выбор категории</string>
 
 
-    <!--MiddlewareActivity Strins-->
+    <!--MiddlewareActivity Strings-->
 
     <string name="username">Ваше имя </string>
     <string name="verification_code">Полученный код </string>
     <string name="verification_text">Регистрация успешно пройдена! Введите Ваше имя и полученный код через смс.</string>
     <string name="login">Войти</string>
+
+    <!--DrawerActivity strings-->
+
+    <string name="user_profile_settings">Настройки</string>
+
 
     
 

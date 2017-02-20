@@ -7,6 +7,11 @@
     <item name="login_button" type="id" />
     <item name="input_phone_number" type="id" />
 
+    <!--DrawerActivity ids-->
+
+    <item name="drawer_toolbar" type="id" />
+    <item name="action_user_settings" type="id" />
+
 
     <!--NewRequestFragment ids-->
     <item name="get_phone_number" type="id" />
@@ -51,4 +56,7 @@
     <item name="middleware_verification_code" type="id"/>
     <item name="middleware_button" type="id" />
     <item name="middleware_heading_text" type="id" />
+
+
+
 </resources>
