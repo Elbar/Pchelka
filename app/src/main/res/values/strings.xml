@@ -3,26 +3,19 @@
 
 
     <!--Fragments-->
-    <string name="new_request">New Request</string>
-    <string name="my_request">My Request</string>
-
 
 
     <!-- FontAwesome Icons -->
-    <string name="ic_phone">&#xf095;</string>
-    <string name="ic_refresh">&#xf021;</string>
-    <string name="ic_mapmarker">&#xf041;</string>
-
 
 
     <!--NewRequestFragment strings-->
     <string name="select_service"> Выберите услугу</string>
     <string name="approx_cash"> Планируемый бюджет</string>
     <string name="phone_number"> Номер телефона</string>
-    <string name="address"> Ваш адрес</string>
-    <string name="desc"> Опишите, что вы хотите сделать*</string>
+    <string name="request_address"> Ваш адрес</string>
+    <string name="request_desc"> Опишите, что вы хотите сделать*</string>
     <string name="send_button"> Отправить</string>
-    <string name="user_agreement"> Я согласен(-сна) с \n <string name="bold_text">Пользовательским соглашением</string></string>
+    <string name="user_agreement"> Я согласен(-сна) с Пользовательским соглашением </string>
 
 
     <!--MyRequestFragment strings-->
@@ -45,7 +38,22 @@
     <string name="user_profile_settings">Настройки</string>
 
 
-    
+    <!--SearchExecutorActivity Strings-->
+
+
+    <string name="search_executor_toolbar_title">Поиск специалистов</string>
+    <string name="client_price">Моя ставка:</string>
+    <string name="leave_the_city">Выезд по городу:</string>
+    <string name="client_price_score">Итог:</string>
+    <string name="up_rate">Повысить ставку </string>
+
+
+    <!--DetailActivity Strings-->
+
+    <string name="detail_desc_toolbar_title">Описание</string>
+
+
+
 
 
 </resources>

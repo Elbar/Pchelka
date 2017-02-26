@@ -9,6 +9,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@id/fragment_new_request"
     tools:context="com.kg.vista.beeservice.fragment.NewRequestFragment">
 
 
@@ -24,12 +25,12 @@
         android:textColor="@color/colorEditText"
         android:background="@drawable/main_otherbuttons_corners"
         android:layout_marginTop="15dp"
-        android:id="@id/select_service"
+        android:id="@id/user_select_service"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/desc"
-        android:layout_alignEnd="@+id/desc"
-        android:layout_alignLeft="@+id/desc"
-        android:layout_alignStart="@+id/desc"
+        android:layout_alignRight="@+id/user_request_desc"
+        android:layout_alignEnd="@+id/user_request_desc"
+        android:layout_alignLeft="@+id/user_request_desc"
+        android:layout_alignStart="@+id/user_request_desc"
         android:paddingLeft="12dp"
         android:drawableEnd="@drawable/box_service"
         android:drawableRight="@drawable/box_service"
@@ -40,15 +41,15 @@
         android:layout_width="309dp"
         android:layout_height="160dp"
         android:inputType="textMultiLine"
-        android:hint="@string/desc"
+        android:hint="@string/request_desc"
         android:gravity="top"
         android:textColor="@color/colorEditText"
         android:background="@drawable/main_inputmulti_corner"
         android:ems="5"
         android:paddingLeft="12dp"
-        android:id="@id/desc"
+        android:id="@id/user_request_desc"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/select_service"
+        android:layout_below="@+id/user_select_service"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -59,7 +60,7 @@
         android:textColor="@color/colorEditText"
         android:id="@+id/textView2"
         android:paddingLeft="12dp"
-        android:layout_below="@+id/new_request_send_button"
+        android:layout_below="@+id/user_request_send_button"
         android:layout_centerHorizontal="true" />
 
     <EditText
@@ -69,46 +70,46 @@
         android:background="@drawable/main_otherbuttons_corners"
         android:ems="5"
         android:hint="@string/approx_cash"
-        android:id="@id/approx_cash"
+        android:id="@id/user_approx_cash"
         android:textColor="@color/colorEditText"
-        android:layout_below="@+id/desc"
-        android:layout_alignLeft="@+id/desc"
-        android:layout_alignStart="@+id/desc"
+        android:layout_below="@+id/user_request_desc"
+        android:layout_alignLeft="@+id/user_request_desc"
+        android:layout_alignStart="@+id/user_request_desc"
         android:layout_marginTop="8dp"
         android:drawableStart="@drawable/approx_cash"
         android:drawableLeft="@drawable/approx_cash"
         android:drawablePadding="8dp"/>
 
     <EditText
+        android:id="@id/user_request_address"
         android:layout_width="309dp"
         android:layout_height="43dp"
         android:inputType="textPersonName"
-        android:hint="@string/address"
+        android:hint="@string/request_address"
         android:ems="5"
         android:background="@drawable/main_otherbuttons_corners"
-        android:id="@id/address"
-        android:layout_below="@+id/approx_cash"
+        android:layout_below="@+id/user_approx_cash"
         android:layout_marginTop="10dp"
-        android:layout_alignRight="@+id/approx_cash"
-        android:layout_alignEnd="@+id/approx_cash"
-        android:layout_alignLeft="@+id/approx_cash"
-        android:layout_alignStart="@+id/approx_cash"
+        android:layout_alignRight="@+id/user_approx_cash"
+        android:layout_alignEnd="@+id/user_approx_cash"
+        android:layout_alignLeft="@+id/user_approx_cash"
+        android:layout_alignStart="@+id/user_approx_cash"
         android:drawableLeft="@drawable/address"
         android:drawablePadding="8dp"/>
 
     <EditText
+        android:id="@id/user_request_phone_number"
         android:layout_width="309dp"
         android:layout_height="43dp"
         android:inputType="phone"
         android:background="@drawable/main_otherbuttons_corners"
         android:ems="5"
         android:hint="@string/phone_number"
-        android:id="@id/get_phone_number"
         android:textColor="@color/colorEditText"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/address"
-        android:layout_alignLeft="@+id/address"
-        android:layout_alignStart="@+id/address"
+        android:layout_below="@+id/user_request_address"
+        android:layout_alignLeft="@+id/user_request_address"
+        android:layout_alignStart="@+id/user_request_address"
         android:drawableLeft="@drawable/phone_icon"
         android:drawablePadding="8dp"/>
 
@@ -117,11 +118,11 @@
         android:layout_width="309dp"
         android:layout_height="43dp"
         android:layout_marginTop="10dp"
-        android:id="@id/new_request_send_button"
+        android:id="@id/user_request_send_button"
         android:background="@color/colorPrimary"
-        android:layout_below="@+id/get_phone_number"
-        android:layout_alignLeft="@+id/get_phone_number"
-        android:layout_alignStart="@+id/get_phone_number"
+        android:layout_below="@id/user_request_phone_number"
+        android:layout_alignLeft="@id/user_request_phone_number"
+        android:layout_alignStart="@id/user_request_phone_number"
         />
 
 

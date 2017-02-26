@@ -14,8 +14,6 @@ import com.kg.vista.beeservice.R;
 
 public class ChooseCategoryActivity extends AppCompatActivity {
 
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +38,7 @@ public class ChooseCategoryActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         if(ab != null) {
             ab.setDisplayHomeAsUpEnabled(true);
-            ab.setTitle(getResources().getString(R.string.choose_category));
+            ab.setTitle(getResources().getString(R.string.choose_category_toolbar_title));
         }
 
 

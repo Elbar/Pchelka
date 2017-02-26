@@ -2,12 +2,16 @@ package com.kg.vista.beeservice.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -70,10 +74,15 @@ public class MiddleWareActivity extends AbstractActivity {
             @Override
             public void onClick(View arg0) {
 
-                final ProgressDialog progressDialog = new ProgressDialog(MiddleWareActivity.this, R.style.TransparentProgressDialog);
-                progressDialog.setIndeterminate(false);
-                progressDialog.setMessage("Подождите...");
-                progressDialog.show();
+                final ProgressDialog mProgressDialog = new ProgressDialog(MiddleWareActivity.this);
+                mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+
+
+                mProgressDialog.setIndeterminate(false);
+                mProgressDialog.setCancelable(true );
+                mProgressDialog.setCanceledOnTouchOutside(false);
+                mProgressDialog.setMessage("Загрузка");
+                mProgressDialog.show();
 
 
                 String username = mUserName.getText().toString();
@@ -92,11 +101,14 @@ public class MiddleWareActivity extends AbstractActivity {
                         finish();
 
                     } else {
-                        alert.showAlertDialog(MiddleWareActivity.this, "Login failed...", "Username/Password is incorrect", false);
+                        alert.showAlertDialog(MiddleWareActivity.this, "...", "Введеный вами код не действителен", false);
+                        mProgressDialog.hide();
                     }
                 } else {
 
-                    alert.showAlertDialog(MiddleWareActivity.this, "Login failed...", "Please enter username and password", false);
+                    alert.showAlertDialog(MiddleWareActivity.this, "Ошибка регистрации", "Пожалуйста введите имя и код", false);
+                    mProgressDialog.hide();
+
                 }
             }
             });
@@ -110,11 +122,6 @@ public class MiddleWareActivity extends AbstractActivity {
 
 
 
-    public void showProgressDialog() {
-
-
-
-    }
 
 
 
