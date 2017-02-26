@@ -101,8 +101,13 @@ public class NewRequestFragment extends Fragment{
                 if (user_request_desc.trim().length() > 0 && user_approx_cash.trim().length() > 0 && user_request_address.trim().length() >0 && user_request_phone_number.trim().length()>0) {
                     if (user_request_desc.trim().length()>0) {
 
-                        Intent i = new Intent(getActivity(), SearchExecutorActivity.class);
-                        startActivity(i);
+                        Intent intent = new Intent(getActivity(), SearchExecutorActivity.class);
+                        intent.putExtra("user_request_desc", user_request_desc);
+                        intent.putExtra("user_approx_cash", user_approx_cash);
+                        intent.putExtra("user_request_address", user_request_address);
+                        intent.putExtra("user_request_phone_number", user_request_phone_number);
+
+                        startActivity(intent);
                         mProgressDialog.dismiss();
 
                     } else {

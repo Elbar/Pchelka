@@ -62,7 +62,7 @@ public class SearchExecutorActivity extends AbstractActivity {
 
         initActionBar();
         Intent intent = getIntent();
-        String id = intent.getStringExtra("extra");
+        String id = intent.getStringExtra("user_request_desc");
         Toast.makeText(SearchExecutorActivity.this, id, Toast.LENGTH_LONG).show();
 
 
