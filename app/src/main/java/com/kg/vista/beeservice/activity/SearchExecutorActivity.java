@@ -35,25 +35,34 @@ public class SearchExecutorActivity extends AbstractActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        myOnClickListener = new MyOnClickListener(this);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.search_recycler_view);
 
         mRecyclerView.setHasFixedSize(true);
 
         mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
+       mRecyclerView.setLayoutManager(mLayoutManager);
 
 
 
         data = new ArrayList<NewRequestModel>();
 
+        Intent intent = getIntent();
+        String user_request_desc = intent.getStringExtra("user_request_desc");
+        String user_approx_cash = intent.getStringExtra("user_approx_cash");
+        String user_request_address = intent.getStringExtra("user_request_address");
+        String user_request_phone_number = intent.getStringExtra("user_request_phone_number");
+
+
+
+
 
         for (int i = 0; i < NewRequestData.descriptionArray.length; i++) {
             data.add(new NewRequestModel(
-                    NewRequestData.descriptionArray[i],
-                    NewRequestData.priceArray[i],
-                    NewRequestData.id_[i]
+                    user_request_desc,
+                    user_approx_cash,
+                    user_request_address,
+                    user_request_phone_number
             ));
         }
 
@@ -61,9 +70,6 @@ public class SearchExecutorActivity extends AbstractActivity {
         mRecyclerView.setAdapter(mAdapter);
 
         initActionBar();
-        Intent intent = getIntent();
-        String id = intent.getStringExtra("user_request_desc");
-        Toast.makeText(SearchExecutorActivity.this, id, Toast.LENGTH_LONG).show();
 
 
     }

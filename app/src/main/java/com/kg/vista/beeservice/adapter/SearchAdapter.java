@@ -55,7 +55,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     public MyViewHolder onCreateViewHolder(ViewGroup parent,
                                            int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_layout, parent, false);
+                .inflate(R.layout.activity_search, parent, false);
 
 
         MyViewHolder myViewHolder = new MyViewHolder(view);
