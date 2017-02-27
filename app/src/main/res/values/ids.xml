@@ -13,18 +13,23 @@
     <item name="action_user_settings" type="id" />
 
 
-    <!--SearchActivity ids-->
+    <!--SearchExecutorActivity ids-->
 
     <item name="search_recycler_view" type="id"/>
+    <item name="user_search_request_desc" type="id"/>
+    <item name="user_search_request_approx_cash" type="id"/>
+    <item name="user_search_request_phone_number" type="id"/>
+    <item name="user_search_" type="id"/>
+
 
     <!--NewRequestFragment ids-->
     <item name="fragment_new_request" type="id" />
-    <item name="user_request_phone_number" type="id" />
-    <item name="user_approx_cash" type="id" />
-    <item name="user_request_desc" type="id" />
+    <item name="user_new_request_phone_number" type="id" />
+    <item name="user_new_approx_cash" type="id" />
+    <item name="user_new_request_desc" type="id" />
     <item name="user_request_address" type="id" />
-    <item name="user_select_service" type="id" />
-    <item name="user_request_send_button" type="id" />
+    <item name="user_new_select_category" type="id" />
+    <item name="user_new_request_send_button" type="id" />
 
 
     <!--MyRequestFragment ids-->

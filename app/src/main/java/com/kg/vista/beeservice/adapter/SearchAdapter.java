@@ -68,7 +68,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
         TextView textViewName = holder.textViewName;
         TextView textViewVersion = holder.textViewVersion;
 
-        textViewName.setText(dataSet.get(listPosition).getDescription());
+       // textViewName.setText(dataSet.get(listPosition).getUser_approx_cash());
+
         //textViewVersion.setText(String.valueOf(dataSet.get(listPosition).getPrice()));
 
 

@@ -11,11 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.kg.vista.beeservice.R;
-import com.kg.vista.beeservice.activity.DrawerActivity;
-import com.kg.vista.beeservice.activity.MiddleWareActivity;
 import com.kg.vista.beeservice.activity.SearchExecutorActivity;
 import com.kg.vista.beeservice.manager.AlertDialogManager;
 
@@ -29,24 +26,24 @@ import butterknife.ButterKnife;
 public class NewRequestFragment extends Fragment{
 
 
-    @BindView(R.id.user_select_service)
+    @BindView(R.id.user_new_select_category)
     EditText mUserSelectCategory;
 
-    @BindView(R.id.user_request_desc)
+    @BindView(R.id.user_new_request_desc)
     EditText mUserRequestDesc;
 
 
-    @BindView(R.id.user_approx_cash)
+    @BindView(R.id.user_new_approx_cash)
     EditText mUserApproxCash;
 
     @BindView(R.id.user_request_address)
     EditText mUserRequestAddress;
 
-    @BindView(R.id.user_request_phone_number)
+    @BindView(R.id.user_new_request_phone_number)
     EditText mUserRequestPhoneNumber;
 
 
-    @BindView(R.id.user_request_send_button)
+    @BindView(R.id.user_new_request_send_button)
     Button mUserRequestSendButton;
 
 

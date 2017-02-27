@@ -6,4 +6,5 @@ package com.kg.vista.beeservice.activity;
 
 public class SettingsActivity extends AbstractActivity {
 
+
 }

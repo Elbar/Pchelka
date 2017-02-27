@@ -9,6 +9,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kg.vista.beeservice.NewRequestData;
@@ -17,6 +19,9 @@ import com.kg.vista.beeservice.adapter.SearchAdapter;
 import com.kg.vista.beeservice.model.NewRequestModel;
 
 import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 /**
@@ -29,45 +34,63 @@ public class SearchExecutorActivity extends AbstractActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private static RecyclerView mRecyclerView;
     private static ArrayList<NewRequestModel> data;
+
+    @BindView(R.id.user_search_request_desc)
+    TextView mUserSearchRequestDesc;
+
+    @BindView(R.id.user_search_request_approx_cash)
+    TextView mUserSearchRequestApproxCash;
+
+
+
     static View.OnClickListener myOnClickListener;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-
-        mRecyclerView = (RecyclerView) findViewById(R.id.search_recycler_view);
-
-        mRecyclerView.setHasFixedSize(true);
-
-        mLayoutManager = new LinearLayoutManager(this);
-       mRecyclerView.setLayoutManager(mLayoutManager);
+        ButterKnife.bind(this);
 
 
+//        mRecyclerView = (RecyclerView) findViewById(R.id.search_recycler_view);
+//
+//        //mRecyclerView.setHasFixedSize(true);
+//
+//        mLayoutManager = new LinearLayoutManager(this);
+//       mRecyclerView.setLayoutManager(mLayoutManager);
+//
 
-        data = new ArrayList<NewRequestModel>();
+
+//        data = new ArrayList<NewRequestModel>();
+//
+//        Intent intent = getIntent();
+//        String user_request_desc = intent.getStringExtra("user_request_desc");
+//        String user_approx_cash = intent.getStringExtra("user_approx_cash");
+//        String user_request_address = intent.getStringExtra("user_request_address");
+//        String user_request_phone_number = intent.getStringExtra("user_request_phone_number");
+//
+//
+//
+//
+//
+//        for (int i = 0; i < NewRequestData.descriptionArray.length; i++) {
+//            data.add(new NewRequestModel(
+//                    user_request_desc,
+//                    user_approx_cash,
+//                    user_request_address,
+//                    user_request_phone_number
+//            ));
+//        }
+//
+//        mAdapter = new SearchAdapter(data);
+//        mRecyclerView.setAdapter(mAdapter);
 
         Intent intent = getIntent();
         String user_request_desc = intent.getStringExtra("user_request_desc");
         String user_approx_cash = intent.getStringExtra("user_approx_cash");
-        String user_request_address = intent.getStringExtra("user_request_address");
-        String user_request_phone_number = intent.getStringExtra("user_request_phone_number");
 
-
-
-
-
-        for (int i = 0; i < NewRequestData.descriptionArray.length; i++) {
-            data.add(new NewRequestModel(
-                    user_request_desc,
-                    user_approx_cash,
-                    user_request_address,
-                    user_request_phone_number
-            ));
-        }
-
-        mAdapter = new SearchAdapter(data);
-        mRecyclerView.setAdapter(mAdapter);
+        mUserSearchRequestDesc.setText(user_request_desc);
+        mUserSearchRequestApproxCash.setText(user_approx_cash);
 
         initActionBar();
 
