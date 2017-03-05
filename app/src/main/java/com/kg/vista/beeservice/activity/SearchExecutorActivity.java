@@ -100,8 +100,6 @@ public class SearchExecutorActivity extends AbstractActivity {
 
         int score = user_approx_value + leave_the_city;
 
-
-
         mUserSearchRequestDesc.setText(user_request_desc);
         mUserSearchRequestApproxCash.setText(user_approx_cash);
         mUserSearchTotalPrice.setText(String.valueOf(score));

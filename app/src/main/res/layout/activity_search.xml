@@ -97,15 +97,6 @@
                 android:layout_marginTop="29dp" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@id/user_search_request_approx_cash"
-                android:layout_alignBaseline="@+id/user_search_client_price"
-                android:layout_alignBottom="@+id/user_search_client_price"
-                android:layout_alignRight="@+id/user_search_request_desc"
-                android:layout_alignEnd="@+id/user_search_request_desc" />
-
-            <TextView
                 android:text="@string/leave_the_city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -139,16 +130,26 @@
                 android:layout_alignBottom="@+id/textView5"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:layout_width="40dp"
-                android:paddingLeft="5dp" />
+                android:layout_width="50dp" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/textView8"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:id="@id/user_search_total_price" />
+                android:id="@id/user_search_total_price"
+                android:layout_width="50dp"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:layout_height="20dp"
+                android:id="@id/user_search_request_approx_cash"
+                android:layout_alignBaseline="@+id/user_search_client_price"
+                android:layout_alignBottom="@+id/user_search_client_price"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignLeft="@+id/textView10"
+                android:layout_alignStart="@+id/textView10"
+                android:layout_width="50dp" />
 
 
         </RelativeLayout>
