@@ -69,4 +69,12 @@
 
 
 
+
+    <!--ChooseCategory Activity-->
+
+
+    <item name="choose_category_master" type="id" />
+    <item name="choose_category_delivery" type="id" />
+    <item name="choose_category_beauty" type="id" />
+
 </resources>
