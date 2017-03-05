@@ -1,24 +1,52 @@
 package com.kg.vista.beeservice.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.kg.vista.beeservice.R;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by Vista on 10.02.2017.
  */
 
+
+
+
 public class ChooseCategoryActivity extends AppCompatActivity {
+
+    @BindView(R.id.choose_category_master)
+    ImageView mChooseCategoryMaster;
+
+    @BindView(R.id.choose_category_delivery)
+    ImageView mChooseCategoryDeliver;
+    @BindView(R.id.choose_category_beauty)
+    ImageView mChooseCategoryBeauty;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_category);
         initActionBar();
+        ButterKnife.bind(this);
+
+        mChooseCategoryMaster.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+
+                Intent intent = new Intent(getApplicationContext(), ChooseSubCategory.class);
+                startActivity(intent);
+
+            }
+        });
 
     }
 
@@ -40,7 +68,6 @@ public class ChooseCategoryActivity extends AppCompatActivity {
             ab.setDisplayHomeAsUpEnabled(true);
             ab.setTitle(getResources().getString(R.string.choose_category_toolbar_title));
         }
-
-
     }
+
 }

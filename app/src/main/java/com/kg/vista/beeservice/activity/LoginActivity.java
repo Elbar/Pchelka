@@ -69,7 +69,7 @@ public class LoginActivity extends AbstractActivity {
 
     public void checkAndSendTelephoneNumber(View view) {
 
-        Intent intent = new Intent(this, MiddleWareActivity.class);
+        Intent intent = new Intent(this, DrawerActivity.class);
         startActivity(intent);
 
 
