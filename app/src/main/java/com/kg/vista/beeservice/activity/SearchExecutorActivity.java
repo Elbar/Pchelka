@@ -18,6 +18,8 @@ import com.kg.vista.beeservice.R;
 import com.kg.vista.beeservice.adapter.SearchAdapter;
 import com.kg.vista.beeservice.model.NewRequestModel;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -40,6 +42,10 @@ public class SearchExecutorActivity extends AbstractActivity {
 
     @BindView(R.id.user_search_request_approx_cash)
     TextView mUserSearchRequestApproxCash;
+
+    @BindView(R.id.user_search_total_price)
+    TextView mUserSearchTotalPrice;
+
 
 
 
@@ -89,8 +95,16 @@ public class SearchExecutorActivity extends AbstractActivity {
         String user_request_desc = intent.getStringExtra("user_request_desc");
         String user_approx_cash = intent.getStringExtra("user_approx_cash");
 
+        int leave_the_city = 300;
+        int user_approx_value = Integer.parseInt(user_approx_cash);
+
+        int score = user_approx_value + leave_the_city;
+
+
+
         mUserSearchRequestDesc.setText(user_request_desc);
         mUserSearchRequestApproxCash.setText(user_approx_cash);
+        mUserSearchTotalPrice.setText(String.valueOf(score));
 
         initActionBar();
 

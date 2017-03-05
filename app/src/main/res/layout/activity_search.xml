@@ -74,15 +74,6 @@
                 android:layout_toRightOf="@+id/textView8"
                 android:layout_toEndOf="@+id/textView8" />
 
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView10"
-                android:layout_alignTop="@+id/textView5"
-                android:layout_alignLeft="@+id/textView7"
-                android:layout_alignStart="@+id/textView7" />
-
 
             <View
                 android:layout_width="match_parent"
@@ -106,21 +97,11 @@
                 android:layout_marginTop="29dp" />
 
             <TextView
-                android:text="@string/client_price"
-                android:id="@id/user_search_request_approx_cash"
-                android:layout_width="139dp"
-                android:layout_height="19dp"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_above="@+id/textView10"
-                android:layout_alignLeft="@+id/user_search_request_desc"
-                android:layout_alignStart="@+id/user_search_request_desc" />
-
-            <TextView
-                android:text="TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView7"
-                android:layout_alignTop="@+id/user_search_request_approx_cash"
+                android:id="@id/user_search_request_approx_cash"
+                android:layout_alignBaseline="@+id/user_search_client_price"
+                android:layout_alignBottom="@+id/user_search_client_price"
                 android:layout_alignRight="@+id/user_search_request_desc"
                 android:layout_alignEnd="@+id/user_search_request_desc" />
 
@@ -130,10 +111,44 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView5"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_weight="0.08"
                 android:layout_centerVertical="true"
-                android:layout_alignLeft="@+id/user_search_request_approx_cash"
-                android:layout_alignStart="@+id/user_search_request_approx_cash" />
+                android:layout_alignLeft="@+id/user_search_client_price"
+                android:layout_alignStart="@+id/user_search_client_price" />
+
+            <TextView
+                android:text="@string/client_price"
+                android:id="@id/user_search_client_price"
+                android:layout_width="139dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_above="@+id/textView5"
+                android:layout_alignLeft="@+id/user_search_request_desc"
+                android:layout_alignStart="@+id/user_search_request_desc"
+                android:layout_marginBottom="8dp"
+                android:layout_height="22dp" />
+
+            <TextView
+
+                android:layout_height="20dp"
+                android:id="@+id/textView10"
+                android:text="@string/leave_the_city_price"
+
+                android:textSize="14sp"
+                android:fontFamily="sans-serif"
+                android:textStyle="normal|bold"
+                android:layout_alignBaseline="@+id/textView5"
+                android:layout_alignBottom="@+id/textView5"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_width="40dp"
+                android:paddingLeft="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textView8"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:id="@id/user_search_total_price" />
 
 
         </RelativeLayout>

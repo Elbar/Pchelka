@@ -53,6 +53,11 @@
             android:name="com.kg.vista.beeservice.activity.ChooseCategoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/BeeTheme"/>
+        <activity
+            android:name="com.kg.vista.beeservice.activity.ChooseSubCategoryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/BeeTheme"/>
+
 
         <activity
             android:name="com.kg.vista.beeservice.activity.DescriptionActivity"

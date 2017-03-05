@@ -19,7 +19,10 @@
     <item name="user_search_request_desc" type="id"/>
     <item name="user_search_request_approx_cash" type="id"/>
     <item name="user_search_request_phone_number" type="id"/>
-    <item name="user_search_" type="id"/>
+    <item name="user_search_client_price" type="id"/>
+    <item name="user_search_total_price" type="id" />
+
+
 
 
     <!--NewRequestFragment ids-->
@@ -70,7 +73,9 @@
 
 
 
-    <!--ChooseCategory Activity-->
+    <!--ChooseCategoryActivity ids-->
+
+    <item name="card_view_choose_subcategory" type="id" />
 
 
     <item name="choose_category_master" type="id" />

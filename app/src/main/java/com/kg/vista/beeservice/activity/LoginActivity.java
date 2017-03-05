@@ -24,9 +24,9 @@ import butterknife.ButterKnife;
 
 public class LoginActivity extends AbstractActivity {
 
-    @BindView(R.id.login_button) Button mLoginButton;
-    @BindView(R.id.input_phone_number)
-    MaskedEditText mSendTelephoneNumber;
+//    @BindView(R.id.login_button) Button mLoginButton;
+//    @BindView(R.id.input_phone_number)
+//    MaskedEditText mSendTelephoneNumber;
     SessionManager session;
     public String telephoneNumber;
 
@@ -35,7 +35,7 @@ public class LoginActivity extends AbstractActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+//        ButterKnife.bind(this);
 
 
 //        telephoneNumber = String.valueOf(mSendTelephoneNumber.getUnmaskedText());
@@ -69,7 +69,7 @@ public class LoginActivity extends AbstractActivity {
 
     public void checkAndSendTelephoneNumber(View view) {
 
-        Intent intent = new Intent(this, DrawerActivity.class);
+        Intent intent = new Intent(getApplicationContext(), DrawerActivity.class);
         startActivity(intent);
 
 

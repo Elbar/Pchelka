@@ -11,7 +11,7 @@ import com.kg.vista.beeservice.R;
  * Created by Vista on 18.02.2017.
  */
 
-public class ChooseSubCategory extends AbstractActivity {
+public class ChooseSubCategoryActivity extends AbstractActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class ChooseSubCategory extends AbstractActivity {
         ActionBar ab = getSupportActionBar();
         if(ab != null) {
             ab.setDisplayHomeAsUpEnabled(true);
-            ab.setTitle(getResources().getString(R.string.choose_category_toolbar_title));
+            ab.setTitle(getResources().getString(R.string.choose_subcategory_toolbar_title));
         }
     }
 }

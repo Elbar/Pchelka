@@ -58,8 +58,6 @@ public class DrawerActivity extends AbstractActivity  {
         tabLayout.setupWithViewPager(viewPager);
 
 
-
-
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -72,7 +70,7 @@ public class DrawerActivity extends AbstractActivity  {
 
     public void chooseCategory(View view) {
 
-        Intent intent = new Intent(this, ChooseCategoryActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ChooseCategoryActivity.class);
         startActivity(intent);
 
 

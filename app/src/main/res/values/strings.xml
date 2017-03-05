@@ -26,6 +26,18 @@
     <string name="choose_category_toolbar_title">Выбор категории</string>
 
 
+    <!--ChooseSubCategoryActivity Strings-->
+
+    <string name="choose_subcategory_toolbar_title">Выбор подкатегории</string>
+    <string-array name="master_category_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+    </string-array>
+
+
+
     <!--MiddlewareActivity Strings-->
 
     <string name="username">Ваше имя </string>
@@ -43,6 +55,7 @@
 
     <string name="search_executor_toolbar_title">Поиск специалистов</string>
     <string name="client_price">Моя ставка:</string>
+    <string name="leave_the_city_price">+300</string>
     <string name="leave_the_city">Выезд по городу:</string>
     <string name="client_price_score">Итог:</string>
     <string name="up_rate">Повысить ставку </string>
