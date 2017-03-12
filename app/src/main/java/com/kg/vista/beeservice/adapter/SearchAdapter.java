@@ -14,11 +14,6 @@ import com.kg.vista.beeservice.model.NewRequestModel;
 
 import java.util.ArrayList;
 
-/**
- * Created by Vista on 24.02.2017.
- */
-
-
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHolder> {
 
