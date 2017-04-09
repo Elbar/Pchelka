@@ -37,7 +37,7 @@ public class ChooseSubCategoryActivity extends AbstractActivity {
     private void initActionBar() {
 
         ActionBar ab = getSupportActionBar();
-        if(ab != null) {
+        if (ab != null) {
             ab.setDisplayHomeAsUpEnabled(true);
             ab.setTitle(getResources().getString(R.string.choose_subcategory_toolbar_title));
         }

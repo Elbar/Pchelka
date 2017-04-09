@@ -7,10 +7,6 @@ import android.view.MenuItem;
 
 import com.kg.vista.beeserviceclient.R;
 
-/**
- * Created by Vista on 25.02.2017.
- */
-
 public class DescriptionActivity extends AbstractActivity {
 
 
@@ -38,7 +34,7 @@ public class DescriptionActivity extends AbstractActivity {
     private void initActionBar() {
 
         ActionBar ab = getSupportActionBar();
-        if(ab != null) {
+        if (ab != null) {
             ab.setDisplayHomeAsUpEnabled(true);
             ab.setTitle(getResources().getString(R.string.detail_desc_toolbar_title));
         }

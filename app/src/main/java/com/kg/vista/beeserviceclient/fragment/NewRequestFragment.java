@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.kg.vista.beeserviceclient.R;
-import com.kg.vista.beeserviceclient.activity.SearchExecutorActivity;
 import com.kg.vista.beeserviceclient.manager.AlertDialogManager;
 
 import butterknife.BindView;

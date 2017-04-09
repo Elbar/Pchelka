@@ -24,7 +24,7 @@ import butterknife.ButterKnife;
  * Created by Vista on 08.02.2017.
  */
 
-public class DrawerActivity extends AbstractActivity  {
+public class DrawerActivity extends AbstractActivity {
 
 
     private TabLayout tabLayout;
@@ -36,8 +36,6 @@ public class DrawerActivity extends AbstractActivity  {
 
         setContentView(R.layout.activity_drawer);
         ButterKnife.bind(this);
-
-
 
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -53,7 +51,7 @@ public class DrawerActivity extends AbstractActivity  {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new NewRequestFragment(), "Новая заявка");
         adapter.addFragment(new MyRequestFragment(), "Мои заявки");
-       // adapter.addFragment(new MyProfileFragment(), "Профиль");
+        // adapter.addFragment(new MyProfileFragment(), "Профиль");
         viewPager.setAdapter(adapter);
     }
 
@@ -64,36 +62,6 @@ public class DrawerActivity extends AbstractActivity  {
 
 
     }
-
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-    private final List<Fragment> mFragmentList = new ArrayList<>();
-    private final List<String> mFragmentTitleList = new ArrayList<>();
-
-    public ViewPagerAdapter(FragmentManager manager) {
-        super(manager);
-    }
-
-    @Override
-    public Fragment getItem(int position) {
-        return mFragmentList.get(position);
-    }
-
-    @Override
-    public int getCount() {
-        return mFragmentList.size();
-    }
-
-    public void addFragment(Fragment fragment, String title) {
-        mFragmentList.add(fragment);
-        mFragmentTitleList.add(title);
-    }
-
-        @Override
-    public CharSequence getPageTitle(int position) {
-
-            return mFragmentTitleList.get(position);
-    }
-}
 
     @Override
     public void onBackPressed() {
@@ -110,11 +78,36 @@ public class DrawerActivity extends AbstractActivity  {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_user_settings) {
-            Intent intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
+        return super.onOptionsItemSelected(item);
+    }
+
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
         }
 
-        return super.onOptionsItemSelected(item);
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+
+            return mFragmentTitleList.get(position);
+        }
     }
 }
