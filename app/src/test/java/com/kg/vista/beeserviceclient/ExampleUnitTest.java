@@ -1,4 +1,4 @@
-package com.kg.vista.beeservice;
+package com.kg.vista.beeserviceclient;
 
 import org.junit.Test;
 

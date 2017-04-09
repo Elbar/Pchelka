@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kg.vista.beeservice"
+    package="com.kg.vista.beeserviceclient"
     android:installLocation="auto"
     >
 
@@ -10,7 +10,7 @@
         />
 
     <application
-        android:name="com.kg.vista.beeservice.boot.App"
+        android:name="com.kg.vista.beeserviceclient.boot.App"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -19,7 +19,7 @@
 
 
         <activity
-            android:name="com.kg.vista.beeservice.activity.LoginActivity"
+            android:name=".activity.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -31,29 +31,29 @@
 
         </activity>
 
-        <activity android:name="com.kg.vista.beeservice.activity.DrawerActivity"
+        <activity android:name=".activity.DrawerActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme"
             />
 
         <activity
-            android:name="com.kg.vista.beeservice.activity.SearchExecutorActivity"
+            android:name=".activity.SearchExecutorActivity"
             android:screenOrientation="portrait"
             android:theme="@style/BeeTheme"/>
 
         <activity
-            android:name="com.kg.vista.beeservice.activity.ChooseCategoryActivity"
+            android:name=".activity.ChooseCategoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/BeeTheme"/>
         <activity
-            android:name="com.kg.vista.beeservice.activity.ChooseSubCategoryActivity"
+            android:name=".activity.ChooseSubCategoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/BeeTheme"/>
 
 
         <activity
-            android:name="com.kg.vista.beeservice.activity.DescriptionActivity"
+            android:name=".activity.DescriptionActivity"
             android:screenOrientation="portrait"
             android:theme="@style/BeeTheme"/>
 

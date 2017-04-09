@@ -1,32 +1,22 @@
-package com.kg.vista.beeservice.activity;
+package com.kg.vista.beeserviceclient.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.kg.vista.beeservice.R;
-import com.kg.vista.beeservice.manager.AlertDialogManager;
-import com.kg.vista.beeservice.manager.SessionManager;
+import com.kg.vista.beeserviceclient.R;
+import com.kg.vista.beeserviceclient.manager.AlertDialogManager;
+import com.kg.vista.beeserviceclient.manager.SessionManager;
 
 import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static android.support.design.widget.Snackbar.LENGTH_LONG;
 
 
 /**

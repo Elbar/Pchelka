@@ -1,9 +1,8 @@
-package com.kg.vista.beeservice.manager;
+package com.kg.vista.beeserviceclient.manager;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import com.kg.vista.beeservice.R;
 
 /**
  * Created by Vista on 12.02.2017.

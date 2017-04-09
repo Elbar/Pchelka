@@ -1,4 +1,4 @@
-package com.kg.vista.beeservice;
+package com.kg.vista.beeserviceclient;
 
 /**
  * Created by Vista on 24.02.2017.

@@ -1,34 +1,23 @@
-package com.kg.vista.beeservice.activity;
+package com.kg.vista.beeserviceclient.activity;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.github.pinball83.maskededittext.MaskedEditText;
-import com.kg.vista.beeservice.R;
-import com.kg.vista.beeservice.fragment.MyProfileFragment;
-import com.kg.vista.beeservice.fragment.MyRequestFragment;
-import com.kg.vista.beeservice.fragment.NewRequestFragment;
+import com.kg.vista.beeserviceclient.R;
+import com.kg.vista.beeserviceclient.fragment.MyRequestFragment;
+import com.kg.vista.beeserviceclient.fragment.NewRequestFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**

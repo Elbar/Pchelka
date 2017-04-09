@@ -1,4 +1,4 @@
-package com.kg.vista.beeservice.activity;
+package com.kg.vista.beeserviceclient.activity;
 
 import android.support.v7.app.AppCompatActivity;
 

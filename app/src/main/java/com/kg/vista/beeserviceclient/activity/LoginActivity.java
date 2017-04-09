@@ -1,25 +1,14 @@
-package com.kg.vista.beeservice.activity;
+package com.kg.vista.beeserviceclient.activity;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 
 import android.os.Bundle;
 
-import android.support.annotation.Nullable;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 
 
-import com.github.pinball83.maskededittext.MaskedEditText;
-import com.kg.vista.beeservice.R;
-import com.kg.vista.beeservice.fragment.NewRequestFragment;
-import com.kg.vista.beeservice.manager.SessionManager;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import com.kg.vista.beeserviceclient.R;
+import com.kg.vista.beeserviceclient.manager.SessionManager;
 
 
 public class LoginActivity extends AbstractActivity {

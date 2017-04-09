@@ -1,4 +1,4 @@
-package com.kg.vista.beeservice.model;
+package com.kg.vista.beeserviceclient.model;
 
 public class NewRequestModel {
 

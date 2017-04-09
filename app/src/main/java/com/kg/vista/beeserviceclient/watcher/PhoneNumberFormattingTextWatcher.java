@@ -1,14 +1,7 @@
-package com.kg.vista.beeservice.watcher;
+package com.kg.vista.beeserviceclient.watcher;
 
-import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.Toast;
-
-import com.github.pinball83.maskededittext.MaskedEditText;
-import com.kg.vista.beeservice.R;
-import com.kg.vista.beeservice.activity.DrawerActivity;
-import com.kg.vista.beeservice.activity.LoginActivity;
 
 /**
  * Created by Vista on 21.02.2017.

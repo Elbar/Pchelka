@@ -1,34 +1,35 @@
-package com.kg.vista.beeservice.activity;
+package com.kg.vista.beeserviceclient.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 
-import com.kg.vista.beeservice.R;
+import com.kg.vista.beeserviceclient.R;
 
 /**
- * Created by Vista on 18.02.2017.
+ * Created by Vista on 25.02.2017.
  */
 
-public class ChooseSubCategoryActivity extends AbstractActivity {
+public class DescriptionActivity extends AbstractActivity {
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose_subcategory);
+        setContentView(R.layout.activity_detail_description);
         initActionBar();
 
-
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case android.R.id.home:
+            case android.R.id.edit:
                 this.finish();
                 return true;
+            case android.R.id.home:
+                this.finish();
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -39,7 +40,9 @@ public class ChooseSubCategoryActivity extends AbstractActivity {
         ActionBar ab = getSupportActionBar();
         if(ab != null) {
             ab.setDisplayHomeAsUpEnabled(true);
-            ab.setTitle(getResources().getString(R.string.choose_subcategory_toolbar_title));
+            ab.setTitle(getResources().getString(R.string.detail_desc_toolbar_title));
         }
+
+
     }
 }

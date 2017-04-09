@@ -1,4 +1,4 @@
-package com.kg.vista.beeservice.boot;
+package com.kg.vista.beeserviceclient.boot;
 
 import android.app.Application;
 

@@ -1,24 +1,16 @@
-package com.kg.vista.beeservice.activity;
+package com.kg.vista.beeserviceclient.activity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.kg.vista.beeservice.NewRequestData;
-import com.kg.vista.beeservice.R;
-import com.kg.vista.beeservice.adapter.SearchAdapter;
-import com.kg.vista.beeservice.model.NewRequestModel;
-
-import org.w3c.dom.Text;
+import com.kg.vista.beeserviceclient.R;
+import com.kg.vista.beeserviceclient.model.NewRequestModel;
 
 import java.util.ArrayList;
 

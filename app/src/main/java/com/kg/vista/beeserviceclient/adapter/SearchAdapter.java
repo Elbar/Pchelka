@@ -1,4 +1,4 @@
-package com.kg.vista.beeservice.adapter;
+package com.kg.vista.beeserviceclient.adapter;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -7,10 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.kg.vista.beeservice.R;
-import com.kg.vista.beeservice.activity.DescriptionActivity;
-import com.kg.vista.beeservice.activity.SearchExecutorActivity;
-import com.kg.vista.beeservice.model.NewRequestModel;
+import com.kg.vista.beeserviceclient.R;
+import com.kg.vista.beeserviceclient.activity.DescriptionActivity;
+import com.kg.vista.beeserviceclient.model.NewRequestModel;
 
 import java.util.ArrayList;
 

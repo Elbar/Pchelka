@@ -1,11 +1,11 @@
-package com.kg.vista.beeservice.manager;
+package com.kg.vista.beeserviceclient.manager;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-import com.kg.vista.beeservice.activity.LoginActivity;
+import com.kg.vista.beeserviceclient.activity.LoginActivity;
 
 import java.util.HashMap;
 

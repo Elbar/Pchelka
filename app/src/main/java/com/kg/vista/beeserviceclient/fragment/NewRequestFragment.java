@@ -1,4 +1,4 @@
-package com.kg.vista.beeservice.fragment;
+package com.kg.vista.beeserviceclient.fragment;
 
 
 import android.app.ProgressDialog;
@@ -12,9 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.kg.vista.beeservice.R;
-import com.kg.vista.beeservice.activity.SearchExecutorActivity;
-import com.kg.vista.beeservice.manager.AlertDialogManager;
+import com.kg.vista.beeserviceclient.R;
+import com.kg.vista.beeserviceclient.activity.SearchExecutorActivity;
+import com.kg.vista.beeserviceclient.manager.AlertDialogManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
