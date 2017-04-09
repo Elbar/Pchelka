@@ -55,6 +55,48 @@ public class DrawerActivity extends AbstractActivity {
         viewPager.setAdapter(adapter);
     }
 
+//    private void registerUser() {
+//        final String username = editTextUsername.getText().toString().trim();
+//        final String password = editTextPassword.getText().toString().trim();
+//        final String email = editTextEmail.getText().toString().trim();
+//
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        Toast.makeText(MainActivity.this, response, Toast.LENGTH_LONG).show();
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+//                    }
+//                }) {
+//            @Override
+//            protected Map<String, String> getParams() {
+//                Map<String, String> params = new HashMap<String, String>();
+//                params.put(KEY_USERNAME, username);
+//                params.put(KEY_PASSWORD, password);
+//                params.put(KEY_EMAIL, email);
+//                return params;
+//            }
+//
+//        };
+//
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//        requestQueue.add(stringRequest);
+//    }
+//
+//    @Override
+//    public void onClick(View v) {
+//        if (v == buttonRegister) {
+//            registerUser();
+//        }
+//    }
+//}
+
+
     public void chooseCategory(View view) {
 
         Intent intent = new Intent(getApplicationContext(), ChooseCategoryActivity.class);
@@ -81,33 +123,33 @@ public class DrawerActivity extends AbstractActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
+class ViewPagerAdapter extends FragmentPagerAdapter {
+    private final List<Fragment> mFragmentList = new ArrayList<>();
+    private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        public ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
-
-        public void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-
-            return mFragmentTitleList.get(position);
-        }
+    public ViewPagerAdapter(FragmentManager manager) {
+        super(manager);
     }
+
+    @Override
+    public Fragment getItem(int position) {
+        return mFragmentList.get(position);
+    }
+
+    @Override
+    public int getCount() {
+        return mFragmentList.size();
+    }
+
+    public void addFragment(Fragment fragment, String title) {
+        mFragmentList.add(fragment);
+        mFragmentTitleList.add(title);
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+
+        return mFragmentTitleList.get(position);
+    }
+}
 }
