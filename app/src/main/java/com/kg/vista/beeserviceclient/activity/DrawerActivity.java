@@ -36,24 +36,8 @@ import butterknife.ButterKnife;
  * Created by Vista on 08.02.2017.
  */
 
-public class DrawerActivity extends AbstractActivity implements View.OnClickListener {
+public class DrawerActivity extends AbstractActivity {
 
-
-    public static final String KEY_DESC = "desc";
-    public static final String KEY_CASH = "cash";
-    public static final String KEY_ADDRESS = "address";
-    public static final String KEY_PHONE = "phone";
-    private static final String REQUEST_URL = "http://176.126.167.34/get_application/";
-    @BindView(R.id.user_new_request_desc)
-    EditText mUserNewRequestDesc;
-    @BindView(R.id.user_new_approx_cash)
-    EditText mUserNewApproxCash;
-    @BindView(R.id.user_request_address)
-    EditText mUserRequestAddress;
-    @BindView(R.id.user_new_request_phone_number)
-    EditText mUserNewRequestPhone;
-    @BindView(R.id.user_new_request_send_button)
-    Button mUserNewRequestButton;
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
@@ -63,8 +47,6 @@ public class DrawerActivity extends AbstractActivity implements View.OnClickList
 
         setContentView(R.layout.activity_drawer);
         ButterKnife.bind(this);
-
-        mUserNewRequestButton.setOnClickListener(this);
 
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -83,48 +65,6 @@ public class DrawerActivity extends AbstractActivity implements View.OnClickList
         viewPager.setAdapter(adapter);
     }
 
-    private void sendData() {
-        final String desc = mUserNewRequestDesc.getText().toString().trim();
-        final String cash = mUserNewApproxCash.getText().toString().trim();
-        final String address = mUserRequestAddress.getText().toString().trim();
-        final String phone_number = mUserNewRequestPhone.getText().toString().trim();
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, REQUEST_URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Toast.makeText(DrawerActivity.this, response, Toast.LENGTH_LONG).show();
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(DrawerActivity.this, error.toString(), Toast.LENGTH_LONG).show();
-                    }
-                }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put(KEY_DESC, desc);
-                params.put(KEY_CASH, cash);
-                params.put(KEY_ADDRESS, address);
-                params.put(KEY_PHONE, phone_number);
-
-                return params;
-            }
-
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-    }
-
-    @Override
-    public void onClick(View v) {
-        if (v == mUserNewRequestButton) {
-            sendData();
-        }
-    }
 
     public void chooseCategory(View view) {
 

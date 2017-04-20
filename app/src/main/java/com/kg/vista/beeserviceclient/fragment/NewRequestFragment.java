@@ -11,9 +11,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.kg.vista.beeserviceclient.R;
+import com.kg.vista.beeserviceclient.activity.DrawerActivity;
 import com.kg.vista.beeserviceclient.manager.AlertDialogManager;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,8 +33,17 @@ import butterknife.ButterKnife;
  * Created by Vista on 05.02.2017.
  */
 
-public class NewRequestFragment extends Fragment{
+public class NewRequestFragment extends Fragment implements View.OnClickListener {
 
+
+    public static final String KEY_DESC = "description";
+    public static final String KEY_CAT = "category";
+    public static final String KEY_CASH = "price";
+    public static final String KEY_ADDRESS = "address";
+    public static final String KEY_PHONE = "number";
+
+
+    private static final String REQUEST_URL = "http://176.126.167.34/get_application/";
 
     @BindView(R.id.user_new_select_category)
     EditText mUserSelectCategory;
@@ -68,7 +88,6 @@ public class NewRequestFragment extends Fragment{
         ButterKnife.bind(this, view);
 
 
-
         mUserRequestSendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +98,7 @@ public class NewRequestFragment extends Fragment{
 
 
                 mProgressDialog.setIndeterminate(false);
-                mProgressDialog.setCancelable(true );
+                mProgressDialog.setCancelable(true);
                 mProgressDialog.setCanceledOnTouchOutside(false);
                 mProgressDialog.setMessage("Загрузка");
                 mProgressDialog.show();
@@ -92,19 +111,18 @@ public class NewRequestFragment extends Fragment{
                 String user_request_phone_number = mUserRequestPhoneNumber.getText().toString();
 
 
-
-
-                if (user_request_desc.trim().length() > 0 && user_approx_cash.trim().length() > 0 && user_request_address.trim().length() >0 && user_request_phone_number.trim().length()>0) {
-                    if (user_request_desc.trim().length()>0) {
-
-                        Intent intent = new Intent(getActivity(), NewRequestFragment.class);
-                        intent.putExtra("user_request_desc", user_request_desc);
-                        intent.putExtra("user_approx_cash", user_approx_cash);
-                        intent.putExtra("user_request_address", user_request_address);
-                        intent.putExtra("user_request_phone_number", user_request_phone_number);
-
-                        startActivity(intent);
-                        mProgressDialog.dismiss();
+                if (user_request_desc.trim().length() > 0 && user_approx_cash.trim().length() > 0 && user_request_address.trim().length() > 0 && user_request_phone_number.trim().length() > 0) {
+                    if (user_request_desc.trim().length() > 0) {
+//
+//                        Intent intent = new Intent(getActivity(), MyRequestFragment.class);
+//                        intent.putExtra("user_request_desc", user_request_desc);
+//                        intent.putExtra("user_approx_cash", user_approx_cash);
+//                        intent.putExtra("user_request_address", user_request_address);
+//                        intent.putExtra("user_request_phone_number", user_request_phone_number);
+//
+//                        startActivity(intent);
+//                        mProgressDialog.dismiss();
+                        sendData();
 
                     } else {
                         alert.showAlertDialog(getActivity(), "...", "Заполните все поля", false);
@@ -124,14 +142,60 @@ public class NewRequestFragment extends Fragment{
 
     }
 
+    private void sendData() {
+        final String desc = mUserRequestDesc.getText().toString().trim();
+        final String cash = mUserApproxCash.getText().toString().trim();
+        final String address = mUserRequestAddress.getText().toString().trim();
+        final String phone_number = mUserRequestPhoneNumber.getText().toString().trim();
+        final String category = "Мастер на вызов";
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, REQUEST_URL,
+
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(getActivity(), response, Toast.LENGTH_LONG).show();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put(KEY_DESC, desc);
+                params.put(KEY_CASH, cash);
+                params.put(KEY_ADDRESS, address);
+                params.put(KEY_PHONE, phone_number);
+                params.put(KEY_CAT, category);
+
+
+                return params;
+            }
+
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == mUserRequestSendButton) {
+            sendData();
+        }
+    }
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
 
         super.onViewCreated(view, savedInstanceState);
-
-
 
 
     }

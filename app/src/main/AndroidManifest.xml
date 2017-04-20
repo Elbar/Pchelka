@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kg.vista.beeserviceclient"
-    android:installLocation="auto"
-    >
+    android:installLocation="auto">
 
 
     <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS"
-        />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:name="com.kg.vista.beeserviceclient.boot.App"
@@ -31,28 +29,36 @@
 
         </activity>
 
-        <activity android:name=".activity.DrawerActivity"
+        <activity
+            android:name=".activity.DrawerActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme"
-            />
+            android:windowSoftInputMode="stateHidden" />
 
         <activity
             android:name=".activity.ChooseCategoryActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/BeeTheme"/>
+            android:theme="@style/BeeTheme" />
         <activity
             android:name=".activity.ChooseSubCategoryActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/BeeTheme"/>
+            android:theme="@style/BeeTheme" />
 
 
         <activity
             android:name=".activity.DescriptionActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/BeeTheme"/>
+            android:theme="@style/BeeTheme" />
 
 
     </application>
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
 
 </manifest>
