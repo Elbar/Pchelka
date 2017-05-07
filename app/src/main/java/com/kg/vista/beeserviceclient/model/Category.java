@@ -5,7 +5,7 @@ package com.kg.vista.beeserviceclient.model;
  */
 
 public class Category {
-    private String category_name;
+    public String category_name;
 
 
     public String getCategoryName() {

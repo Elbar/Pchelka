@@ -39,6 +39,8 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.pguardiola:hexgrid:0.0.4'
     testCompile 'junit:junit:4.12'
+    compile 'com.google.code.gson:gson:2.7'
+
     compile 'com.google.firebase:firebase-messaging:9.2.1'
     compile 'org.parceler:parceler-api:1.1.6'
     annotationProcessor 'org.parceler:parceler:1.1.6'
