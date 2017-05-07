@@ -15,14 +15,12 @@
 
     <!--SearchExecutorActivity ids-->
 
-    <item name="search_recycler_view" type="id"/>
-    <item name="user_search_request_desc" type="id"/>
-    <item name="user_search_request_approx_cash" type="id"/>
-    <item name="user_search_request_phone_number" type="id"/>
-    <item name="user_search_client_price" type="id"/>
+    <item name="search_recycler_view" type="id" />
+    <item name="user_search_request_desc" type="id" />
+    <item name="user_search_request_approx_cash" type="id" />
+    <item name="user_search_request_phone_number" type="id" />
+    <item name="user_search_client_price" type="id" />
     <item name="user_search_total_price" type="id" />
-
-
 
 
     <!--NewRequestFragment ids-->
@@ -37,11 +35,10 @@
 
     <!--MyRequestFragment ids-->
 
-    <item name="my_request_date" type="id"/>
-    <item name="my_request_cardview" type="id"/>
+    <item name="my_request_date" type="id" />
+    <item name="my_request_cardview" type="id" />
     <item name="my_request_cardview_cat" type="id" />
     <item name="my_request_cardview_subcat" type="id" />
-
 
 
     <!--MyProfileFragment ids-->
@@ -49,7 +46,6 @@
     <item name="my_profile_name" type="id" />
     <item name="my_profile_pass" type="id" />
     <item name="my_profile_logout" type="id" />
-
 
 
     <!--Fonts-->
@@ -61,16 +57,12 @@
     <item name="my_recycler_view" type="id" />
 
 
-
-
     <!--MiddlewareActivity ids-->
 
-    <item name="middleware_name" type="id"/>
-    <item name="middleware_verification_code" type="id"/>
+    <item name="middleware_name" type="id" />
+    <item name="middleware_verification_code" type="id" />
     <item name="middleware_button" type="id" />
     <item name="middleware_heading_text" type="id" />
-
-
 
 
     <!--ChooseCategoryActivity ids-->

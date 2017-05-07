@@ -37,7 +37,6 @@
     </string-array>
 
 
-
     <!--MiddlewareActivity Strings-->
 
     <string name="username">Ваше имя </string>
@@ -64,9 +63,6 @@
     <!--DetailActivity Strings-->
 
     <string name="detail_desc_toolbar_title">Описание</string>
-
-
-
 
 
 </resources>

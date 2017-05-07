@@ -9,7 +9,6 @@
     </style>
 
 
-
     <!--Bee App Theme-->
     <style name="BeeTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
