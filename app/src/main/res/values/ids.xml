@@ -39,15 +39,16 @@
     <item name="my_recycler_view" type="id" />
 
 
-    <!--ChooseCategoryActivity ids-->
+    <!--ChooseSubCategoryActivity ids-->
 
     <item name="card_view_choose_subcategory" type="id" />
 
+    <!--ChooseCategoryActivity ids-->
 
     <item name="choose_category_master" type="id" />
     <item name="choose_category_delivery" type="id" />
     <item name="choose_category_beauty" type="id" />
-    <item name="category_lv" type="id">
+    <item name="category_lv" type="id" />
+    <item name="category_name_tv"  type="id"/>
 
-    </item>
 </resources>
