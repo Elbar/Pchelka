@@ -7,8 +7,12 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 import com.kg.vista.beeserviceclient.R;
+
+import butterknife.BindView;
 
 /**
  * Created by Vista on 10.02.2017.
@@ -16,14 +20,19 @@ import com.kg.vista.beeserviceclient.R;
 
 public class ChooseCategoryActivity extends AppCompatActivity {
 
+    @BindView(R.id.category_lv)
+    ListView mCategoryLV;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_category);
 
+
+
+
         initActionBar();
-
-
 
 
     }
