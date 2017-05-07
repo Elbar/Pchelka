@@ -1,8 +1,13 @@
 package com.kg.vista.beeserviceclient.model;
 
-/**
- * Created by fen on 07.05.2017.
- */
+import java.util.ArrayList;
+import java.util.List;
 
 public class Response {
+
+    private List<Category> category = new ArrayList<Category>();
+
+    public List<Category> getCategory() {
+        return category;
+    }
 }
