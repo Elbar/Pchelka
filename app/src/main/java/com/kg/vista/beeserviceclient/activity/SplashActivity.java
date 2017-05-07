@@ -27,7 +27,7 @@ public class SplashActivity extends AbstractActivity {
             @Override
             public void run() {
                 SplashActivity.this.finish();
-                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                startActivity(new Intent(SplashActivity.this, DrawerActivity.class));
             }
         }, DELAY);
         scheduled = true;

@@ -24,14 +24,6 @@ public class LoginActivity extends AbstractActivity {
     }
 
 
-    public void checkAndSendTelephoneNumber(View view) {
-
-        Intent intent = new Intent(getApplicationContext(), DrawerActivity.class);
-        startActivity(intent);
-
-
-    }
-
     @Override
     protected void onPause() {
         super.onPause();
