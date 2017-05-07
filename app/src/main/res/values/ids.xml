@@ -12,17 +12,6 @@
     <item name="drawer_toolbar" type="id" />
     <item name="action_user_settings" type="id" />
 
-
-    <!--SearchExecutorActivity ids-->
-
-    <item name="search_recycler_view" type="id" />
-    <item name="user_search_request_desc" type="id" />
-    <item name="user_search_request_approx_cash" type="id" />
-    <item name="user_search_request_phone_number" type="id" />
-    <item name="user_search_client_price" type="id" />
-    <item name="user_search_total_price" type="id" />
-
-
     <!--NewRequestFragment ids-->
     <item name="fragment_new_request" type="id" />
     <item name="user_new_request_phone_number" type="id" />
@@ -41,13 +30,6 @@
     <item name="my_request_cardview_subcat" type="id" />
 
 
-    <!--MyProfileFragment ids-->
-    <item name="fragment_my_profile" type="id" />
-    <item name="my_profile_name" type="id" />
-    <item name="my_profile_pass" type="id" />
-    <item name="my_profile_logout" type="id" />
-
-
     <!--Fonts-->
 
     <item name="font_awesome_marker" type="id" />
@@ -55,14 +37,6 @@
 
 
     <item name="my_recycler_view" type="id" />
-
-
-    <!--MiddlewareActivity ids-->
-
-    <item name="middleware_name" type="id" />
-    <item name="middleware_verification_code" type="id" />
-    <item name="middleware_button" type="id" />
-    <item name="middleware_heading_text" type="id" />
 
 
     <!--ChooseCategoryActivity ids-->
@@ -73,5 +47,7 @@
     <item name="choose_category_master" type="id" />
     <item name="choose_category_delivery" type="id" />
     <item name="choose_category_beauty" type="id" />
+    <item name="category_lv" type="id">
 
+    </item>
 </resources>
