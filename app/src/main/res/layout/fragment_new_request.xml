@@ -14,6 +14,7 @@
 
 
     <EditText
+        android:id="@id/user_new_select_category"
         android:layout_width="309dp"
         android:layout_height="43dp"
         android:inputType="textPersonName"
@@ -25,7 +26,6 @@
         android:textColor="@color/colorEditText"
         android:background="@drawable/main_otherbuttons_corners"
         android:layout_marginTop="15dp"
-        android:id="@id/user_new_select_category"
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/user_new_request_desc"
         android:layout_alignEnd="@+id/user_new_request_desc"
@@ -38,6 +38,7 @@
         android:onClick="chooseCategory"/>
 
     <EditText
+        android:id="@id/user_new_request_desc"
         android:layout_width="309dp"
         android:layout_height="160dp"
         android:inputType="textMultiLine"
@@ -47,30 +48,29 @@
         android:background="@drawable/main_inputmulti_corner"
         android:ems="5"
         android:paddingLeft="12dp"
-        android:id="@id/user_new_request_desc"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/user_new_select_category"
         android:layout_centerHorizontal="true" />
 
     <TextView
+        android:id="@+id/textView2"
         android:text="@string/user_agreement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textColor="@color/colorEditText"
-        android:id="@+id/textView2"
         android:paddingLeft="12dp"
         android:layout_below="@+id/user_new_request_send_button"
         android:layout_centerHorizontal="true" />
 
     <EditText
+        android:id="@id/user_new_approx_cash"
         android:layout_width="309dp"
         android:layout_height="43dp"
         android:inputType="numberSigned"
         android:background="@drawable/main_otherbuttons_corners"
         android:ems="5"
         android:hint="@string/approx_cash"
-        android:id="@id/user_new_approx_cash"
         android:textColor="@color/colorEditText"
         android:layout_below="@+id/user_new_request_desc"
         android:layout_alignLeft="@+id/user_new_request_desc"
@@ -114,11 +114,11 @@
         android:drawablePadding="8dp"/>
 
     <Button
+        android:id="@id/user_new_request_send_button"
         android:text="@string/send_button"
         android:layout_width="309dp"
         android:layout_height="43dp"
         android:layout_marginTop="10dp"
-        android:id="@id/user_new_request_send_button"
         android:background="@color/colorPrimary"
         android:layout_below="@id/user_new_request_phone_number"
         android:layout_alignLeft="@id/user_new_request_phone_number"
