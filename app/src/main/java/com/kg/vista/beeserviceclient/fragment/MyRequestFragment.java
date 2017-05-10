@@ -15,10 +15,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
+public class MyRequestFragment extends Fragment {
 
-public class MyRequestFragment extends Fragment{
-
-    @BindView(R.id.cardList) RecyclerView mRecyclerView;
+    @BindView(R.id.cardList)
+    RecyclerView mRecyclerView;
 
     RecyclerView.LayoutManager mLayoutManager;
 
@@ -29,7 +29,6 @@ public class MyRequestFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
 
     }
@@ -47,10 +46,6 @@ public class MyRequestFragment extends Fragment{
         return inflater.inflate(R.layout.fragment_my_request, container, false);
 
     }
-
-
-
-
 
 
 }

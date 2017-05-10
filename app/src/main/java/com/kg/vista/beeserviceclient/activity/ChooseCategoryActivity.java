@@ -2,15 +2,20 @@ package com.kg.vista.beeserviceclient.activity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kg.vista.beeserviceclient.R;
 import com.kg.vista.beeserviceclient.model.Category;
@@ -23,6 +28,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -50,6 +56,17 @@ public class ChooseCategoryActivity extends AppCompatActivity {
         initActionBar();
 
         new CategoryTask().execute();
+        mCategoryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedCategory = ((TextView) view).getText().toString();
+
+                Intent i = new Intent(getApplicationContext(), ChooseSubCategoryActivity.class);
+                i.putExtra("category", selectedCategory);
+                startActivity(i);
+
+            }
+        });
 
 
     }
@@ -74,7 +91,7 @@ public class ChooseCategoryActivity extends AppCompatActivity {
         }
     }
 
-    public class CategoryTask extends AsyncTask<Void, Void, String> {
+    public class CategoryTask extends AsyncTask<Void, Void, String> implements OnItemSelectedListener {
 
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
@@ -170,11 +187,9 @@ public class ChooseCategoryActivity extends AppCompatActivity {
                 }
 
 
-                ListView listView = (ListView) findViewById(R.id.category_lv);
-
                 ArrayAdapter<String> arrayAdapter =
                         new ArrayAdapter<String>(ChooseCategoryActivity.this, android.R.layout.simple_list_item_1, categories);
-                listView.setAdapter(arrayAdapter);
+                mCategoryListView.setAdapter(arrayAdapter);
 
 
             } catch (Exception e) {
@@ -184,6 +199,15 @@ public class ChooseCategoryActivity extends AppCompatActivity {
 
         }
 
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
     }
 }
 
