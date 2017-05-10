@@ -5,23 +5,14 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+
+
+    <ListView
+        android:id="@id/category_lv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
 
-
-        <ListView
-            android:id="@id/category_lv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true">
-
-        </ListView>
-
-
-    </RelativeLayout>
+    </ListView>
 
 </ScrollView>

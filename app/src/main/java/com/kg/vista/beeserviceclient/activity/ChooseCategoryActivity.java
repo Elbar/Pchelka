@@ -1,22 +1,18 @@
 package com.kg.vista.beeserviceclient.activity;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import com.kg.vista.beeserviceclient.R;
-import com.kg.vista.beeserviceclient.adapter.UsersAdapter;
 import com.kg.vista.beeserviceclient.model.Category;
 
 import org.json.JSONArray;
@@ -30,11 +26,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static com.kg.vista.beeserviceclient.R.id.category_name_tv;
 
 
 public class ChooseCategoryActivity extends AppCompatActivity {
@@ -42,6 +37,7 @@ public class ChooseCategoryActivity extends AppCompatActivity {
     @BindView(R.id.category_lv)
     ListView mCategoryListView;
 
+    Context mContext;
 
 
     @Override
@@ -53,13 +49,8 @@ public class ChooseCategoryActivity extends AppCompatActivity {
 
         initActionBar();
 
+        new CategoryTask().execute();
 
-        ArrayList<Category> arrayOfCategories = new ArrayList<Category>();
-// Create the adapter to convert the array to views
-        UsersAdapter adapter = new UsersAdapter(this, arrayOfCategories);
-// Attach the adapter to a ListView
-        ListView listView = (ListView) findViewById(R.id.category_lv);
-        listView.setAdapter(adapter);
 
     }
 
@@ -97,7 +88,7 @@ public class ChooseCategoryActivity extends AppCompatActivity {
 
             try {
 
-                URL url = new URL("http://176.126.167.34/api/v1/application/");
+                URL url = new URL("http://176.126.167.34/api/v1/category/");
 
 
                 urlConnection = (HttpURLConnection) url.openConnection();
@@ -135,42 +126,55 @@ public class ChooseCategoryActivity extends AppCompatActivity {
 
         }
 
+        private void dismissProgressDialog() {
+
+            try {
+
+                if (pdLoading != null && pdLoading.isShowing()) {
+                    pdLoading.dismiss();
+                }
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            } finally {
+                pdLoading = null;
+            }
+
+        }
+
 
         @Override
         protected void onPostExecute(String strJson) {
             super.onPostExecute(strJson);
 
-            List<Category> data = new ArrayList<>();
+            dismissProgressDialog();
 
-            JSONObject dataJsonObj = null;
-            ArrayList<HashMap<String, String>> myArrList = new ArrayList<HashMap<String, String>>();
-            HashMap<String, String> map;
 
+            JSONObject dataJsonObj;
 
             try {
 
                 dataJsonObj = new JSONObject(strJson);
                 JSONArray result = dataJsonObj.getJSONArray("objects");
+                List<String> categories = new ArrayList<>();
+
 
                 for (int i = 0; i < result.length(); i++) {
                     JSONObject json_data = (JSONObject) result.get(i);
-                    String category_name = json_data.getString("name");
 
-                    map = new HashMap<String, String>();
-                    map.put("name", category_name);
-                    myArrList.add(map);
+                    Category category = new Category();
+                    String cat_name = json_data.getString("name");
 
-
-//                    session.createLoginSession(user_phone, user_pass);
+                    categories.add(cat_name);
 
                 }
-                Toast.makeText(ChooseCategoryActivity.this, myArrList.toString(), Toast.LENGTH_SHORT).show();
 
 
-                SimpleAdapter adapter = new SimpleAdapter(getBaseContext(), myArrList, android.R.layout.simple_list_item_2,
-                        new String[]{"Name"},
-                        new int[]{category_name_tv});
-                mCategoryListView.setAdapter(adapter);
+                ListView listView = (ListView) findViewById(R.id.category_lv);
+
+                ArrayAdapter<String> arrayAdapter =
+                        new ArrayAdapter<String>(ChooseCategoryActivity.this, android.R.layout.simple_list_item_1, categories);
+                listView.setAdapter(arrayAdapter);
 
 
             } catch (Exception e) {

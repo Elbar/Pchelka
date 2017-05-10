@@ -1,8 +1,5 @@
 package com.kg.vista.beeserviceclient.model;
 
-/**
- * Created by fen on 07.05.2017.
- */
 
 public class Category {
     public String category_name;
@@ -17,3 +14,4 @@ public class Category {
         this.category_name = category_name;
     }
 }
+
