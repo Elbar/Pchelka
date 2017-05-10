@@ -1,15 +1,16 @@
 package com.kg.vista.beeserviceclient.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.kg.vista.beeserviceclient.R;
 
-/**
- * Created by Vista on 18.02.2017.
- */
+import java.util.Arrays;
+
 
 public class ChooseSubCategoryActivity extends AbstractActivity {
 
@@ -19,6 +20,15 @@ public class ChooseSubCategoryActivity extends AbstractActivity {
         setContentView(R.layout.activity_choose_subcategory);
         initActionBar();
 
+        Intent i = getIntent();
+        String category = i.getStringExtra("category");
+        Toast.makeText(this, category, Toast.LENGTH_SHORT).show();
+
+        String[] categories = getResources().getStringArray(R.array.cleaning);
+
+        Toast.makeText(this, Arrays.toString(categories), Toast.LENGTH_SHORT).show();
+
+        //TODO Must make to finish sorting by categories arrays
 
     }
 

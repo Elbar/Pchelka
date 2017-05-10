@@ -63,6 +63,8 @@ public class ChooseCategoryActivity extends AppCompatActivity {
 
                 Intent i = new Intent(getApplicationContext(), ChooseSubCategoryActivity.class);
                 i.putExtra("category", selectedCategory);
+
+
                 startActivity(i);
 
             }

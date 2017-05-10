@@ -64,5 +64,29 @@
 
     <string name="detail_desc_toolbar_title">Описание</string>
 
+    <string-array name="masters">
+        <item>Сантехник</item>
+        <item>Плотник</item>
+        <item>Электрик</item>
 
+    </string-array>
+
+    <string-array name="medicine">
+        <item>Сантехник</item>
+        <item>Плотник</item>
+        <item>Электрик</item>
+
+    </string-array>
+    <string-array name="network">
+        <item>Сантехник</item>
+        <item>Плотник</item>
+        <item>Электрик</item>
+
+    </string-array>
+    <string-array name="cleaning">
+        <item>Сантехник</item>
+        <item>Плотник</item>
+        <item>Электрик</item>
+
+    </string-array>
 </resources>
