@@ -87,6 +87,12 @@ public class NewRequestFragment extends Fragment implements View.OnClickListener
 
         ButterKnife.bind(this, view);
 
+        Intent i = getActivity().getIntent();
+        String subcategory = i.getStringExtra("subcategory");
+
+        mUserSelectCategory.setText(subcategory);
+
+
 
         mUserRequestSendButton.setOnClickListener(new View.OnClickListener() {
             @Override

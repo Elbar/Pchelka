@@ -64,6 +64,8 @@ public class DrawerActivity extends AbstractActivity {
 
 
 
+
+
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 

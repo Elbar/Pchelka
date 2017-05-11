@@ -40,6 +40,7 @@
 
 
     <!--ChooseSubCategoryActivity ids-->
+    <item name="subcategory_lv" type="id" />
 
     <item name="card_view_choose_subcategory" type="id" />
 

@@ -38,7 +38,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class ChooseCategoryActivity extends AppCompatActivity {
+public class ChooseCategoryActivity extends AbstractActivity {
 
     @BindView(R.id.category_lv)
     ListView mCategoryListView;
@@ -63,9 +63,8 @@ public class ChooseCategoryActivity extends AppCompatActivity {
 
                 Intent i = new Intent(getApplicationContext(), ChooseSubCategoryActivity.class);
                 i.putExtra("category", selectedCategory);
-
-
                 startActivity(i);
+
 
             }
         });
@@ -180,8 +179,6 @@ public class ChooseCategoryActivity extends AppCompatActivity {
 
                 for (int i = 0; i < result.length(); i++) {
                     JSONObject json_data = (JSONObject) result.get(i);
-
-                    Category category = new Category();
                     String cat_name = json_data.getString("name");
 
                     categories.add(cat_name);
