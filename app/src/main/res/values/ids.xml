@@ -20,6 +20,7 @@
     <item name="user_request_address" type="id" />
     <item name="user_new_select_category" type="id" />
     <item name="user_new_request_send_button" type="id" />
+    <item name="user_agreement" type="id" />
 
 
     <!--MyRequestFragment ids-->
@@ -50,6 +51,6 @@
     <item name="choose_category_delivery" type="id" />
     <item name="choose_category_beauty" type="id" />
     <item name="category_lv" type="id" />
-    <item name="category_name_tv"  type="id"/>
+    <item name="category_name_tv" type="id" />
 
 </resources>

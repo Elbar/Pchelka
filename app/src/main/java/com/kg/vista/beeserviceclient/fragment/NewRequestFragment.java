@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -21,6 +22,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.kg.vista.beeserviceclient.R;
 import com.kg.vista.beeserviceclient.activity.DrawerActivity;
+import com.kg.vista.beeserviceclient.classes.UserAgreement;
 import com.kg.vista.beeserviceclient.manager.AlertDialogManager;
 
 import java.util.HashMap;
@@ -61,9 +63,11 @@ public class NewRequestFragment extends Fragment implements View.OnClickListener
     @BindView(R.id.user_new_request_phone_number)
     EditText mUserRequestPhoneNumber;
 
-
     @BindView(R.id.user_new_request_send_button)
     Button mUserRequestSendButton;
+
+    @BindView(R.id.user_agreement)
+    TextView mUserAgreement;
 
 
     AlertDialogManager alert = new AlertDialogManager();
@@ -92,6 +96,13 @@ public class NewRequestFragment extends Fragment implements View.OnClickListener
 
         mUserSelectCategory.setText(subcategory);
 
+        mUserAgreement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new UserAgreement(getActivity()).show();
+
+            }
+        });
 
 
         mUserRequestSendButton.setOnClickListener(new View.OnClickListener() {

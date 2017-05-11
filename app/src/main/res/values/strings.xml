@@ -16,6 +16,7 @@
     <string name="request_desc"> Опишите, что вы хотите сделать*</string>
     <string name="send_button"> Отправить</string>
     <string name="user_agreement"> Я согласен(-сна) с Пользовательским соглашением </string>
+    <string name="user_agreement_text">Lroem ipsum dolor sit amet </string>
 
 
     <!--MyRequestFragment strings-->

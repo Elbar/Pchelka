@@ -52,7 +52,7 @@
             android:textColor="@color/colorEditText" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@id/user_agreement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/user_new_request_send_button"
