@@ -13,11 +13,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.kg.vista.beeserviceclient.R;
-import com.kg.vista.beeserviceclient.fragment.NewRequestFragment;
-import com.kg.vista.beeserviceclient.model.Category;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -28,7 +25,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -40,9 +36,6 @@ public class ChooseSubCategoryActivity extends AbstractActivity {
 
     @BindView(R.id.category_lv)
     ListView mCategoryListView;
-
-    Context mContext;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

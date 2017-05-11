@@ -1,53 +1,31 @@
 package com.kg.vista.beeserviceclient.activity;
 
-import android.app.ProgressDialog;
+
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.kg.vista.beeserviceclient.R;
 import com.kg.vista.beeserviceclient.fragment.MyRequestFragment;
 import com.kg.vista.beeserviceclient.fragment.NewRequestFragment;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-import butterknife.BindView;
+import java.util.List;
+
+
 import butterknife.ButterKnife;
 
-/**
- * Created by Vista on 08.02.2017.
- */
+
 
 public class DrawerActivity extends AbstractActivity {
 
@@ -60,10 +38,6 @@ public class DrawerActivity extends AbstractActivity {
 
         setContentView(R.layout.activity_drawer);
         ButterKnife.bind(this);
-
-
-
-
 
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -136,10 +110,6 @@ public class DrawerActivity extends AbstractActivity {
             return mFragmentTitleList.get(position);
         }
     }
-
-
-
-
 
 
 }
