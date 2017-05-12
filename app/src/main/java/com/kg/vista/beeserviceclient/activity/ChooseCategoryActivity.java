@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,7 +19,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kg.vista.beeserviceclient.R;
+import com.kg.vista.beeserviceclient.manager.AlertDialogManager;
 import com.kg.vista.beeserviceclient.model.Category;
+import com.kg.vista.beeserviceclient.network.NetworkState;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -42,6 +45,7 @@ public class ChooseCategoryActivity extends AbstractActivity {
 
     @BindView(R.id.category_lv)
     ListView mCategoryListView;
+    final  AlertDialogManager alert = new AlertDialogManager();
 
     Context mContext;
 
@@ -54,6 +58,15 @@ public class ChooseCategoryActivity extends AbstractActivity {
         ButterKnife.bind(this);
 
         initActionBar();
+
+        NetworkState networkState = new NetworkState(this);
+        if (networkState.checkInternetConnection()) {
+            Log.d("Internet", "Success");
+        } else {
+
+            this.finish();
+
+        }
 
         new CategoryTask().execute();
         mCategoryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -208,6 +221,7 @@ public class ChooseCategoryActivity extends AbstractActivity {
 
         }
     }
+
 }
 
 

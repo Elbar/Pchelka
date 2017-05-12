@@ -1,7 +1,10 @@
 package com.kg.vista.beeserviceclient.activity;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -9,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +20,8 @@ import android.view.View;
 import com.kg.vista.beeserviceclient.R;
 import com.kg.vista.beeserviceclient.fragment.MyRequestFragment;
 import com.kg.vista.beeserviceclient.fragment.NewRequestFragment;
+import com.kg.vista.beeserviceclient.manager.AlertDialogManager;
+import com.kg.vista.beeserviceclient.network.NetworkState;
 
 
 import java.util.ArrayList;
@@ -32,12 +38,16 @@ public class DrawerActivity extends AbstractActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_drawer);
         ButterKnife.bind(this);
+
+        NetworkState networkState = new NetworkState(this);
+        networkState.checkInternetConnection();
 
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -110,6 +120,9 @@ public class DrawerActivity extends AbstractActivity {
             return mFragmentTitleList.get(position);
         }
     }
+
+
+
 
 
 }

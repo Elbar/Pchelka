@@ -7,14 +7,17 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kg.vista.beeserviceclient.R;
+import com.kg.vista.beeserviceclient.network.NetworkState;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -31,7 +34,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-
 public class ChooseSubCategoryActivity extends AbstractActivity {
 
     @BindView(R.id.category_lv)
@@ -46,10 +48,16 @@ public class ChooseSubCategoryActivity extends AbstractActivity {
 
         initActionBar();
 
+        NetworkState networkState = new NetworkState(this);
+        if (networkState.checkInternetConnection()) {
+            Log.d("Internet", "Success");
+        } else {
+            this.finish();
+
+        }
+
         Intent i = getIntent();
         String category = i.getStringExtra("category");
-
-
 
         new SubCategoryTask().execute();
         mCategoryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -155,14 +163,10 @@ public class ChooseSubCategoryActivity extends AbstractActivity {
 
         }
 
-
         @Override
         protected void onPostExecute(String strJson) {
             super.onPostExecute(strJson);
-
             dismissProgressDialog();
-
-
             JSONObject dataJsonObj;
 
             try {
@@ -174,9 +178,12 @@ public class ChooseSubCategoryActivity extends AbstractActivity {
 
                 for (int i = 0; i < result.length(); i++) {
                     JSONObject json_data = (JSONObject) result.get(i);
+
                     String subcategory_name = json_data.getString("name");
 
+
                     subcategories.add(subcategory_name);
+
 
                 }
 
