@@ -3,33 +3,42 @@ package com.kg.vista.beeserviceclient.fragment;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+
 import com.kg.vista.beeserviceclient.R;
+import com.kg.vista.beeserviceclient.activity.ChooseSubCategoryActivity;
 import com.kg.vista.beeserviceclient.activity.DrawerActivity;
 import com.kg.vista.beeserviceclient.classes.UserAgreement;
 import com.kg.vista.beeserviceclient.manager.AlertDialogManager;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.BufferedWriter;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.net.ssl.HttpsURLConnection;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 
 /**
  * Created by Vista on 05.02.2017.
@@ -139,7 +148,7 @@ public class NewRequestFragment extends Fragment implements View.OnClickListener
 //
 //                        startActivity(intent);
 //                        mProgressDialog.dismiss();
-                        sendData();
+
 
                     } else {
                         alert.showAlertDialog(getActivity(), "...", "Заполните все поля", false);
@@ -159,51 +168,12 @@ public class NewRequestFragment extends Fragment implements View.OnClickListener
 
     }
 
-    private void sendData() {
-        final String desc = mUserRequestDesc.getText().toString().trim();
-        final String cash = mUserApproxCash.getText().toString().trim();
-        final String address = mUserRequestAddress.getText().toString().trim();
-        final String phone_number = mUserRequestPhoneNumber.getText().toString().trim();
-        final String category = "Мастер на вызов";
 
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, REQUEST_URL,
-
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Toast.makeText(getActivity(), response, Toast.LENGTH_LONG).show();
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
-                    }
-                }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put(KEY_DESC, desc);
-                params.put(KEY_CASH, cash);
-                params.put(KEY_ADDRESS, address);
-                params.put(KEY_PHONE, phone_number);
-                params.put(KEY_CAT, category);
-
-
-                return params;
-            }
-
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        requestQueue.add(stringRequest);
-    }
 
     @Override
     public void onClick(View v) {
         if (v == mUserRequestSendButton) {
-            sendData();
+            new SendData().execute();
         }
     }
 
@@ -215,5 +185,95 @@ public class NewRequestFragment extends Fragment implements View.OnClickListener
         super.onViewCreated(view, savedInstanceState);
 
 
+    }
+
+
+    public class SendData extends AsyncTask<Object, Object, String> {
+
+        final String description = mUserRequestDesc.getText().toString().trim();
+        final String cash = mUserApproxCash.getText().toString().trim();
+        final String address = mUserRequestAddress.getText().toString().trim();
+        final String phone_number = mUserRequestPhoneNumber.getText().toString().trim();
+        final String category = mUserSelectCategory.getText().toString().trim();
+
+        ProgressDialog pdLoading;
+
+        @Override
+        protected String doInBackground(Object... params) {
+            try {
+                URL url = new URL("http://176.126.167.34/get_application/");
+                HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
+                conn.setReadTimeout(10000);
+                conn.setConnectTimeout(15000);
+                conn.setRequestMethod("POST");
+                conn.setDoInput(true);
+                conn.setDoOutput(true);
+
+                Uri.Builder builder = new Uri.Builder()
+                        .appendQueryParameter("description", description)
+                        .appendQueryParameter("price", cash)
+                        .appendQueryParameter("address", address)
+                        .appendQueryParameter("number", phone_number)
+                        .appendQueryParameter("subcategory", category);
+                String query = builder.build().getEncodedQuery();
+
+                OutputStream os = conn.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(
+                        new OutputStreamWriter(os, "UTF-8"));
+                writer.write(query);
+                writer.flush();
+                writer.close();
+                os.close();
+
+                conn.connect();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            pdLoading.setMessage("Загрузка...");
+            pdLoading.setIndeterminate(true);
+            pdLoading.setCancelable(false);
+            pdLoading.show();
+
+
+        }
+
+
+
+        private void dismissProgressDialog() {
+
+            try {
+
+                if (pdLoading != null && pdLoading.isShowing()) {
+                    pdLoading.dismiss();
+                }
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            } finally {
+                pdLoading = null;
+            }
+
+        }
+
+        @Override
+        protected void onPostExecute(String strJson) {
+            super.onPostExecute(strJson);
+
+            Toast.makeText(getActivity(), strJson, Toast.LENGTH_SHORT).show();
+
+            dismissProgressDialog();
+
+
+        }
     }
 }

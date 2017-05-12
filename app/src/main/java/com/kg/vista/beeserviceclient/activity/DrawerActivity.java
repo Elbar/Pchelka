@@ -50,6 +50,8 @@ public class DrawerActivity extends AbstractActivity {
         networkState.checkInternetConnection();
 
 
+
+
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
