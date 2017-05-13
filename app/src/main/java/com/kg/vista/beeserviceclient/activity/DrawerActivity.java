@@ -16,7 +16,17 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.kg.vista.beeserviceclient.R;
 import com.kg.vista.beeserviceclient.fragment.MyRequestFragment;
 import com.kg.vista.beeserviceclient.fragment.NewRequestFragment;
@@ -26,11 +36,13 @@ import com.kg.vista.beeserviceclient.network.NetworkState;
 
 import java.util.ArrayList;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-
 
 
 public class DrawerActivity extends AbstractActivity {
@@ -48,8 +60,6 @@ public class DrawerActivity extends AbstractActivity {
 
         NetworkState networkState = new NetworkState(this);
         networkState.checkInternetConnection();
-
-
 
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -122,9 +132,6 @@ public class DrawerActivity extends AbstractActivity {
             return mFragmentTitleList.get(position);
         }
     }
-
-
-
 
 
 }

@@ -36,13 +36,9 @@ public class MyRequestFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         ButterKnife.bind(getActivity());
 
-//        mRecyclerView.setHasFixedSize(true);
-//        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-//        llm.setOrientation(LinearLayoutManager.VERTICAL);
-//        mRecyclerView.setLayoutManager(llm);
+
         return inflater.inflate(R.layout.fragment_my_request, container, false);
 
     }
