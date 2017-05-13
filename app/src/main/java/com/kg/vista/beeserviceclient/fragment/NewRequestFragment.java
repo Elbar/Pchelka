@@ -40,7 +40,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class NewRequestFragment extends Fragment  {
+public class NewRequestFragment extends Fragment {
 
 
     public static final int READ_TIMEOUT = 15000;
@@ -162,7 +162,6 @@ public class NewRequestFragment extends Fragment  {
     }
 
 
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
@@ -250,6 +249,8 @@ public class NewRequestFragment extends Fragment  {
                 if (resultJson.equals("true")) {
 
                     alert.showAlertDialog(getContext(), "", "Данные успешно отправлены", false);
+
+
 
 
                 } else {

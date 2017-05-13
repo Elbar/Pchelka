@@ -15,12 +15,11 @@ public class NetworkState {
     AlertDialogManager alert = new AlertDialogManager();
 
 
-
     public NetworkState(Context context) {
         this._context = context;
     }
 
-    public  boolean checkInternetConnection() {
+    public boolean checkInternetConnection() {
         ConnectivityManager connectivity = (ConnectivityManager) _context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         if (connectivity.getActiveNetworkInfo() != null
