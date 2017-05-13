@@ -88,6 +88,7 @@
             android:drawableLeft="@drawable/address"
             android:drawablePadding="8dp"
             android:ems="5"
+            android:textColor="@color/colorEditText"
             android:hint="@string/request_address"
             android:inputType="textPersonName" />
 
@@ -111,7 +112,9 @@
             android:layout_alignStart="@id/user_new_request_phone_number"
             android:layout_below="@id/user_new_request_phone_number"
             android:background="@color/colorPrimary"
-            android:text="@string/send_button" />
+            android:text="@string/send_button"
+            android:textColor="@android:color/white"
+            />
 
 
     </RelativeLayout>

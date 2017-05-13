@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.kg.vista.beeserviceclient.R;
 
+import com.kg.vista.beeserviceclient.activity.DrawerActivity;
 import com.kg.vista.beeserviceclient.classes.UserAgreement;
 import com.kg.vista.beeserviceclient.manager.AlertDialogManager;
 
@@ -39,7 +40,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class NewRequestFragment extends Fragment implements View.OnClickListener {
+public class NewRequestFragment extends Fragment  {
 
 
     public static final int READ_TIMEOUT = 15000;
@@ -121,7 +122,7 @@ public class NewRequestFragment extends Fragment implements View.OnClickListener
                 mProgressDialog.setIndeterminate(false);
                 mProgressDialog.setCancelable(true);
                 mProgressDialog.setCanceledOnTouchOutside(false);
-                mProgressDialog.setMessage("Загрузка");
+                mProgressDialog.setMessage("Отправка");
                 mProgressDialog.show();
 
 
@@ -138,16 +139,8 @@ public class NewRequestFragment extends Fragment implements View.OnClickListener
 
                         new PostDataTask().execute(user_select_subcategory, user_request_desc, user_approx_cash, user_request_address, user_request_phone_number);
 
+
                         mProgressDialog.hide();
-
-                        Intent intent = new Intent(getActivity(), MyRequestFragment.class);
-                        intent.putExtra("description", user_request_desc);
-                        intent.putExtra("price", user_approx_cash);
-                        intent.putExtra("subcategory", user_select_subcategory);
-                        intent.putExtra("address", user_request_address);
-                        intent.putExtra("number", user_request_phone_number);
-
-                        startActivity(intent);
 
 
                     } else {
@@ -168,13 +161,6 @@ public class NewRequestFragment extends Fragment implements View.OnClickListener
 
     }
 
-
-    @Override
-    public void onClick(View v) {
-        if (v == mUserRequestSendButton) {
-
-        }
-    }
 
 
     @Override
@@ -264,6 +250,7 @@ public class NewRequestFragment extends Fragment implements View.OnClickListener
                 if (resultJson.equals("true")) {
 
                     alert.showAlertDialog(getContext(), "", "Данные успешно отправлены", false);
+
 
                 } else {
                     alert.showAlertDialog(getContext(), "...", "Ошибка", false);

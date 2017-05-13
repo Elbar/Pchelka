@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+
 import com.kg.vista.beeserviceclient.R;
 
 import butterknife.BindView;
@@ -19,8 +20,6 @@ public class MyRequestFragment extends Fragment {
 
     @BindView(R.id.cardList)
     RecyclerView mRecyclerView;
-
-    RecyclerView.LayoutManager mLayoutManager;
 
 
     public MyRequestFragment() {
@@ -36,11 +35,14 @@ public class MyRequestFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ButterKnife.bind(getActivity());
+        View view = inflater.inflate(R.layout.fragment_my_request, container, false);
 
 
-        return inflater.inflate(R.layout.fragment_my_request, container, false);
 
+        ButterKnife.bind(this, view);
+
+
+        return view;
     }
 
 

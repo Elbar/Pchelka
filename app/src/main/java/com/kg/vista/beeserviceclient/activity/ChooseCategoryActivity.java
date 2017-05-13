@@ -7,7 +7,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,11 +15,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.kg.vista.beeserviceclient.R;
 import com.kg.vista.beeserviceclient.manager.AlertDialogManager;
-import com.kg.vista.beeserviceclient.model.Category;
 import com.kg.vista.beeserviceclient.network.NetworkState;
 
 import org.json.JSONArray;
@@ -33,9 +30,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -45,9 +40,7 @@ public class ChooseCategoryActivity extends AbstractActivity {
 
     @BindView(R.id.category_lv)
     ListView mCategoryListView;
-    final  AlertDialogManager alert = new AlertDialogManager();
-
-    Context mContext;
+    final AlertDialogManager alert = new AlertDialogManager();
 
 
     @Override
