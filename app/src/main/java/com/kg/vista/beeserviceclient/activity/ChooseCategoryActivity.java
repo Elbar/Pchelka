@@ -3,6 +3,7 @@ package com.kg.vista.beeserviceclient.activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -69,6 +70,7 @@ public class ChooseCategoryActivity extends AbstractActivity {
 
                 Intent i = new Intent(getApplicationContext(), ChooseSubCategoryActivity.class);
                 i.putExtra("category", selectedCategory);
+
                 startActivity(i);
 
 
@@ -185,6 +187,9 @@ public class ChooseCategoryActivity extends AbstractActivity {
 
                 for (int i = 0; i < result.length(); i++) {
                     JSONObject json_data = (JSONObject) result.get(i);
+
+
+                    String id = json_data.getString("id");
                     String cat_name = json_data.getString("name");
 
                     categories.add(cat_name);
@@ -195,7 +200,6 @@ public class ChooseCategoryActivity extends AbstractActivity {
                 ArrayAdapter<String> arrayAdapter =
                         new ArrayAdapter<String>(ChooseCategoryActivity.this, android.R.layout.simple_list_item_1, categories);
                 mCategoryListView.setAdapter(arrayAdapter);
-
 
             } catch (Exception e) {
                 e.printStackTrace();

@@ -1,7 +1,6 @@
 package com.kg.vista.beeserviceclient.activity;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -28,6 +27,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import butterknife.BindView;
@@ -36,31 +36,24 @@ import butterknife.ButterKnife;
 
 public class ChooseSubCategoryActivity extends AbstractActivity {
 
-    @BindView(R.id.category_lv)
-    ListView mCategoryListView;
+    @BindView(R.id.subcategory_lv)
+    ListView mSubCategoryListView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose_category);
+        setContentView(R.layout.activity_choose_subcategory);
 
         ButterKnife.bind(this);
 
         initActionBar();
 
-        NetworkState networkState = new NetworkState(this);
-        if (networkState.checkInternetConnection()) {
-            Log.d("Internet", "Success");
-        } else {
-            this.finish();
-
-        }
 
         Intent i = getIntent();
-        String category = i.getStringExtra("category");
+        String categoryName = i.getStringExtra("category");
 
-        new SubCategoryTask().execute();
-        mCategoryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        new SubCategoryTask().execute(categoryName);
+        mSubCategoryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selectedSubCategory = ((TextView) view).getText().toString();
@@ -71,7 +64,6 @@ public class ChooseSubCategoryActivity extends AbstractActivity {
 
             }
         });
-
 
     }
 
@@ -95,16 +87,19 @@ public class ChooseSubCategoryActivity extends AbstractActivity {
         }
     }
 
-    public class SubCategoryTask extends AsyncTask<Void, Void, String> implements AdapterView.OnItemSelectedListener {
+    public class SubCategoryTask extends AsyncTask<String, Void, String> implements AdapterView.OnItemSelectedListener {
 
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String resultJson = "";
         ProgressDialog pdLoading = new ProgressDialog(ChooseSubCategoryActivity.this);
+        String categoryName;
 
 
         @Override
-        protected String doInBackground(Void... params) {
+        protected String doInBackground(String... params) {
+
+            categoryName = params[0];
 
 
             try {
@@ -175,22 +170,28 @@ public class ChooseSubCategoryActivity extends AbstractActivity {
                 JSONArray result = dataJsonObj.getJSONArray("objects");
                 List<String> subcategories = new ArrayList<>();
 
-
                 for (int i = 0; i < result.length(); i++) {
                     JSONObject json_data = (JSONObject) result.get(i);
+                    JSONObject parentCategory = json_data.getJSONObject("parentcategory");
+                    String parentCategoryName = parentCategory.getString("name");
 
-                    String subcategory_name = json_data.getString("name");
 
-
-                    subcategories.add(subcategory_name);
+                    if (categoryName.equals(parentCategoryName)) {
+                        subcategories.add(json_data.getString("name"));
+                    }
 
 
                 }
 
+                HashSet<String> hashSet = new HashSet<>();
+                hashSet.addAll(subcategories);
+                subcategories.clear();
+                subcategories.addAll(hashSet);
+
 
                 ArrayAdapter<String> arrayAdapter =
-                        new ArrayAdapter<String>(ChooseSubCategoryActivity.this, android.R.layout.simple_list_item_1, subcategories);
-                mCategoryListView.setAdapter(arrayAdapter);
+                        new ArrayAdapter<>(ChooseSubCategoryActivity.this, android.R.layout.simple_list_item_1, subcategories);
+                mSubCategoryListView.setAdapter(arrayAdapter);
 
 
             } catch (Exception e) {

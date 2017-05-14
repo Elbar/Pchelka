@@ -37,6 +37,9 @@ public class MyRequestFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_my_request, container, false);
 
 
+        //TODO make cards in myrequestfragment
+
+
         ButterKnife.bind(this, view);
 
 

@@ -5,11 +5,15 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +21,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kg.vista.beeserviceclient.R;
 
@@ -68,7 +73,6 @@ public class NewRequestFragment extends Fragment {
     @BindView(R.id.user_agreement)
     TextView mUserAgreement;
 
-
     AlertDialogManager alert = new AlertDialogManager();
 
 
@@ -91,7 +95,7 @@ public class NewRequestFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         Intent i = getActivity().getIntent();
-        String subcategory = i.getStringExtra("subcategory");
+        final  String subcategory = i.getStringExtra("subcategory");
 
         mUserSelectSubCategory.setText(subcategory);
 
@@ -136,8 +140,7 @@ public class NewRequestFragment extends Fragment {
                 if (user_select_subcategory.trim().length() > 0 && user_request_desc.trim().length() > 0 && user_approx_cash.trim().length() > 0 && user_request_address.trim().length() > 0 && user_request_phone_number.trim().length() > 0) {
                     if (user_request_desc.trim().length() > 0) {
 
-
-                        new PostDataTask().execute(user_select_subcategory, user_request_desc, user_approx_cash, user_request_address, user_request_phone_number);
+                        new PostDataTask().execute(subcategory, user_request_desc, user_approx_cash, user_request_address, user_request_phone_number);
 
 
                         mProgressDialog.hide();
@@ -178,13 +181,16 @@ public class NewRequestFragment extends Fragment {
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String resultJson = "";
+        String subcategory;
 
 
         protected String doInBackground(String... params) {
 
             try {
 
-                String subcategory = params[0];
+                 subcategory = params[0];
+
+//                Toast.makeText(getContext(), subcategory, Toast.LENGTH_SHORT).show();
                 String description = params[1];
                 String price = params[2];
                 String address = params[3];
@@ -250,11 +256,9 @@ public class NewRequestFragment extends Fragment {
 
                     alert.showAlertDialog(getContext(), "", "Данные успешно отправлены", false);
 
-
-
-
                 } else {
                     alert.showAlertDialog(getContext(), "...", "Ошибка", false);
+
                     pdLoading.dismiss();
 
                 }
