@@ -189,7 +189,6 @@ public class ChooseCategoryActivity extends AbstractActivity {
                     JSONObject json_data = (JSONObject) result.get(i);
 
 
-                    String id = json_data.getString("id");
                     String cat_name = json_data.getString("name");
 
                     categories.add(cat_name);

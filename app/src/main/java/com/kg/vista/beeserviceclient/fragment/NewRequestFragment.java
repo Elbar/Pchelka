@@ -95,7 +95,7 @@ public class NewRequestFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         Intent i = getActivity().getIntent();
-        final  String subcategory = i.getStringExtra("subcategory");
+        final String subcategory = i.getStringExtra("subcategory");
 
         mUserSelectSubCategory.setText(subcategory);
 
@@ -139,8 +139,9 @@ public class NewRequestFragment extends Fragment {
 
                 if (user_select_subcategory.trim().length() > 0 && user_request_desc.trim().length() > 0 && user_approx_cash.trim().length() > 0 && user_request_address.trim().length() > 0 && user_request_phone_number.trim().length() > 0) {
                     if (user_request_desc.trim().length() > 0) {
+                        Toast.makeText(getContext(), user_select_subcategory, Toast.LENGTH_SHORT).show();
 
-                        new PostDataTask().execute(subcategory, user_request_desc, user_approx_cash, user_request_address, user_request_phone_number);
+                        new PostDataTask().execute(user_select_subcategory, user_request_desc, user_approx_cash, user_request_address, user_request_phone_number);
 
 
                         mProgressDialog.hide();
@@ -181,14 +182,12 @@ public class NewRequestFragment extends Fragment {
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String resultJson = "";
-        String subcategory;
-
 
         protected String doInBackground(String... params) {
 
             try {
 
-                 subcategory = params[0];
+                String subcategory = params[0];
 
 //                Toast.makeText(getContext(), subcategory, Toast.LENGTH_SHORT).show();
                 String description = params[1];
