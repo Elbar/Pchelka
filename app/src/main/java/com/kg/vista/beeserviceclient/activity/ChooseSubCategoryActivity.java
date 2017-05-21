@@ -51,8 +51,10 @@ public class ChooseSubCategoryActivity extends AbstractActivity {
 
         Intent i = getIntent();
         String categoryName = i.getStringExtra("category");
+        Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show();
 
         new SubCategoryTask().execute(categoryName);
+
         mSubCategoryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

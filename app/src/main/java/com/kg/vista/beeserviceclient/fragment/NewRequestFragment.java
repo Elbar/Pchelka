@@ -189,7 +189,6 @@ public class NewRequestFragment extends Fragment {
 
                 String subcategory = params[0];
 
-//                Toast.makeText(getContext(), subcategory, Toast.LENGTH_SHORT).show();
                 String description = params[1];
                 String price = params[2];
                 String address = params[3];
