@@ -252,7 +252,12 @@ public class NewRequestFragment extends Fragment {
 
                 if (resultJson.equals("true")) {
 
+
                     alert.showAlertDialog(getContext(), "", "Данные успешно отправлены", false);
+                    Intent i = new Intent(getActivity(), MyRequestFragment.class);
+
+                    startActivity(i);
+
 
                 } else {
                     alert.showAlertDialog(getContext(), "...", "Ошибка", false);
