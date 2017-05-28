@@ -39,6 +39,7 @@ import java.io.InputStreamReader;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 
 
 import butterknife.BindView;
@@ -187,12 +188,12 @@ public class NewRequestFragment extends Fragment {
 
             try {
 
-                String subcategory = params[0];
+                String subcategory = URLEncoder.encode(params[0].trim(), "UTF-8");
 
-                String description = params[1];
-                String price = params[2];
-                String address = params[3];
-                String number = params[4];
+                String description = URLEncoder.encode(params[1].trim(), "UTF-8");
+                String price = URLEncoder.encode(params[2].trim(), "UTF-8");
+                String address = URLEncoder.encode(params[3].trim(), "UTF-8");
+                String number = URLEncoder.encode(params[4].trim(), "UTF-8");
 
 
                 URL url = new URL("http://176.126.167.34/get_application/?subcategory=" + subcategory + "&description=" + description + "&price=" + price + "&address=" + address + "&number=" + number);
@@ -254,9 +255,6 @@ public class NewRequestFragment extends Fragment {
 
 
                     alert.showAlertDialog(getContext(), "", "Данные успешно отправлены", false);
-                    Intent i = new Intent(getActivity(), MyRequestFragment.class);
-
-                    startActivity(i);
 
 
                 } else {

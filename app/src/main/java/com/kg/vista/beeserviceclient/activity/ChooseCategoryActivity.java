@@ -197,7 +197,7 @@ public class ChooseCategoryActivity extends AbstractActivity {
 
 
                 ArrayAdapter<String> arrayAdapter =
-                        new ArrayAdapter<String>(ChooseCategoryActivity.this, android.R.layout.simple_list_item_1, categories);
+                        new ArrayAdapter<>(ChooseCategoryActivity.this, android.R.layout.simple_list_item_1, categories);
                 mCategoryListView.setAdapter(arrayAdapter);
 
             } catch (Exception e) {

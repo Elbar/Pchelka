@@ -22,9 +22,11 @@
 
 
         <activity
-            android:name=".activity.SplashActivity"
+            android:name=".activity.DrawerActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,11 +36,11 @@
 
         </activity>
 
-        <activity
-            android:name=".activity.DrawerActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden" />
+        <!--<activity-->
+            <!--android:name=".activity.DrawerActivity"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:theme="@style/AppTheme"-->
+            <!--android:windowSoftInputMode="stateHidden" />-->
         <activity
             android:name=".activity.LoginActivity"
             android:screenOrientation="portrait"
