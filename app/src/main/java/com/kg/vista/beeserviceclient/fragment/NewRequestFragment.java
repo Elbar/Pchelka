@@ -254,8 +254,12 @@ public class NewRequestFragment extends Fragment {
                 if (resultJson.equals("true")) {
 
 
-                    alert.showAlertDialog(getContext(), "", "Данные успешно отправлены", false);
-
+                    alert.showAlertDialog(getContext(), "Заявка принята", "Ждите звонка исполнителя", false);
+                    mUserSelectSubCategory.setText("");
+                    mUserRequestDesc.setText("");
+                    mUserApproxCash.setText("");
+                    mUserRequestAddress.setText("");
+                    mUserRequestPhoneNumber.setText("");
 
                 } else {
                     alert.showAlertDialog(getContext(), "...", "Ошибка", false);
