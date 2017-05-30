@@ -2,9 +2,13 @@ package com.kg.vista.beeserviceclient.fragment;
 
 
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -40,6 +44,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.sql.SQLException;
 
 
 import butterknife.BindView;
@@ -250,11 +255,19 @@ public class NewRequestFragment extends Fragment {
                 dataJsonObj = new JSONObject(strJson);
                 String resultJson = dataJsonObj.getString("result");
 
+                String select_subcategory = mUserSelectSubCategory.getText().toString();
+                String request_desc = mUserRequestDesc.getText().toString();
+                String approx_cash = mUserApproxCash.getText().toString();
+                String request_address = mUserRequestAddress.getText().toString();
+                String request_phone = mUserRequestPhoneNumber.getText().toString();
 
                 if (resultJson.equals("true")) {
 
 
                     alert.showAlertDialog(getContext(), "Заявка принята", "Ждите звонка исполнителя", false);
+
+
+
                     mUserSelectSubCategory.setText("");
                     mUserRequestDesc.setText("");
                     mUserApproxCash.setText("");
@@ -277,6 +290,7 @@ public class NewRequestFragment extends Fragment {
 
 
 }
+
 
 
 

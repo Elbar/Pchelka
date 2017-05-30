@@ -180,7 +180,6 @@ public class ChooseSubCategoryActivity extends AbstractActivity {
                         subcategories.add(json_data.getString("name"));
                     }
 
-
                 }
 
                 HashSet<String> hashSet = new HashSet<>();
