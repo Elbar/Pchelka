@@ -11,6 +11,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -24,6 +26,9 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +36,7 @@ import com.kg.vista.beeserviceclient.R;
 
 import com.kg.vista.beeserviceclient.activity.DrawerActivity;
 import com.kg.vista.beeserviceclient.classes.UserAgreement;
+import com.kg.vista.beeserviceclient.db.DBHelper;
 import com.kg.vista.beeserviceclient.manager.AlertDialogManager;
 
 import org.json.JSONObject;
@@ -53,10 +59,8 @@ import butterknife.ButterKnife;
 
 public class NewRequestFragment extends Fragment {
 
-
     public static final int READ_TIMEOUT = 15000;
-
-
+    DBHelper dbHelper;
     @BindView(R.id.user_new_select_category)
     EditText mUserSelectSubCategory;
 
@@ -79,7 +83,11 @@ public class NewRequestFragment extends Fragment {
     @BindView(R.id.user_agreement)
     TextView mUserAgreement;
 
-    AlertDialogManager alert = new AlertDialogManager();
+
+    @BindView(R.id.fragment_new_request_scrollview)
+    ScrollView mNewRequestSV;
+    @BindView(R.id.fragment_new_request)
+    RelativeLayout mNewRequestRL;
 
 
     public NewRequestFragment() {
@@ -96,76 +104,147 @@ public class NewRequestFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_new_request, container, false);
+        final View view = inflater.inflate(R.layout.fragment_new_request, container, false);
 
         ButterKnife.bind(this, view);
+
+        ConnectivityManager cm =
+                (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+
+        final AlertDialogManager alert = new AlertDialogManager();
+
+
+        final boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
 
         Intent i = getActivity().getIntent();
         final String subcategory = i.getStringExtra("subcategory");
 
         mUserSelectSubCategory.setText(subcategory);
 
-        mUserAgreement.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new UserAgreement(getActivity()).show();
-
-            }
-        });
 
 
-        mUserRequestSendButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                InputMethodManager inputManager = (InputMethodManager)
-                        getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 
-                inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(),
-                        InputMethodManager.HIDE_NOT_ALWAYS);
-
-                final ProgressDialog mProgressDialog = new ProgressDialog(getActivity());
-
-
-                mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-
-
-                mProgressDialog.setIndeterminate(false);
-                mProgressDialog.setCancelable(true);
-                mProgressDialog.setCanceledOnTouchOutside(false);
-                mProgressDialog.setMessage("Отправка");
-                mProgressDialog.show();
-
-
-                String user_select_subcategory = mUserSelectSubCategory.getText().toString();
-                String user_request_desc = mUserRequestDesc.getText().toString();
-                String user_approx_cash = mUserApproxCash.getText().toString();
-                String user_request_address = mUserRequestAddress.getText().toString();
-                String user_request_phone_number = mUserRequestPhoneNumber.getText().toString();
-
-
-                if (user_select_subcategory.trim().length() > 0 && user_request_desc.trim().length() > 0 && user_approx_cash.trim().length() > 0 && user_request_address.trim().length() > 0 && user_request_phone_number.trim().length() > 0) {
-                    if (user_request_desc.trim().length() > 0) {
-                        Toast.makeText(getContext(), user_select_subcategory, Toast.LENGTH_SHORT).show();
-
-                        new PostDataTask().execute(user_select_subcategory, user_request_desc, user_approx_cash, user_request_address, user_request_phone_number);
-
-
-                        mProgressDialog.hide();
-
-
-                    } else {
-                        alert.showAlertDialog(getActivity(), "...", "Заполните все поля", false);
-                        mProgressDialog.hide();
-                    }
-                } else {
-
-                    alert.showAlertDialog(getActivity(), "Ошибка ", "Пожалуйста заполните все поля", false);
-                    mProgressDialog.hide();
+            mUserAgreement.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new UserAgreement(getActivity()).show();
 
                 }
+            });
 
-            }
-        });
+            mUserRequestSendButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (isConnected) {
+
+                        InputMethodManager inputManager = (InputMethodManager)
+                                getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                        inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(),
+                                InputMethodManager.HIDE_NOT_ALWAYS);
+
+                        final ProgressDialog mProgressDialog = new ProgressDialog(getActivity());
+
+
+                        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+
+
+                        mProgressDialog.setIndeterminate(false);
+                        mProgressDialog.setCancelable(true);
+                        mProgressDialog.setCanceledOnTouchOutside(false);
+                        mProgressDialog.setMessage("Отправка");
+                        mProgressDialog.show();
+
+
+                        String selectedSubcategory = mUserSelectSubCategory.getText().toString();
+                        String desc = mUserRequestDesc.getText().toString();
+                        String approxCash = mUserApproxCash.getText().toString();
+                        String requestAddress = mUserRequestAddress.getText().toString();
+                        String phoneNumber = mUserRequestPhoneNumber.getText().toString();
+
+
+                        if (selectedSubcategory.trim().length() > 0 && desc.trim().length() > 0
+                                && approxCash.trim().length() > 0 && requestAddress.trim().length() > 0
+                                && phoneNumber.trim().length() > 0) {
+
+                            new PostDataTask().execute(selectedSubcategory, desc, approxCash, requestAddress, phoneNumber);
+
+                            mProgressDialog.hide();
+                        } else {
+
+                            alert.showAlertDialog(getActivity(), "Ошибка ", "Пожалуйста заполните все поля", false);
+                            mProgressDialog.hide();
+
+                        }
+
+                    } else {
+                        alert.showAlertDialog(getActivity(), "Ошибка ", "Пожалуйста проверьте ваше соединение с интернетом", false);
+                    }
+                }
+            });
+
+
+
+//        mOrderTaxi.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+
+//                mNewRequestRL.removeAllViews();
+//                Button callButton = new Button(getActivity());
+//                EditText address = new EditText(getActivity());
+//                EditText phone = new EditText(getActivity());
+//                LinearLayout ll = new LinearLayout(getActivity());
+//                ll.setOrientation(LinearLayout.VERTICAL);
+//
+
+
+//                LinearLayout.LayoutParams buttonLayoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+//
+////                buttonLayoutParams.setMargins(50,10,50,10);
+//                callButton.setLayoutParams(buttonLayoutParams);
+//                callButton.setText("Отправить");
+//
+//
+//                final String address_str = address.getText().toString();
+//                final String phone_str = phone.getText().toString();
+//
+//
+//
+//
+//
+//
+//                ll.addView(address);
+//                ll.addView(phone);
+//                ll.addView(callButton);
+//
+//                mNewRequestRL.addView(ll);
+//
+//                callButton.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Toast.makeText(getActivity(), "success", Toast.LENGTH_SHORT).show();
+//                        mNewRequestRL.refreshDrawableState();
+//
+////                        new PostTaxiOrder().execute(address_str, phone_str);
+//                    }
+//                });
+//
+
+
+//
+//                editText1.setHint("Адрес");
+//
+//                mNewRequestRL.addView(callButton);
+//
+//                mNewRequestRL.addView(editText);
+//                mNewRequestRL.addView(editText1);
+
 
         return view;
 
@@ -188,28 +267,31 @@ public class NewRequestFragment extends Fragment {
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String resultJson = "";
+        int statusCode;
+        AlertDialogManager postErrorAlert = new AlertDialogManager();
 
         protected String doInBackground(String... params) {
 
             try {
 
                 String subcategory = URLEncoder.encode(params[0].trim(), "UTF-8");
-
                 String description = URLEncoder.encode(params[1].trim(), "UTF-8");
                 String price = URLEncoder.encode(params[2].trim(), "UTF-8");
                 String address = URLEncoder.encode(params[3].trim(), "UTF-8");
                 String number = URLEncoder.encode(params[4].trim(), "UTF-8");
 
 
-                URL url = new URL("http://176.126.167.34/get_application/?subcategory=" + subcategory + "&description=" + description + "&price=" + price + "&address=" + address + "&number=" + number);
+                URL url = new URL("http://1203.kg/get_application/?subcategory=" + subcategory + "&description=" + description + "&price=" + price + "&address=" + address + "&number=" + number);
 
 
                 urlConnection = (HttpURLConnection) url.openConnection();
 
                 urlConnection.setReadTimeout(READ_TIMEOUT);
 
-                urlConnection.setRequestMethod("POST");
+                urlConnection.setRequestMethod("GET");
                 urlConnection.connect();
+
+                statusCode = urlConnection.getResponseCode();
 
                 InputStream inputStream = urlConnection.getInputStream();
                 StringBuilder buffer = new StringBuilder();
@@ -255,19 +337,9 @@ public class NewRequestFragment extends Fragment {
                 dataJsonObj = new JSONObject(strJson);
                 String resultJson = dataJsonObj.getString("result");
 
-                String select_subcategory = mUserSelectSubCategory.getText().toString();
-                String request_desc = mUserRequestDesc.getText().toString();
-                String approx_cash = mUserApproxCash.getText().toString();
-                String request_address = mUserRequestAddress.getText().toString();
-                String request_phone = mUserRequestPhoneNumber.getText().toString();
+                if (resultJson.equals("true") && statusCode == 200) {
 
-                if (resultJson.equals("true")) {
-
-
-                    alert.showAlertDialog(getContext(), "Заявка принята", "Ждите звонка исполнителя", false);
-
-
-
+                    postErrorAlert.showAlertDialog(getContext(), "Заявка принята", "Ждите звонка исполнителя", false);
                     mUserSelectSubCategory.setText("");
                     mUserRequestDesc.setText("");
                     mUserApproxCash.setText("");
@@ -275,7 +347,7 @@ public class NewRequestFragment extends Fragment {
                     mUserRequestPhoneNumber.setText("");
 
                 } else {
-                    alert.showAlertDialog(getContext(), "...", "Ошибка", false);
+                    postErrorAlert.showAlertDialog(getContext(), "...", "Ошибка", false);
 
                     pdLoading.dismiss();
 

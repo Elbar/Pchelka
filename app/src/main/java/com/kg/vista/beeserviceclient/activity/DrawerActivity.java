@@ -1,8 +1,11 @@
 package com.kg.vista.beeserviceclient.activity;
 
 
+import android.content.Context;
 import android.content.Intent;
 
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -18,6 +21,7 @@ import android.view.View;
 import com.kg.vista.beeserviceclient.R;
 import com.kg.vista.beeserviceclient.fragment.MyRequestFragment;
 import com.kg.vista.beeserviceclient.fragment.NewRequestFragment;
+import com.kg.vista.beeserviceclient.manager.AlertDialogManager;
 import com.kg.vista.beeserviceclient.network.NetworkState;
 
 
@@ -26,6 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
+
+import static java.security.AccessController.getContext;
 
 
 public class DrawerActivity extends AbstractActivity {
@@ -41,8 +47,6 @@ public class DrawerActivity extends AbstractActivity {
         setContentView(R.layout.activity_drawer);
         ButterKnife.bind(this);
 
-        NetworkState networkState = new NetworkState(this);
-        networkState.checkInternetConnection();
 
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -64,8 +68,23 @@ public class DrawerActivity extends AbstractActivity {
 
     public void chooseCategory(View view) {
 
-        Intent intent = new Intent(getApplicationContext(), ChooseCategoryActivity.class);
-        startActivity(intent);
+        ConnectivityManager cm =
+                (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        AlertDialogManager alertDialogManager = new AlertDialogManager();
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
+        if(isConnected) {
+
+            Intent intent = new Intent(getApplicationContext(), ChooseCategoryActivity.class);
+            startActivity(intent);
+        }else {
+            alertDialogManager.showAlertDialog(this, "Ошибка", "Пожалуйста проверьте ваше соединение с интернетом", false);
+        }
+
     }
 
     @Override

@@ -11,6 +11,10 @@
 
     <item name="drawer_toolbar" type="id" />
     <item name="action_user_settings" type="id" />
+    <item name="request_cv" type="id" />
+    <item name="subcategory_name" type="id" />
+    <item name="request_price" type="id" />
+
 
     <!--NewRequestFragment ids-->
     <item name="fragment_new_request" type="id" />
@@ -21,6 +25,8 @@
     <item name="user_new_select_category" type="id" />
     <item name="user_new_request_send_button" type="id" />
     <item name="user_agreement" type="id" />
+    <item name="order_taxi" type="id" />
+    <item name="fragment_new_request_scrollview" type="id" />
 
 
     <!--MyRequestFragment ids-->

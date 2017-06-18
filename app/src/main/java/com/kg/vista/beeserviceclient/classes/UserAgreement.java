@@ -32,35 +32,24 @@ public class UserAgreement {
     }
 
     public void show() {
-        PackageInfo versionInfo = getPackageInfo();
+
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mActivity);
-         String title = mActivity.getString(R.string.app_name) + " v" + versionInfo.versionName;
+         String title = mActivity.getString(R.string.user_agreement_header);
 
             String message = mActivity.getString(R.string.user_agreement_text);
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(mActivity)
-                    .setTitle(title)
-                    .setMessage(message)
-                    .setPositiveButton(android.R.string.ok, new Dialog.OnClickListener() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton(android.R.string.ok, new Dialog.OnClickListener() {
 
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            SharedPreferences.Editor editor = prefs.edit();
-                            editor.apply();
-                            dialogInterface.dismiss();
-                        }
-                    })
-                    .setNegativeButton(android.R.string.cancel, new Dialog.OnClickListener() {
-
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            SharedPreferences.Editor editor = prefs.edit();
-                            editor.apply();
-                            dialog.dismiss();
-
-                        }
-
-                    });
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.apply();
+                        dialogInterface.dismiss();
+                    }
+                });
             builder.create().show();
 
     }

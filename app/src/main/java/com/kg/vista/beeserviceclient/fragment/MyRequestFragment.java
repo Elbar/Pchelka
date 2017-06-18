@@ -1,30 +1,24 @@
 package com.kg.vista.beeserviceclient.fragment;
 
 
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
 
 
 import com.kg.vista.beeserviceclient.R;
 
-
-import java.sql.SQLException;
-
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
 
 public class MyRequestFragment extends Fragment {
 
-
-    @BindView(R.id.cardList)
-    RecyclerView mRecyclerView;
 
 
     public MyRequestFragment() {
@@ -45,8 +39,9 @@ public class MyRequestFragment extends Fragment {
         ButterKnife.bind(this, view);
 
 
+
         return view;
+
+
     }
-
-
 }
