@@ -22,7 +22,7 @@
 
 
         <activity
-            android:name=".activity.DrawerActivity"
+            android:name=".activity.LaunchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden">
@@ -36,11 +36,11 @@
 
         </activity>
 
-        <!--<activity-->
-            <!--android:name=".activity.DrawerActivity"-->
-            <!--android:screenOrientation="portrait"-->
-            <!--android:theme="@style/AppTheme"-->
-            <!--android:windowSoftInputMode="stateHidden" />-->
+        <activity
+            android:name=".activity.DrawerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activity.LoginActivity"
             android:screenOrientation="portrait"

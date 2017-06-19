@@ -1,14 +1,11 @@
 package com.kg.vista.beeserviceclient.activity;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,10 +13,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kg.vista.beeserviceclient.R;
+import com.kg.vista.beeserviceclient.adapter.CustomListAdapter;
 import com.kg.vista.beeserviceclient.manager.AlertDialogManager;
-import com.kg.vista.beeserviceclient.network.NetworkState;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -41,7 +39,37 @@ public class ChooseCategoryActivity extends AbstractActivity {
 
     @BindView(R.id.category_lv)
     ListView mCategoryListView;
+
     final AlertDialogManager alert = new AlertDialogManager();
+
+    Integer[] imageArray = {
+            R.drawable.group1,
+            R.drawable.group2,
+            R.drawable.group3,
+            R.drawable.group4,
+            R.drawable.group5,
+            R.drawable.group6,
+            R.drawable.group7,
+            R.drawable.group8,
+            R.drawable.group9,
+            R.drawable.group10,
+            R.drawable.group11,
+            R.drawable.group12};
+
+    String[] categoryArray = {
+            "Мастер на вызов",
+            "Красота и здоровье",
+            "Клининг и помощь по хозяйству",
+            "Установка и ремонт оборудования",
+            "Образование и обучение",
+            "Перевозки",
+            "Служба доставки",
+            "Компьютер и сети",
+            "Юридическая помощь",
+            "Техническая помощь",
+            "Виртуальный помощник",
+            "Отдых, Досуг и прочее"};
+
 
 
     @Override
@@ -53,32 +81,27 @@ public class ChooseCategoryActivity extends AbstractActivity {
 
         initActionBar();
 
-        NetworkState networkState = new NetworkState(this);
-        if (networkState.checkInternetConnection()) {
-            Log.d("Internet", "Success");
-        } else {
 
-            this.finish();
+        CustomListAdapter arrayAdapter = new CustomListAdapter(this, categoryArray, imageArray);
 
-        }
+        mCategoryListView.setAdapter(arrayAdapter);
 
-        new CategoryTask().execute();
         mCategoryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectedCategory = ((TextView) view).getText().toString();
+
+
+                                String selectedCategory = categoryArray[position];
+//                Toast.makeText(ChooseCategoryActivity.this, selectedCategory, Toast.LENGTH_SHORT).show();
 
                 Intent i = new Intent(getApplicationContext(), ChooseSubCategoryActivity.class);
                 i.putExtra("category", selectedCategory);
 
                 startActivity(i);
-
-
             }
         });
-
-
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -196,9 +219,6 @@ public class ChooseCategoryActivity extends AbstractActivity {
                 }
 
 
-                ArrayAdapter<String> arrayAdapter =
-                        new ArrayAdapter<>(ChooseCategoryActivity.this, android.R.layout.simple_list_item_1, categories);
-                mCategoryListView.setAdapter(arrayAdapter);
 
             } catch (Exception e) {
                 e.printStackTrace();

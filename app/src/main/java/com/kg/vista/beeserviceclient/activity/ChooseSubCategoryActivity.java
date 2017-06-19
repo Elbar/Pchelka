@@ -1,7 +1,10 @@
 package com.kg.vista.beeserviceclient.activity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kg.vista.beeserviceclient.R;
+import com.kg.vista.beeserviceclient.manager.AlertDialogManager;
 import com.kg.vista.beeserviceclient.network.NetworkState;
 
 import org.json.JSONArray;
@@ -48,8 +52,22 @@ public class ChooseSubCategoryActivity extends AbstractActivity {
 
         initActionBar();
 
+        ConnectivityManager cm =
+                (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        Intent i = getIntent();
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+
+        AlertDialogManager alert = new AlertDialogManager();
+
+
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
+
+        if (isConnected) {
+            Intent i = getIntent();
+
         String categoryName = i.getStringExtra("category");
         new SubCategoryTask().execute(categoryName);
 
@@ -64,6 +82,13 @@ public class ChooseSubCategoryActivity extends AbstractActivity {
 
             }
         });
+    } else {
+            alert.showAlertDialog(this, "Ошибка", "Проверьте ваше подключение к интернету", false);
+
+
+
+
+        }
 
     }
 
@@ -104,7 +129,7 @@ public class ChooseSubCategoryActivity extends AbstractActivity {
 
             try {
 
-                URL url = new URL("http://176.126.167.34/api/v1/subcategory/");
+                URL url = new URL("http://1203.kg/api/v1/subcategory/");
 
 
                 urlConnection = (HttpURLConnection) url.openConnection();

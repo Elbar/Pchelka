@@ -126,7 +126,7 @@
             />
 
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@id/fragment_new_request_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/user_agreement"

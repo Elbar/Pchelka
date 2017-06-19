@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -89,8 +90,12 @@ public class NewRequestFragment extends Fragment {
     @BindView(R.id.fragment_new_request)
     RelativeLayout mNewRequestRL;
 
+    @BindView(R.id.fragment_new_request_checkbox)
+    CheckBox mNewRequestCheckbox;
+
 
     public NewRequestFragment() {
+
     }
 
     @Override
@@ -125,6 +130,27 @@ public class NewRequestFragment extends Fragment {
         final String subcategory = i.getStringExtra("subcategory");
 
         mUserSelectSubCategory.setText(subcategory);
+        mUserRequestSendButton.setBackgroundResource(R.drawable.btn_style_gray);
+        mUserRequestSendButton.setEnabled(false);
+
+        mNewRequestCheckbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mNewRequestCheckbox.isChecked()) {
+                    mUserSelectSubCategory.setText(subcategory);
+                    mUserRequestSendButton.setBackgroundResource(R.drawable.btn_style_primary);
+                    mUserRequestSendButton.setEnabled(true);
+
+                } else {
+                    mUserSelectSubCategory.setText(subcategory);
+                    mUserRequestSendButton.setBackgroundResource(R.drawable.btn_style_gray);
+                    mUserRequestSendButton.setEnabled(false);
+
+                }
+            }
+        });
+
+
 
 
 
@@ -188,6 +214,7 @@ public class NewRequestFragment extends Fragment {
                     }
                 }
             });
+
 
 
 
