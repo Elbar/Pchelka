@@ -110,6 +110,7 @@
             android:drawableLeft="@drawable/phone_icon"
             android:drawablePadding="8dp"
             android:ems="5"
+            android:digits="0123456789"
             android:hint="@string/phone_number"
             android:inputType="phone"
             android:textColor="@color/colorEditText" />

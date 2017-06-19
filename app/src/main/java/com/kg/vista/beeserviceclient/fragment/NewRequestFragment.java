@@ -19,6 +19,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
+import android.telephony.PhoneNumberUtils;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -133,6 +136,7 @@ public class NewRequestFragment extends Fragment {
         mUserRequestSendButton.setBackgroundResource(R.drawable.btn_style_gray);
         mUserRequestSendButton.setEnabled(false);
 
+
         mNewRequestCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,11 +154,6 @@ public class NewRequestFragment extends Fragment {
             }
         });
 
-
-
-
-
-
             mUserAgreement.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -163,9 +162,25 @@ public class NewRequestFragment extends Fragment {
                 }
             });
 
+
+
             mUserRequestSendButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+
+                    String selectedSubcategory = mUserSelectSubCategory.getText().toString();
+                    String desc = mUserRequestDesc.getText().toString();
+                    String approxCash = mUserApproxCash.getText().toString();
+                    String requestAddress = mUserRequestAddress.getText().toString();
+                    String phoneNumber = mUserRequestPhoneNumber.getText().toString();
+
+
+
+                    String phoneNumberCode = phoneNumber.substring(0, 3);
+                    int phoneNumberLength = phoneNumber.length();
+
+
 
                     if (isConnected) {
 
@@ -188,20 +203,23 @@ public class NewRequestFragment extends Fragment {
                         mProgressDialog.show();
 
 
-                        String selectedSubcategory = mUserSelectSubCategory.getText().toString();
-                        String desc = mUserRequestDesc.getText().toString();
-                        String approxCash = mUserApproxCash.getText().toString();
-                        String requestAddress = mUserRequestAddress.getText().toString();
-                        String phoneNumber = mUserRequestPhoneNumber.getText().toString();
-
 
                         if (selectedSubcategory.trim().length() > 0 && desc.trim().length() > 0
-                                && approxCash.trim().length() > 0 && requestAddress.trim().length() > 0
+                                && requestAddress.trim().length() > 0
                                 && phoneNumber.trim().length() > 0) {
 
-                            new PostDataTask().execute(selectedSubcategory, desc, approxCash, requestAddress, phoneNumber);
+                            if (approxCash.equals("")) {
+                                approxCash = "0";
+                            }
 
+                            if (!phoneNumberCode.equals("070") || !phoneNumberCode.equals("055") || !phoneNumberCode.equals("077") &&  phoneNumberLength == 10) {
+                                alert.showAlertDialog(getActivity(), "Ошибка", "Номер указан не верно", false);
+                            } else {
+                                new PostDataTask().execute(selectedSubcategory, desc, approxCash, requestAddress, phoneNumber);
+
+                            }
                             mProgressDialog.hide();
+
                         } else {
 
                             alert.showAlertDialog(getActivity(), "Ошибка ", "Пожалуйста заполните все поля", false);
