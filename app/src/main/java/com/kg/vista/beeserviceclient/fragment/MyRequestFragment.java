@@ -2,6 +2,7 @@ package com.kg.vista.beeserviceclient.fragment;
 
 
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 
 
 import com.kg.vista.beeserviceclient.R;
+import com.kg.vista.beeserviceclient.db.SampleSQLiteDBHelper;
 
 import butterknife.ButterKnife;
 
@@ -44,4 +46,9 @@ public class MyRequestFragment extends Fragment {
 
 
     }
+
+
+
+
+
 }
