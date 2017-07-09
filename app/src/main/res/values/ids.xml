@@ -36,6 +36,9 @@
     <item name="my_request_cardview" type="id" />
     <item name="my_request_cardview_cat" type="id" />
     <item name="my_request_cardview_subcat" type="id" />
+    <item name="request_id" type="id" />
+    <item name="text_category_name" type="id" />
+
 
 
     <!--Fonts-->

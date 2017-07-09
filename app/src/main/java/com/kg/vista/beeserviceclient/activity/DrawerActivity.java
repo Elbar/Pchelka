@@ -13,9 +13,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 
 import com.kg.vista.beeserviceclient.R;
@@ -47,8 +50,6 @@ public class DrawerActivity extends AbstractActivity {
         setContentView(R.layout.activity_drawer);
         ButterKnife.bind(this);
 
-
-
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
@@ -56,12 +57,13 @@ public class DrawerActivity extends AbstractActivity {
         tabLayout.setupWithViewPager(viewPager);
 
 
+
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new NewRequestFragment(), "Новая заявка");
-        adapter.addFragment(new MyRequestFragment(), "Мои заявки");
+//        adapter.addFragment(new MyRequestFragment(), "Мои заявки");
         viewPager.setAdapter(adapter);
     }
 
@@ -87,6 +89,15 @@ public class DrawerActivity extends AbstractActivity {
 
     }
 
+    private void initActionBar() {
+
+        ActionBar ab = getSupportActionBar();
+        if (ab != null) {
+            ab.setDisplayHomeAsUpEnabled(true);
+
+        }
+    }
+
     @Override
     public void onBackPressed() {
         moveTaskToBack(true);
@@ -100,9 +111,21 @@ public class DrawerActivity extends AbstractActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent intent = new Intent(this, DrawerActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                return true;
+            case R.id.action_user_settings:
+                Intent second_intent = new Intent(this, MyRequestActivity.class);
+                second_intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(second_intent);
+                return true;
 
-        return super.onOptionsItemSelected(item);
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
@@ -115,6 +138,16 @@ public class DrawerActivity extends AbstractActivity {
 
         @Override
         public Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    Toast.makeText(DrawerActivity.this, "first", Toast.LENGTH_SHORT).show();
+                    return new NewRequestFragment();
+                case 1:
+                    Toast.makeText(DrawerActivity.this, "second", Toast.LENGTH_SHORT).show();
+
+                    return new MyRequestFragment();
+            }
+
             return mFragmentList.get(position);
         }
 
@@ -134,6 +167,8 @@ public class DrawerActivity extends AbstractActivity {
             return mFragmentTitleList.get(position);
         }
     }
+
+
 
 
 }

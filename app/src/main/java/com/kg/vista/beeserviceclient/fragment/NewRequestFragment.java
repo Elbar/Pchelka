@@ -6,22 +6,17 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
-import android.telephony.PhoneNumberUtils;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +25,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -38,9 +32,8 @@ import android.widget.Toast;
 
 import com.kg.vista.beeserviceclient.R;
 
-import com.kg.vista.beeserviceclient.activity.DrawerActivity;
 import com.kg.vista.beeserviceclient.classes.UserAgreement;
-import com.kg.vista.beeserviceclient.db.DBHelper;
+import com.kg.vista.beeserviceclient.db.SampleSQLiteDBHelper;
 import com.kg.vista.beeserviceclient.manager.AlertDialogManager;
 
 import org.json.JSONObject;
@@ -54,7 +47,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.sql.SQLException;
 
 
 import butterknife.BindView;
@@ -63,8 +55,17 @@ import butterknife.ButterKnife;
 
 public class NewRequestFragment extends Fragment {
 
-    public static final int READ_TIMEOUT = 15000;
-    DBHelper dbHelper;
+
+    private static final String FIELD_SUBCATEGORY = "subcategory";
+    public static final String FIELD_DESC = "desc";
+    public static final String FIELD_CASH = "cash";
+    public static final String FIELD_ADDRESS = "address";
+    public static final String FIELD_PHONE = "phone";
+    private static final int READ_TIMEOUT = 10000;
+
+
+    SharedPreferences sharedpreferences;
+    public static final String MyPREFERENCES = "MyPrefs" ;
     @BindView(R.id.user_new_select_category)
     EditText mUserSelectSubCategory;
 
@@ -133,20 +134,21 @@ public class NewRequestFragment extends Fragment {
         final String subcategory = i.getStringExtra("subcategory");
 
         mUserSelectSubCategory.setText(subcategory);
+
+
         mUserRequestSendButton.setBackgroundResource(R.drawable.btn_style_gray);
         mUserRequestSendButton.setEnabled(false);
-
 
         mNewRequestCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mNewRequestCheckbox.isChecked()) {
-                    mUserSelectSubCategory.setText(subcategory);
+
                     mUserRequestSendButton.setBackgroundResource(R.drawable.btn_style_primary);
                     mUserRequestSendButton.setEnabled(true);
 
                 } else {
-                    mUserSelectSubCategory.setText(subcategory);
+
                     mUserRequestSendButton.setBackgroundResource(R.drawable.btn_style_gray);
                     mUserRequestSendButton.setEnabled(false);
 
@@ -154,84 +156,93 @@ public class NewRequestFragment extends Fragment {
             }
         });
 
-            mUserAgreement.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    new UserAgreement(getActivity()).show();
 
-                }
-            });
+        mUserAgreement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new UserAgreement(getActivity()).show();
 
-
-
-            mUserRequestSendButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+            }
+        });
 
 
-                    String selectedSubcategory = mUserSelectSubCategory.getText().toString();
-                    String desc = mUserRequestDesc.getText().toString();
-                    String approxCash = mUserApproxCash.getText().toString();
-                    String requestAddress = mUserRequestAddress.getText().toString();
-                    String phoneNumber = mUserRequestPhoneNumber.getText().toString();
+        mUserRequestSendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
 
-
-                    String phoneNumberCode = phoneNumber.substring(0, 3);
-                    int phoneNumberLength = phoneNumber.length();
-
-
-
-                    if (isConnected) {
-
-                        InputMethodManager inputManager = (InputMethodManager)
-                                getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-
-                        inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(),
-                                InputMethodManager.HIDE_NOT_ALWAYS);
-
-                        final ProgressDialog mProgressDialog = new ProgressDialog(getActivity());
+                String selectedSubcategory = mUserSelectSubCategory.getText().toString();
+                String desc = mUserRequestDesc.getText().toString();
+                String approxCash = mUserApproxCash.getText().toString();
+                String requestAddress = mUserRequestAddress.getText().toString();
+                String phoneNumber = mUserRequestPhoneNumber.getText().toString();
 
 
-                        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                String phoneNumberCode = phoneNumber.substring(0, 3);
 
 
-                        mProgressDialog.setIndeterminate(false);
-                        mProgressDialog.setCancelable(true);
-                        mProgressDialog.setCanceledOnTouchOutside(false);
-                        mProgressDialog.setMessage("Отправка");
-                        mProgressDialog.show();
+                if (isConnected) {
+
+                    InputMethodManager inputManager = (InputMethodManager)
+                            getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                    inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(),
+                            InputMethodManager.HIDE_NOT_ALWAYS);
+
+                    final ProgressDialog mProgressDialog = new ProgressDialog(getActivity());
 
 
+                    mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
-                        if (selectedSubcategory.trim().length() > 0 && desc.trim().length() > 0
-                                && requestAddress.trim().length() > 0
-                                && phoneNumber.trim().length() > 0) {
 
-                            if (approxCash.equals("")) {
-                                approxCash = "0";
-                            }
+                    mProgressDialog.setIndeterminate(false);
+                    mProgressDialog.setCancelable(true);
+                    mProgressDialog.setCanceledOnTouchOutside(false);
+                    mProgressDialog.setMessage("Отправка");
+                    mProgressDialog.show();
 
-                            if (!phoneNumberCode.equals("070") || !phoneNumberCode.equals("055") || !phoneNumberCode.equals("077") &&  phoneNumberLength == 10) {
-                                alert.showAlertDialog(getActivity(), "Ошибка", "Номер указан не верно", false);
-                            } else {
-                                new PostDataTask().execute(selectedSubcategory, desc, approxCash, requestAddress, phoneNumber);
 
-                            }
-                            mProgressDialog.hide();
+                    if (selectedSubcategory.trim().length() > 0 && desc.trim().length() > 0
+                            && requestAddress.trim().length() > 0
+                            && phoneNumber.trim().length() > 0) {
 
-                        } else {
-
-                            alert.showAlertDialog(getActivity(), "Ошибка ", "Пожалуйста заполните все поля", false);
-                            mProgressDialog.hide();
-
+                        if (approxCash.equals("")) {
+                            approxCash = "0";
                         }
 
+                        if ((phoneNumberCode.equals("070") || phoneNumberCode.equals("055") || phoneNumberCode.equals("077")) && phoneNumber.trim().length() == 10) {
+
+                            new PostDataTask().execute(selectedSubcategory, desc, approxCash, requestAddress, phoneNumber);
+
+                            saveToDB();
+
+                        } else {
+                            alert.showAlertDialog(getActivity(), "Ошибка", "Номер указан не верно", false);
+
+                            Toast.makeText(getActivity(), "Номер должен быть в полном формате. Например: 0709107091", Toast.LENGTH_LONG).show();
+
+                        }
+                        mProgressDialog.hide();
+
                     } else {
-                        alert.showAlertDialog(getActivity(), "Ошибка ", "Пожалуйста проверьте ваше соединение с интернетом", false);
+
+                        alert.showAlertDialog(getActivity(), "Ошибка ", "Пожалуйста заполните все поля", false);
+                        mProgressDialog.hide();
+
                     }
+
+                } else {
+                    alert.showAlertDialog(getActivity(), "Ошибка ", "Пожалуйста проверьте ваше соединение с интернетом", false);
                 }
-            });
+
+
+            }
+
+
+        });
+
+
+
 
 
 
@@ -295,6 +306,101 @@ public class NewRequestFragment extends Fragment {
 
     }
 
+    private static SharedPreferences getPrefs(Context context) {
+        return context.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+    }
+
+    private void saveToDB() {
+
+        SQLiteDatabase database = new SampleSQLiteDBHelper(getActivity()).getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        String selectedSubcategory = mUserSelectSubCategory.getText().toString();
+        String desc = mUserRequestDesc.getText().toString();
+        String approxCash = mUserApproxCash.getText().toString();
+        String requestAddress = mUserRequestAddress.getText().toString();
+        String phoneNumber = mUserRequestPhoneNumber.getText().toString();
+
+        values.put(SampleSQLiteDBHelper.REQUEST_COLUMN_SUBCATEGORY, selectedSubcategory);
+        values.put(SampleSQLiteDBHelper.REQUEST_COLUMN_DESC, desc);
+        values.put(SampleSQLiteDBHelper.REQUEST_COLUMN_CASH, approxCash);
+        values.put(SampleSQLiteDBHelper.REQUEST_COLUMN_ADDRESS, requestAddress);
+        values.put(SampleSQLiteDBHelper.REQUEST_COLUMN_PHONE, phoneNumber);
+
+
+        long newRowId = database.insert(SampleSQLiteDBHelper.REQUEST_TABLE_NAME, null, values);
+
+        Toast.makeText(getContext(), values.toString(), Toast.LENGTH_SHORT).show();
+    }
+
+
+
+    public void readFromDB() {
+
+        String selectedSubcategory = mUserSelectSubCategory.getText().toString();
+        String desc = mUserRequestDesc.getText().toString();
+        String approxCash = mUserApproxCash.getText().toString();
+        String requestAddress = mUserRequestAddress.getText().toString();
+        String phoneNumber = mUserRequestPhoneNumber.getText().toString();
+
+        SQLiteDatabase database = new SampleSQLiteDBHelper(getActivity()).getReadableDatabase();
+
+
+
+        String[] projection = {
+
+                SampleSQLiteDBHelper.REQUEST_COLUMN_ID,
+                SampleSQLiteDBHelper.REQUEST_COLUMN_SUBCATEGORY,
+                SampleSQLiteDBHelper.REQUEST_COLUMN_DESC,
+                SampleSQLiteDBHelper.REQUEST_COLUMN_CASH,
+                SampleSQLiteDBHelper.REQUEST_COLUMN_ADDRESS,
+                SampleSQLiteDBHelper.REQUEST_COLUMN_PHONE
+
+        };
+
+
+
+        String selection =
+
+                SampleSQLiteDBHelper.REQUEST_COLUMN_SUBCATEGORY + " like ? and " +
+
+                        SampleSQLiteDBHelper.REQUEST_COLUMN_DESC + " > ? and " +
+
+                        SampleSQLiteDBHelper.REQUEST_COLUMN_CASH + " like ?";
+
+
+
+        String[] selectionArgs = {"%" + selectedSubcategory + "%", desc, "%" + approxCash + "%"};
+
+
+
+        Cursor cursor = database.query(
+
+                SampleSQLiteDBHelper.REQUEST_TABLE_NAME,   // The table to query
+
+                projection,                               // The columns to return
+
+                selection,                                // The columns for the WHERE clause
+
+                selectionArgs,                            // The values for the WHERE clause
+
+                null,                                     // don't group the rows
+
+                null,                                     // don't filter by row groups
+
+                null                                      // don't sort
+
+        );
+
+        Toast.makeText(getContext(), cursor.toString(), Toast.LENGTH_SHORT).show();
+
+
+
+        Log.d("TAG", "The total cursor count is " + cursor.getCount());
+
+    }
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -310,6 +416,12 @@ public class NewRequestFragment extends Fragment {
         ProgressDialog pdLoading = new ProgressDialog(getContext());
 
         HttpURLConnection urlConnection = null;
+        String subcategory;
+        String description;
+        String price;
+        String address;
+        String number;
+
         BufferedReader reader = null;
         String resultJson = "";
         int statusCode;
@@ -319,11 +431,11 @@ public class NewRequestFragment extends Fragment {
 
             try {
 
-                String subcategory = URLEncoder.encode(params[0].trim(), "UTF-8");
-                String description = URLEncoder.encode(params[1].trim(), "UTF-8");
-                String price = URLEncoder.encode(params[2].trim(), "UTF-8");
-                String address = URLEncoder.encode(params[3].trim(), "UTF-8");
-                String number = URLEncoder.encode(params[4].trim(), "UTF-8");
+                subcategory = URLEncoder.encode(params[0].trim(), "UTF-8");
+                description = URLEncoder.encode(params[1].trim(), "UTF-8");
+                price = URLEncoder.encode(params[2].trim(), "UTF-8");
+                address = URLEncoder.encode(params[3].trim(), "UTF-8");
+                number = URLEncoder.encode(params[4].trim(), "UTF-8");
 
 
                 URL url = new URL("http://1203.kg/get_application/?subcategory=" + subcategory + "&description=" + description + "&price=" + price + "&address=" + address + "&number=" + number);
@@ -390,6 +502,16 @@ public class NewRequestFragment extends Fragment {
                     mUserApproxCash.setText("");
                     mUserRequestAddress.setText("");
                     mUserRequestPhoneNumber.setText("");
+
+                    SharedPreferences fields = getPrefs(getContext());
+                    SharedPreferences.Editor editor = fields.edit();
+                    editor.putString(FIELD_SUBCATEGORY, subcategory);
+                    editor.putString(FIELD_DESC, description);
+                    editor.putString(FIELD_CASH, price);
+                    editor.putString(FIELD_ADDRESS, address);
+                    editor.putString(FIELD_PHONE, number);
+
+                    editor.apply();
 
                 } else {
                     postErrorAlert.showAlertDialog(getContext(), "...", "Ошибка", false);
