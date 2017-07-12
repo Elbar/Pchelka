@@ -12,16 +12,18 @@ public class Request {
 
     public String requestPrice;
 
-    public String requestOrderTime;
+    public String requestAddress;
 
     public String requestPhoneNumber;
 
-    public Request(int requestId, String requestSubcategory,  String requestDescription, String requestPrice, String requestOrderTime, String requestPhoneNumber) {
+
+    public Request(int requestId, String requestSubcategory,  String requestDescription, String requestPrice,  String requestAddress, String requestPhoneNumber) {
         this.requestId = requestId;
         this.requestSubcategory = requestSubcategory;
         this.requestDescription = requestDescription;
         this.requestPrice = requestPrice;
-        this.requestOrderTime = requestOrderTime;
+
+        this.requestAddress = requestAddress;
         this.requestPhoneNumber = requestPhoneNumber;
     }
 }

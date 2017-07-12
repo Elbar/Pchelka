@@ -166,7 +166,7 @@
 
     <!--LaunchActivity   Strings -->
 
-    <string name="slide1_header">Пчёлка поможет найти нужных вам людей для решения любых  задач</string>
+    <string name="slide1_header"> поможет найти нужных вам людей для решения любых  задач</string>
 
 
     <string name="slide2_header">Ds</string>
@@ -177,4 +177,22 @@
 
     <string name="slide4_header"></string>
     <string name="slide4_desc"></string>
+
+
+    <string name="new_request">Новая заявка</string>
+    <string name="my_request">Мои заявки</string>
+    <string name="request_info">Описание</string>
+    <string name="request_id_desc">Заявка</string>
+
+
+    <string name="address_tv_str">Адрес:</string>
+    <string name="cash_tv_str">Бюджет:</string>
+    <string name="phone_tv_str">Телефон:</string>
+
+
+    <string name="about">О сервисе</string>
+    <string name="about_service_text">Биржа Сервисных Услуг «Пчёлка»— это платформа, которая позволяет быстро находить нужных вам людей для решения личных, бытовых, бизнес и других задач.
+</string>
+
+
 </resources>

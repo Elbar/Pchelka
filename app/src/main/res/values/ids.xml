@@ -15,8 +15,6 @@
     <item name="subcategory_name" type="id" />
     <item name="request_price" type="id" />
 
-
-    <!--NewRequestFragment ids-->
     <item name="fragment_new_request" type="id" />
     <item name="user_new_request_phone_number" type="id" />
     <item name="user_new_approx_cash" type="id" />
@@ -29,8 +27,6 @@
     <item name="fragment_new_request_scrollview" type="id" />
     <item name="fragment_new_request_checkbox" type="id" />
 
-
-    <!--MyRequestFragment ids-->
 
     <item name="my_request_date" type="id" />
     <item name="my_request_cardview" type="id" />
@@ -48,6 +44,7 @@
 
 
     <item name="my_recycler_view" type="id" />
+    <item name="recycler_view_my_request" type="id" />
 
 
     <!--ChooseSubCategoryActivity ids-->
@@ -71,6 +68,32 @@
     <!--LaunchActivity ids-->
 
     <item name="launch_btn"  type="id"/>
+
+    <item name="my_request" type="id" />
+    <item name="action_bar_title" type="id" />
+
+
+    <!--
+    tv - TextView
+    Fields to TextView in Requests List
+
+    -->
+    <item name="subcategory_tv" type="id" />
+
+    <item name="description_tv" type="id" />
+    <item name="cash_tv" type="id" />
+    <item name="address_tv" type="id" />
+    <item name="phone_tv" type="id" />
+
+    <item name="price" type="id" />
+    <item name="address" type="id" />
+    <item name="phone" type="id" />
+    <item name="about" type="id" />
+
+
+
+
+
 
 
 
