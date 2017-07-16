@@ -1,8 +1,5 @@
 package com.kg.vista.beeserviceclient.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Request {
 
     public int requestId;
@@ -17,7 +14,7 @@ public class Request {
     public String requestPhoneNumber;
 
 
-    public Request(int requestId, String requestSubcategory,  String requestDescription, String requestPrice,  String requestAddress, String requestPhoneNumber) {
+    public Request(int requestId, String requestSubcategory, String requestDescription, String requestPrice, String requestAddress, String requestPhoneNumber) {
         this.requestId = requestId;
         this.requestSubcategory = requestSubcategory;
         this.requestDescription = requestDescription;

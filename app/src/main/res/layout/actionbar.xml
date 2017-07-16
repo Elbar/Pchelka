@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:orientation="vertical"
 
     >
 
     <TextView
+        android:id="@id/action_bar_title"
+        style="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Title"
         android:layout_gravity="center"
-        android:id="@id/action_bar_title"
         android:text="@string/new_request"
-        android:textColor="@android:color/white"
-        />
+        android:textColor="@android:color/white" />
 
 </LinearLayout>

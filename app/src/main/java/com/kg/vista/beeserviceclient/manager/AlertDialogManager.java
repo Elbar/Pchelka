@@ -40,6 +40,7 @@ public class AlertDialogManager {
         alertDialog.show();
 
     }
+
     public void dismissProgressDialog() {
         alertDialog.dismiss();
 

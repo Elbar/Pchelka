@@ -10,23 +10,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class SampleSQLiteDBHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 2;
-
     public static final String DATABASE_NAME = "requests_database";
-
     public static final String REQUEST_TABLE_NAME = "request";
-
     public static final String REQUEST_COLUMN_ID = "_id";
-
     public static final String REQUEST_COLUMN_SUBCATEGORY = "subcategory_name";
-
     public static final String REQUEST_COLUMN_DESC = "desc";
-
     public static final String REQUEST_COLUMN_CASH = "approx_cash";
-
     public static final String REQUEST_COLUMN_ADDRESS = "address";
-
     public static final String REQUEST_COLUMN_PHONE = "phone";
+    private static final int DATABASE_VERSION = 2;
 
     public SampleSQLiteDBHelper(Context context) {
 
@@ -65,4 +57,3 @@ public class SampleSQLiteDBHelper extends SQLiteOpenHelper {
     }
 
 }
-

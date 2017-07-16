@@ -9,18 +9,15 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.kg.vista.beeserviceclient.R;
 import com.kg.vista.beeserviceclient.manager.AlertDialogManager;
-import com.kg.vista.beeserviceclient.network.NetworkState;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -68,24 +65,22 @@ public class ChooseSubCategoryActivity extends AbstractActivity {
         if (isConnected) {
             Intent i = getIntent();
 
-        String categoryName = i.getStringExtra("category");
-        new SubCategoryTask().execute(categoryName);
+            String categoryName = i.getStringExtra("category");
+            new SubCategoryTask().execute(categoryName);
 
-        mSubCategoryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectedSubCategory = ((TextView) view).getText().toString();
+            mSubCategoryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String selectedSubCategory = ((TextView) view).getText().toString();
 
-                Intent i = new Intent(ChooseSubCategoryActivity.this, DrawerActivity.class);
-                i.putExtra("subcategory", selectedSubCategory);
-                startActivity(i);
+                    Intent i = new Intent(ChooseSubCategoryActivity.this, DrawerActivity.class);
+                    i.putExtra("subcategory", selectedSubCategory);
+                    startActivity(i);
 
-            }
-        });
-    } else {
+                }
+            });
+        } else {
             alert.showAlertDialog(this, "Ошибка", "Проверьте ваше подключение к интернету", false);
-
-
 
 
         }

@@ -9,11 +9,8 @@ import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.ListView;
 
 import com.kg.vista.beeserviceclient.R;
 import com.kg.vista.beeserviceclient.adapter.CustomListAdapter;
@@ -27,7 +24,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,11 +33,9 @@ import butterknife.ButterKnife;
 
 public class ChooseCategoryActivity extends AbstractActivity {
 
+    final AlertDialogManager alert = new AlertDialogManager();
     @BindView(R.id.category_lv)
     ListView mCategoryListView;
-
-    final AlertDialogManager alert = new AlertDialogManager();
-
     Integer[] imageArray = {
             R.drawable.group1,
             R.drawable.group2,
@@ -71,7 +65,6 @@ public class ChooseCategoryActivity extends AbstractActivity {
             "Отдых, Досуг и прочее"};
 
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,9 +84,7 @@ public class ChooseCategoryActivity extends AbstractActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 
-                                String selectedCategory = categoryArray[position];
-//                Toast.makeText(ChooseCategoryActivity.this, selectedCategory, Toast.LENGTH_SHORT).show();
-
+                String selectedCategory = categoryArray[position];
                 Intent i = new Intent(getApplicationContext(), ChooseSubCategoryActivity.class);
                 i.putExtra("category", selectedCategory);
 
@@ -139,7 +130,6 @@ public class ChooseCategoryActivity extends AbstractActivity {
 
                 URL url = new URL("http://176.126.167.34/api/v1/category/");
 
-
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
                 urlConnection.connect();
@@ -166,7 +156,6 @@ public class ChooseCategoryActivity extends AbstractActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
             pdLoading.setMessage("Загрузка...");
             pdLoading.setIndeterminate(true);
             pdLoading.setCancelable(false);
@@ -198,7 +187,6 @@ public class ChooseCategoryActivity extends AbstractActivity {
 
             dismissProgressDialog();
 
-
             JSONObject dataJsonObj;
 
             try {
@@ -217,7 +205,6 @@ public class ChooseCategoryActivity extends AbstractActivity {
                     categories.add(cat_name);
 
                 }
-
 
 
             } catch (Exception e) {

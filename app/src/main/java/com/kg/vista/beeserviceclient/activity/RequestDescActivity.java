@@ -6,11 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.kg.vista.beeserviceclient.R;
-
-import org.w3c.dom.Text;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,7 +16,7 @@ import butterknife.ButterKnife;
  * Created by root on 7/7/17.
  */
 
-public class RequestDescActivity extends AbstractActivity  {
+public class RequestDescActivity extends AbstractActivity {
     int id;
     String subcategory;
     String desc;
@@ -35,7 +32,6 @@ public class RequestDescActivity extends AbstractActivity  {
     TextView mRequestPhone;
     @BindView(R.id.description_tv)
     TextView mRequestDesc;
-
 
 
     @Override
@@ -62,8 +58,6 @@ public class RequestDescActivity extends AbstractActivity  {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
 
         initActionBar();
 

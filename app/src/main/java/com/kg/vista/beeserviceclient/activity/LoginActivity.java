@@ -1,21 +1,14 @@
 package com.kg.vista.beeserviceclient.activity;
 
-import android.content.Intent;
-
 import android.os.Bundle;
 
-import android.view.View;
-
-
-import com.kg.vista.beeserviceclient.R;
 import com.kg.vista.beeserviceclient.manager.SessionManager;
 
 
 public class LoginActivity extends AbstractActivity {
 
-    SessionManager session;
     public String telephoneNumber;
-
+    SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

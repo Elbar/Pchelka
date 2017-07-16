@@ -19,23 +19,23 @@ public class App extends Application {
         super.onCreate();
     }*/
 
+    public static Application getApp() {
+        return app;
+    }
+
+    public static LaunchScreenPrefs getPrefs() {
+        return prefs;
+    }
+
+    public void setPrefs(LaunchScreenPrefs prefs) {
+        App.prefs = prefs;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
         app = this;
         prefs = new LaunchScreenPrefs(this);
-    }
-
-    public static Application getApp() {
-        return app;
-    }
-
-    public static  LaunchScreenPrefs getPrefs() {
-        return prefs;
-    }
-
-    public void setPrefs(LaunchScreenPrefs prefs) {
-        this.prefs = prefs;
     }
 }
 

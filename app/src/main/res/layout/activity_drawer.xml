@@ -2,7 +2,6 @@
 
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@id/fragment_new_request_scrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,8 +9,6 @@
 
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:id="@id/fragment_new_request"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,7 +18,7 @@
 
         <EditText
             android:id="@id/user_new_select_category"
-            style="@style/NewRequestFragmentETStyle"
+            style="@style/PrimaryEditTextStyle"
             android:layout_alignEnd="@+id/user_new_request_desc"
             android:layout_alignLeft="@+id/user_new_request_desc"
             android:layout_alignParentTop="true"
@@ -75,7 +72,7 @@
 
         <EditText
             android:id="@id/user_new_approx_cash"
-            style="@style/NewRequestFragmentETStyle"
+            style="@style/PrimaryEditTextStyle"
             android:layout_alignLeft="@+id/user_new_request_desc"
             android:layout_alignStart="@+id/user_new_request_desc"
             android:layout_below="@+id/user_new_request_desc"
@@ -90,7 +87,7 @@
 
         <EditText
             android:id="@id/user_request_address"
-            style="@style/NewRequestFragmentETStyle"
+            style="@style/PrimaryEditTextStyle"
             android:layout_alignEnd="@+id/user_new_approx_cash"
             android:layout_alignLeft="@+id/user_new_approx_cash"
             android:layout_alignRight="@+id/user_new_approx_cash"
@@ -99,34 +96,33 @@
             android:drawableLeft="@drawable/address"
             android:drawablePadding="8dp"
             android:ems="5"
-            android:textColor="@color/colorEditText"
             android:hint="@string/request_address"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="@color/colorEditText" />
 
         <EditText
             android:id="@id/user_new_request_phone_number"
-            style="@style/NewRequestFragmentETStyle"
+            style="@style/PrimaryEditTextStyle"
             android:layout_alignLeft="@+id/user_request_address"
             android:layout_alignStart="@+id/user_request_address"
             android:layout_below="@+id/user_request_address"
+            android:digits="0123456789"
             android:drawableLeft="@drawable/phone_icon"
             android:drawablePadding="8dp"
             android:ems="5"
-            android:digits="0123456789"
             android:hint="@string/phone_number"
             android:inputType="phone"
             android:textColor="@color/colorEditText" />
 
         <Button
             android:id="@id/user_new_request_send_button"
-            style="@style/NewRequestFragmentETStyle"
+            style="@style/PrimaryEditTextStyle"
             android:layout_alignLeft="@id/user_new_request_phone_number"
             android:layout_alignStart="@id/user_new_request_phone_number"
             android:layout_below="@id/user_new_request_phone_number"
             android:background="@color/colorPrimary"
             android:text="@string/send_button"
-            android:textColor="@android:color/white"
-            />
+            android:textColor="@android:color/white" />
 
         <CheckBox
             android:id="@id/fragment_new_request_checkbox"
@@ -139,7 +135,6 @@
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
             android:checked="false" />
-
 
 
     </RelativeLayout>

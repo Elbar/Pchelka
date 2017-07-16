@@ -101,67 +101,21 @@
     <!--ChooseSubCategoryActivity Strings-->
 
     <string name="choose_subcategory_toolbar_title">Выбор подкатегории</string>
-    <string-array name="master_category_array">
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-    </string-array>
 
 
     <!--MiddlewareActivity Strings-->
 
-    <string name="username">Ваше имя </string>
-    <string name="verification_code">Полученный код </string>
-    <string name="verification_text">Регистрация успешно пройдена! Введите Ваше имя и полученный код через смс.</string>
     <string name="login">Войти</string>
 
     <!--DrawerActivity strings-->
-
-    <string name="user_profile_settings">Настройки</string>
 
 
     <!--SearchExecutorActivity Strings-->
 
 
-    <string name="search_executor_toolbar_title">Поиск специалистов</string>
-    <string name="client_price">Моя ставка:</string>
-    <string name="leave_the_city_price">+300</string>
-    <string name="leave_the_city">Выезд по городу:</string>
-    <string name="client_price_score">Итог:</string>
-    <string name="up_rate">Повысить ставку </string>
-
-
     <!--DetailActivity Strings-->
 
     <string name="detail_desc_toolbar_title">Описание</string>
-
-    <string-array name="masters">
-        <item>Сантехник</item>
-        <item>Плотник</item>
-        <item>Электрик</item>
-
-    </string-array>
-
-    <string-array name="medicine">
-        <item>Сантехник</item>
-        <item>Плотник</item>
-        <item>Электрик</item>
-
-    </string-array>
-    <string-array name="network">
-        <item>Сантехник</item>
-        <item>Плотник</item>
-        <item>Электрик</item>
-
-    </string-array>
-    <string-array name="cleaning">
-        <item>Сантехник</item>
-        <item>Плотник</item>
-        <item>Электрик</item>
-
-    </string-array>
-
 
 
     <!--LaunchActivity   Strings -->
@@ -169,20 +123,8 @@
     <string name="slide1_header"> поможет найти нужных вам людей для решения любых  задач</string>
 
 
-    <string name="slide2_header">Ds</string>
-    <string name="slide2_desc"></string>
-
-    <string name="slide3_header"></string>
-    <string name="slide3_desc"></string>
-
-    <string name="slide4_header"></string>
-    <string name="slide4_desc"></string>
-
-
     <string name="new_request">Новая заявка</string>
     <string name="my_request">Мои заявки</string>
-    <string name="request_info">Описание</string>
-    <string name="request_id_desc">Заявка</string>
 
 
     <string name="address_tv_str">Адрес:</string>

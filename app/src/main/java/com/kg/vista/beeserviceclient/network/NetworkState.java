@@ -3,7 +3,6 @@ package com.kg.vista.beeserviceclient.network;
 import android.content.Context;
 import android.net.ConnectivityManager;
 
-import com.kg.vista.beeserviceclient.activity.DrawerActivity;
 import com.kg.vista.beeserviceclient.manager.AlertDialogManager;
 
 /**
@@ -11,8 +10,8 @@ import com.kg.vista.beeserviceclient.manager.AlertDialogManager;
  */
 
 public class NetworkState {
-    private Context _context;
     AlertDialogManager alert = new AlertDialogManager();
+    private Context _context;
 
 
     public NetworkState(Context context) {

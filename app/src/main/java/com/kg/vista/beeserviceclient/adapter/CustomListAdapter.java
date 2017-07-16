@@ -1,9 +1,6 @@
 package com.kg.vista.beeserviceclient.adapter;
 
 import android.app.Activity;
-import android.content.Context;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +14,7 @@ import com.kg.vista.beeserviceclient.R;
  * Created by root on 6/18/17.
  */
 
-public class CustomListAdapter  extends ArrayAdapter{
+public class CustomListAdapter extends ArrayAdapter {
 
 
     //to reference the Activity
@@ -30,19 +27,19 @@ public class CustomListAdapter  extends ArrayAdapter{
     private final String[] categoryArray;
 
 
-    public CustomListAdapter(Activity context, String[] categoryArrayParam, Integer[] imageIDArrayParam){
+    public CustomListAdapter(Activity context, String[] categoryArrayParam, Integer[] imageIDArrayParam) {
 
-        super(context, R.layout.listview_row , categoryArrayParam);
+        super(context, R.layout.listview_row, categoryArrayParam);
 
-        this.context=context;
+        this.context = context;
         this.imageIDarray = imageIDArrayParam;
         this.categoryArray = categoryArrayParam;
 
     }
 
     public View getView(int position, View view, ViewGroup parent) {
-        LayoutInflater inflater=context.getLayoutInflater();
-        View rowView=inflater.inflate(R.layout.listview_row, null,true);
+        LayoutInflater inflater = context.getLayoutInflater();
+        View rowView = inflater.inflate(R.layout.listview_row, null, true);
 
         //this code gets references to objects in the listview_row.xml file
 
@@ -56,5 +53,5 @@ public class CustomListAdapter  extends ArrayAdapter{
 
         return rowView;
 
-    };
+    }
 }

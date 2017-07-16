@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +13,8 @@ import com.kg.vista.beeserviceclient.R;
 import com.kg.vista.beeserviceclient.activity.RequestDescActivity;
 import com.kg.vista.beeserviceclient.model.Request;
 
-import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.List;
-import java.util.TimeZone;
 
 /**
  * Created by root on 7/9/17.

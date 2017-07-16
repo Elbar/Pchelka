@@ -18,8 +18,6 @@ import com.kg.vista.beeserviceclient.model.Request;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-
 /**
  * Created by root on 7/9/17.
  */
@@ -27,8 +25,6 @@ import butterknife.BindView;
 public class MyRequestActivity extends AbstractActivity {
     private RecyclerView mRVRequest;
     private AdapterRequest mAdapter;
-
-
 
 
     @Override
@@ -77,16 +73,12 @@ public class MyRequestActivity extends AbstractActivity {
                 Toast.makeText(this, "У вас пока нет отправленных заявок", Toast.LENGTH_SHORT).show();
             } else {
 
-
                 mRVRequest = (RecyclerView) findViewById(R.id.my_recycler_view);
                 mAdapter = new AdapterRequest(MyRequestActivity.this, requestList);
                 mRVRequest.setLayoutManager(new LinearLayoutManager(MyRequestActivity.this));
 
                 mRVRequest.setAdapter(mAdapter);
             }
-
-
-
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -123,6 +115,5 @@ public class MyRequestActivity extends AbstractActivity {
     }
 
 
-
-    }
+}
 

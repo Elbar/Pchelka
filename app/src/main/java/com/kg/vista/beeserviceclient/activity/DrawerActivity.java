@@ -5,41 +5,24 @@ import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-
-import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.kg.vista.beeserviceclient.R;
 import com.kg.vista.beeserviceclient.classes.UserAgreement;
 import com.kg.vista.beeserviceclient.db.SampleSQLiteDBHelper;
 import com.kg.vista.beeserviceclient.manager.AlertDialogManager;
-
 
 import org.json.JSONObject;
 
@@ -49,6 +32,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -79,10 +63,10 @@ public class DrawerActivity extends AbstractActivity {
     @BindView(R.id.user_agreement)
     TextView mUserAgreement;
 
+//
+//    @BindView(R.id.fragment_new_request_checkbox)
+//    CheckBox mNewRequestCheckbox;
 
-    @BindView(R.id.fragment_new_request_checkbox)
-    CheckBox mNewRequestCheckbox;
-    
     String selectedSubcategory;
     String desc;
     String cash;
@@ -101,8 +85,8 @@ public class DrawerActivity extends AbstractActivity {
         initActionBar();
 
 
-
         final AlertDialogManager alert = new AlertDialogManager();
+        final ProgressDialog mProgressDialog = new ProgressDialog(DrawerActivity.this);
 
 
         Intent i = getIntent();
@@ -111,25 +95,24 @@ public class DrawerActivity extends AbstractActivity {
         mUserSelectSubCategory.setText(subcategory);
 
 
-        mUserRequestSendButton.setBackgroundResource(R.drawable.btn_style_gray);
-        mUserRequestSendButton.setEnabled(false);
-
-        mNewRequestCheckbox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mNewRequestCheckbox.isChecked()) {
-
-                    mUserRequestSendButton.setBackgroundResource(R.drawable.btn_style_primary);
-                    mUserRequestSendButton.setEnabled(true);
-
-                } else {
-
-                    mUserRequestSendButton.setBackgroundResource(R.drawable.btn_style_gray);
-                    mUserRequestSendButton.setEnabled(false);
-
-                }
-            }
-        });
+//        mUserRequestSendButton.setBackgroundResource(R.drawable.btn_style_gray);
+//        mUserRequestSendButton.setEnabled(false);
+//
+//        mNewRequestCheckbox.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (mNewRequestCheckbox.isChecked()) {
+//                    mUserRequestSendButton.setBackgroundResource(R.drawable.btn_style_primary);
+//                    mUserRequestSendButton.setEnabled(true);
+//
+//                } else {
+//
+//                    mUserRequestSendButton.setBackgroundResource(R.drawable.btn_style_gray);
+//                    mUserRequestSendButton.setEnabled(false);
+//
+//                }
+//            }
+//        });
 
 
         mUserAgreement.setOnClickListener(new View.OnClickListener() {
@@ -145,7 +128,6 @@ public class DrawerActivity extends AbstractActivity {
             @Override
             public void onClick(View v) {
 
-
                 selectedSubcategory = mUserSelectSubCategory.getText().toString();
                 desc = mUserRequestDesc.getText().toString();
                 cash = mUsercash.getText().toString();
@@ -158,19 +140,6 @@ public class DrawerActivity extends AbstractActivity {
 
                 if (isNetworkAvailable()) {
 
-                    final ProgressDialog mProgressDialog = new ProgressDialog(DrawerActivity.this);
-
-
-                    mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-
-
-                    mProgressDialog.setIndeterminate(false);
-                    mProgressDialog.setCancelable(true);
-                    mProgressDialog.setCanceledOnTouchOutside(false);
-                    mProgressDialog.setMessage("Отправка");
-                    mProgressDialog.show();
-
-
                     if (selectedSubcategory.trim().length() > 0 && desc.trim().length() > 0
                             && address.trim().length() > 0
                             && phone.trim().length() > 0) {
@@ -178,6 +147,17 @@ public class DrawerActivity extends AbstractActivity {
                         if (cash.equals("")) {
                             cash = "0";
                         }
+
+
+                        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+
+
+                        mProgressDialog.setIndeterminate(false);
+                        mProgressDialog.setCancelable(true);
+                        mProgressDialog.setCanceledOnTouchOutside(false);
+                        mProgressDialog.setMessage("Отправка");
+                        mProgressDialog.show();
+
 
                         if ((phoneNumberCode.equals("070") || phoneNumberCode.equals("055") || phoneNumberCode.equals("077")) && phone.trim().length() == 10) {
 
@@ -221,11 +201,11 @@ public class DrawerActivity extends AbstractActivity {
         boolean isConnected = activeNetwork != null &&
                 activeNetwork.isConnectedOrConnecting();
 
-        if(isConnected) {
+        if (isConnected) {
 
             Intent intent = new Intent(getApplicationContext(), ChooseCategoryActivity.class);
             startActivity(intent);
-        }else {
+        } else {
             alertDialogManager.showAlertDialog(this, "Ошибка", "Пожалуйста проверьте ваше соединение с интернетом", false);
         }
 
@@ -248,9 +228,7 @@ public class DrawerActivity extends AbstractActivity {
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 
 
-
-
-        return   activeNetwork != null &&
+        return activeNetwork != null &&
                 activeNetwork.isConnectedOrConnecting();
 
     }
@@ -278,6 +256,12 @@ public class DrawerActivity extends AbstractActivity {
                 Intent i = new Intent(this, AboutActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
+                return true;
+            case R.id.order_taxi:
+                Intent orderIntent = new Intent(this, OrderTaxiActivity.class);
+                orderIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(orderIntent);
+                return true;
 
 
             default:
@@ -308,8 +292,6 @@ public class DrawerActivity extends AbstractActivity {
         long newRowId = database.insert(SampleSQLiteDBHelper.REQUEST_TABLE_NAME, null, values);
 
     }
-
-
 
 
     private class PostDataTask extends AsyncTask<String, Void, String> {
@@ -406,9 +388,6 @@ public class DrawerActivity extends AbstractActivity {
                     mUsercash.setText("");
                     mUserRequestAddress.setText("");
                     mUserRequestPhoneNumber.setText("");
-
-
-
 
 
                 } else {

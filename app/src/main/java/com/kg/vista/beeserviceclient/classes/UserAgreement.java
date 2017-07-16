@@ -12,7 +12,6 @@ import android.support.v7.app.AlertDialog;
 import com.kg.vista.beeserviceclient.R;
 
 
-
 public class UserAgreement {
 
     private Activity mActivity;
@@ -34,9 +33,9 @@ public class UserAgreement {
     public void show() {
 
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mActivity);
-         String title = mActivity.getString(R.string.user_agreement_header);
+        String title = mActivity.getString(R.string.user_agreement_header);
 
-            String message = mActivity.getString(R.string.user_agreement_text);
+        String message = mActivity.getString(R.string.user_agreement_text);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity)
                 .setTitle(title)
@@ -50,7 +49,7 @@ public class UserAgreement {
                         dialogInterface.dismiss();
                     }
                 });
-            builder.create().show();
+        builder.create().show();
 
     }
 

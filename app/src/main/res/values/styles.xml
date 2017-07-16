@@ -29,13 +29,19 @@
     </style>
 
 
-    <style name="NewRequestFragmentETStyle">
+    <style name="PrimaryEditTextStyle">
         <item name="android:layout_width">309dp</item>
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:layout_height">43dp</item>
         <item name="android:background">@drawable/main_otherbuttons_corners</item>
     </style>
-    
+
+    <style name="PrimaryButtonStyle">
+        <item name="android:layout_width">309dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_height">43dp</item>
+        <item name="android:background">@drawable/main_otherbuttons_corners</item>
+    </style>
 
 
 </resources>

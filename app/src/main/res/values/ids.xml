@@ -36,7 +36,6 @@
     <item name="text_category_name" type="id" />
 
 
-
     <!--Fonts-->
 
     <item name="font_awesome_marker" type="id" />
@@ -64,10 +63,9 @@
     <item name="categoryText" type="id" />
 
 
-
     <!--LaunchActivity ids-->
 
-    <item name="launch_btn"  type="id"/>
+    <item name="launch_btn" type="id" />
 
     <item name="my_request" type="id" />
     <item name="action_bar_title" type="id" />
@@ -90,12 +88,12 @@
     <item name="phone" type="id" />
     <item name="about" type="id" />
 
+    <!--PhoneNumbers to OrderTaxiActivity-->
 
-
-
-
-
-
+    <item name="first_number" type="id"></item>
+    <item name="second_number" type="id"></item>
+    <item name="third_number" type="id"></item>
+    <item name="fourth_number" type="id"></item>
 
 
 </resources>
