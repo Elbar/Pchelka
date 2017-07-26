@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -93,13 +94,32 @@ public class ChooseCategoryActivity extends AbstractActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.options, menu);
+        return true;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
+            case R.id.my_request:
+                Intent second_intent = new Intent(this, MyRequestActivity.class);
+                second_intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(second_intent);
                 return true;
+            case R.id.about:
+                Intent i = new Intent(this, AboutActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+                return true;
+            case R.id.order_taxi:
+                Intent orderIntent = new Intent(this, OrderTaxiActivity.class);
+                orderIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(orderIntent);
+                return true;
+
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -109,7 +129,6 @@ public class ChooseCategoryActivity extends AbstractActivity {
 
         ActionBar ab = getSupportActionBar();
         if (ab != null) {
-            ab.setDisplayHomeAsUpEnabled(true);
             ab.setTitle(getResources().getString(R.string.choose_category_toolbar_title));
         }
     }

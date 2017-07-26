@@ -10,11 +10,13 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,13 +62,12 @@ public class DrawerActivity extends AbstractActivity {
     @BindView(R.id.user_new_request_send_button)
     Button mUserRequestSendButton;
 
+    @BindView(R.id.fragment_new_request_checkbox)
+    CheckBox mNewRequestCheckbox;
+
+
     @BindView(R.id.user_agreement)
     TextView mUserAgreement;
-
-//
-//    @BindView(R.id.fragment_new_request_checkbox)
-//    CheckBox mNewRequestCheckbox;
-
     String selectedSubcategory;
     String desc;
     String cash;
@@ -84,7 +85,6 @@ public class DrawerActivity extends AbstractActivity {
 
         initActionBar();
 
-
         final AlertDialogManager alert = new AlertDialogManager();
         final ProgressDialog mProgressDialog = new ProgressDialog(DrawerActivity.this);
 
@@ -94,27 +94,6 @@ public class DrawerActivity extends AbstractActivity {
 
         mUserSelectSubCategory.setText(subcategory);
 
-
-//        mUserRequestSendButton.setBackgroundResource(R.drawable.btn_style_gray);
-//        mUserRequestSendButton.setEnabled(false);
-//
-//        mNewRequestCheckbox.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (mNewRequestCheckbox.isChecked()) {
-//                    mUserRequestSendButton.setBackgroundResource(R.drawable.btn_style_primary);
-//                    mUserRequestSendButton.setEnabled(true);
-//
-//                } else {
-//
-//                    mUserRequestSendButton.setBackgroundResource(R.drawable.btn_style_gray);
-//                    mUserRequestSendButton.setEnabled(false);
-//
-//                }
-//            }
-//        });
-
-
         mUserAgreement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,7 +101,6 @@ public class DrawerActivity extends AbstractActivity {
 
             }
         });
-
 
         mUserRequestSendButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,61 +112,58 @@ public class DrawerActivity extends AbstractActivity {
                 address = mUserRequestAddress.getText().toString();
                 phone = mUserRequestPhoneNumber.getText().toString();
 
+                if (desc.equals("") || address.equals("") || phone.equals("")) {
+                    Toast.makeText(DrawerActivity.this, "Пожалуйста заполните все поля", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!mNewRequestCheckbox.isChecked()) {
+                    Toast.makeText(DrawerActivity.this, "Вы должны принять пользовательское соглашение", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
 
                 String phoneNumberCode = phone.substring(0, 3);
 
 
                 if (isNetworkAvailable()) {
 
-                    if (selectedSubcategory.trim().length() > 0 && desc.trim().length() > 0
-                            && address.trim().length() > 0
-                            && phone.trim().length() > 0) {
-
-                        if (cash.equals("")) {
-                            cash = "0";
-                        }
+                    if (cash.equals("")) {
+                        cash = "0";
+                    }
 
 
-                        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                    mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
 
-                        mProgressDialog.setIndeterminate(false);
-                        mProgressDialog.setCancelable(true);
-                        mProgressDialog.setCanceledOnTouchOutside(false);
-                        mProgressDialog.setMessage("Отправка");
-                        mProgressDialog.show();
+                    mProgressDialog.setIndeterminate(false);
+                    mProgressDialog.setCancelable(true);
+                    mProgressDialog.setCanceledOnTouchOutside(false);
+                    mProgressDialog.setMessage("Отправка");
+                    mProgressDialog.show();
 
 
-                        if ((phoneNumberCode.equals("070") || phoneNumberCode.equals("055") || phoneNumberCode.equals("077")) && phone.trim().length() == 10) {
+                    if ((phoneNumberCode.equals("070") || phoneNumberCode.equals("055") || phoneNumberCode.equals("077")) && phone.trim().length() == 10) {
 
-                            new PostDataTask().execute(selectedSubcategory, desc, cash, address, phone);
+                        new PostDataTask().execute(selectedSubcategory, desc, cash, address, phone);
 
-
-                        } else {
-                            alert.showAlertDialog(DrawerActivity.this, "Ошибка", "Номер указан не верно", false);
-
-                            Toast.makeText(DrawerActivity.this, "Номер должен быть в полном формате. Например: 0709107091", Toast.LENGTH_LONG).show();
-
-                        }
-                        mProgressDialog.hide();
 
                     } else {
+                        alert.showAlertDialog(DrawerActivity.this, "Ошибка", "Номер указан не верно", false);
 
-                        alert.showAlertDialog(DrawerActivity.this, "Ошибка ", "Пожалуйста заполните все поля", false);
-                        mProgressDialog.hide();
+                        Toast.makeText(DrawerActivity.this, "Номер должен быть в полном формате. Например: 0709107091", Toast.LENGTH_LONG).show();
 
                     }
+                    mProgressDialog.hide();
 
                 } else {
                     alert.showAlertDialog(DrawerActivity.this, "Ошибка ", "Пожалуйста проверьте ваше соединение с интернетом", false);
                 }
-
-
             }
 
-
         });
+
     }
+
 
     public void chooseCategory(View view) {
 
@@ -236,37 +211,6 @@ public class DrawerActivity extends AbstractActivity {
     @Override
     public void onBackPressed() {
         moveTaskToBack(true);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.options, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.my_request:
-                Intent second_intent = new Intent(this, MyRequestActivity.class);
-                second_intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(second_intent);
-                return true;
-            case R.id.about:
-                Intent i = new Intent(this, AboutActivity.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i);
-                return true;
-            case R.id.order_taxi:
-                Intent orderIntent = new Intent(this, OrderTaxiActivity.class);
-                orderIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(orderIntent);
-                return true;
-
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
 
@@ -389,6 +333,16 @@ public class DrawerActivity extends AbstractActivity {
                     mUserRequestAddress.setText("");
                     mUserRequestPhoneNumber.setText("");
 
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent intent = new Intent(DrawerActivity.this, ChooseCategoryActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }, 2000);
+
 
                 } else {
                     postErrorAlert.showAlertDialog(DrawerActivity.this, "...", "Ошибка при отправлении заявки", false);
@@ -400,6 +354,8 @@ public class DrawerActivity extends AbstractActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
+
 
         }
     }
