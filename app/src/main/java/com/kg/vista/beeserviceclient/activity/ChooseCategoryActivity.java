@@ -129,7 +129,8 @@ public class ChooseCategoryActivity extends AbstractActivity {
 
         ActionBar ab = getSupportActionBar();
         if (ab != null) {
-            ab.setTitle(getResources().getString(R.string.choose_category_toolbar_title));
+            ab.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+            ab.setCustomView(R.layout.category_actionbar);
         }
     }
 
