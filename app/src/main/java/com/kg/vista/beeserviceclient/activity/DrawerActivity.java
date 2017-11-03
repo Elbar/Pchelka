@@ -64,8 +64,6 @@ public class DrawerActivity extends AbstractActivity {
 
     @BindView(R.id.fragment_new_request_checkbox)
     CheckBox mNewRequestCheckbox;
-
-
     @BindView(R.id.user_agreement)
     TextView mUserAgreement;
     String selectedSubcategory;

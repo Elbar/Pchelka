@@ -3,12 +3,14 @@ package com.kg.vista.beeserviceclient.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.kg.vista.beeserviceclient.R;
 import com.kg.vista.beeserviceclient.adapter.CustomListAdapter;
@@ -20,6 +22,8 @@ import butterknife.ButterKnife;
 public class ChooseCategoryActivity extends AbstractActivity {
     @BindView(R.id.category_lv)
     ListView mCategoryListView;
+    @BindView(R.id.myFab)
+    FloatingActionButton mMyFAB;
     Integer[] imageArray = {
             R.drawable.group1,
             R.drawable.group2,
@@ -73,6 +77,14 @@ public class ChooseCategoryActivity extends AbstractActivity {
                 i.putExtra("category", selectedCategory);
 
                 startActivity(i);
+            }
+        });
+
+        mMyFAB.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(ChooseCategoryActivity.this, OrderTaxiActivity.class);
+                startActivity(intent);
+
             }
         });
     }

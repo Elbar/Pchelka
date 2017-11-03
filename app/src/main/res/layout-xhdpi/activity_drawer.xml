@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/fragment_new_request_scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@id/fragment_new_request"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+
+
+        <EditText
+            android:id="@id/user_new_select_category"
+            style="@style/PrimaryEditTextStyle"
+            android:layout_alignEnd="@+id/user_new_request_desc"
+            android:layout_alignLeft="@+id/user_new_request_desc"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/user_new_request_desc"
+            android:layout_alignStart="@+id/user_new_request_desc"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/main_otherbuttons_corners"
+            android:clickable="true"
+            android:cursorVisible="false"
+            android:drawableEnd="@drawable/box_service"
+            android:drawableRight="@drawable/box_service"
+            android:ems="5"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="@string/select_service"
+            android:inputType="textPersonName"
+            android:onClick="chooseCategory"
+            android:paddingLeft="12dp"
+            android:textColor="@color/colorEditText" />
+
+        <EditText
+            android:id="@id/user_new_request_desc"
+            android:layout_width="309dp"
+            android:layout_height="140dp"
+            android:layout_below="@+id/user_new_select_category"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/main_inputmulti_corner"
+            android:ems="5"
+            android:gravity="top"
+            android:hint="@string/request_desc"
+            android:inputType="textMultiLine"
+            android:paddingLeft="12dp"
+            android:textColor="@color/colorEditText" />
+
+        <TextView
+            android:id="@id/user_agreement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/user_new_request_send_button"
+            android:layout_marginTop="19dp"
+            android:paddingEnd="12dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingStart="12dp"
+            android:text="@string/user_agreement"
+            android:textAlignment="center"
+            android:textColor="@color/colorEditText" />
+
+        <EditText
+            android:id="@id/user_new_approx_cash"
+            style="@style/PrimaryEditTextStyle"
+            android:layout_alignLeft="@+id/user_new_request_desc"
+            android:layout_alignStart="@+id/user_new_request_desc"
+            android:layout_below="@+id/user_new_request_desc"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/approx_cash"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/approx_cash"
+            android:ems="5"
+            android:hint="@string/approx_cash"
+            android:inputType="numberSigned"
+            android:textColor="@color/colorEditText" />
+
+        <EditText
+            android:id="@id/user_request_address"
+            style="@style/PrimaryEditTextStyle"
+            android:layout_alignEnd="@+id/user_new_approx_cash"
+            android:layout_alignLeft="@+id/user_new_approx_cash"
+            android:layout_alignRight="@+id/user_new_approx_cash"
+            android:layout_alignStart="@+id/user_new_approx_cash"
+            android:layout_below="@+id/user_new_approx_cash"
+            android:drawableLeft="@drawable/address"
+            android:drawablePadding="8dp"
+            android:ems="5"
+            android:hint="@string/request_address"
+            android:inputType="textPersonName"
+            android:textColor="@color/colorEditText" />
+
+        <EditText
+            android:id="@id/user_new_request_phone_number"
+            style="@style/PrimaryEditTextStyle"
+            android:layout_alignLeft="@+id/user_request_address"
+            android:layout_alignStart="@+id/user_request_address"
+            android:layout_below="@+id/user_request_address"
+            android:digits="0123456789"
+            android:drawableLeft="@drawable/phone_icon"
+            android:drawablePadding="8dp"
+            android:ems="5"
+            android:hint="@string/phone_number"
+            android:inputType="phone"
+            android:textColor="@color/colorEditText" />
+
+        <Button
+            android:id="@id/user_new_request_send_button"
+            style="@style/PrimaryEditTextStyle"
+            android:layout_alignLeft="@id/user_new_request_phone_number"
+            android:layout_alignStart="@id/user_new_request_phone_number"
+            android:layout_below="@id/user_new_request_phone_number"
+            android:background="@color/colorPrimary"
+            android:text="@string/send_button"
+            android:textColor="@android:color/white" />
+
+        <CheckBox
+            android:id="@id/fragment_new_request_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/user_agreement"
+            android:layout_alignBottom="@+id/user_agreement"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:checked="false" />
+
+
+    </RelativeLayout>
+
+</ScrollView>
+
+
+
+

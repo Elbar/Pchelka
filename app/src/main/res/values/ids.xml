@@ -94,6 +94,7 @@
     <item name="second_number" type="id"></item>
     <item name="third_number" type="id"></item>
     <item name="fourth_number" type="id"></item>
+    <item name="myFab" type="id" />
 
 
 </resources>
