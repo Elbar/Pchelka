@@ -1,13 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 
-
 android {
     signingConfigs {
         config {
-            keyAlias 'Autopilot'
+            keyAlias 'key0'
             keyPassword 'e1l2b3a4r5'
-            storeFile file('/root/client_key/key_store.jks')
+            storeFile file('/root/AndroidStudioProjects')
             storePassword 'e1l2b3a4r5'
         }
     }
@@ -17,7 +16,7 @@ android {
         applicationId "com.kg.vista.beeserviceclient"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 1
+        versionCode 3
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

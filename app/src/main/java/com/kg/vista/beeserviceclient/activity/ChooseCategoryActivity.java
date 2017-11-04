@@ -108,13 +108,6 @@ public class ChooseCategoryActivity extends AbstractActivity {
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
                 return true;
-            case R.id.order_taxi:
-                Intent orderIntent = new Intent(this, OrderTaxiActivity.class);
-                orderIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(orderIntent);
-                return true;
-
-
             default:
                 return super.onOptionsItemSelected(item);
         }

@@ -5,9 +5,7 @@
         android:title="@string/my_request" />
 
 
-    <item
-        android:id="@id/order_taxi"
-        android:title="@string/order_taxi" />
+
 
     <item
         android:id="@id/about"
