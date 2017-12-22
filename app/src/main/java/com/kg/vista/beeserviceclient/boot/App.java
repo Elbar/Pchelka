@@ -5,19 +5,11 @@ import android.app.Application;
 import com.kg.vista.beeserviceclient.prefs.LaunchScreenPrefs;
 
 
-/**
- * Created by Vista on 08.02.2017.
- */
-
 public class App extends Application {
 
     private static LaunchScreenPrefs prefs;
     private static Application app;
 
-   /* @Override
-    public void onCreate() {
-        super.onCreate();
-    }*/
 
     public static Application getApp() {
         return app;

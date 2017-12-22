@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.kg.vista.beeserviceclient.R;
-import com.kg.vista.beeserviceclient.activity.RequestDescActivity;
+import com.kg.vista.beeserviceclient.ui.activity.RequestDescActivity;
 import com.kg.vista.beeserviceclient.model.Request;
 
 import java.util.Collections;

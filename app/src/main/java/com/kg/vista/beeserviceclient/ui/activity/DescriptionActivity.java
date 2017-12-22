@@ -1,4 +1,4 @@
-package com.kg.vista.beeserviceclient.activity;
+package com.kg.vista.beeserviceclient.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

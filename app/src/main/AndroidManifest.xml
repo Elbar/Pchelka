@@ -21,7 +21,7 @@
         android:theme="@style/BeeTheme">
 
         <activity
-            android:name=".activity.LaunchActivity"
+            android:name=".ui.activity.LaunchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/BeeTheme"
             android:windowSoftInputMode="stateHidden">
@@ -34,42 +34,42 @@
         </activity>
 
         <activity
-            android:name=".activity.DrawerActivity"
+            android:name=".ui.activity.DrawerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name=".activity.ChooseCategoryActivity"
+            android:name=".ui.activity.ChooseCategoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".activity.ChooseSubCategoryActivity"
+            android:name=".ui.activity.ChooseSubCategoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
 
 
         <activity
-            android:name=".activity.DescriptionActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
-
-        <activity
-            android:name=".activity.MyRequestActivity"
+            android:name=".ui.activity.DescriptionActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name=".activity.RequestDescActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".activity.AboutActivity"
+            android:name=".ui.activity.MyRequestActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name=".activity.OrderTaxiActivity"
+            android:name=".ui.activity.RequestDescActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.activity.AboutActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".ui.activity.OrderTaxiActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
 

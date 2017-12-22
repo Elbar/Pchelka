@@ -1,4 +1,4 @@
-package com.kg.vista.beeserviceclient.activity;
+package com.kg.vista.beeserviceclient.ui.activity;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
