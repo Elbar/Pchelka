@@ -1,13 +1,6 @@
 <resources>
     <string name="app_name">Пчелка</string>
 
-
-    <!--Fragments-->
-
-
-    <!-- FontAwesome Icons -->
-
-
     <!--NewRequestFragment strings-->
     <string name="select_service"> Выберите услугу</string>
     <string name="approx_cash"> Планируемый бюджет</string>
@@ -103,25 +96,16 @@
     <string name="choose_subcategory_toolbar_title">Выбор подкатегории</string>
 
 
-    <!--MiddlewareActivity Strings-->
-
     <string name="login">Войти</string>
-
-    <!--DrawerActivity strings-->
-
-
-    <!--SearchExecutorActivity Strings-->
 
 
     <!--DetailActivity Strings-->
 
     <string name="detail_desc_toolbar_title">Описание</string>
 
-
     <!--LaunchActivity   Strings -->
 
     <string name="slide1_header"> поможет найти нужных вам людей для решения любых  задач</string>
-
 
     <string name="new_request">Новая заявка</string>
     <string name="my_request">Мои заявки</string>
@@ -133,8 +117,31 @@
 
 
     <string name="about">О сервисе</string>
-    <string name="about_service_text">Биржа Сервисных Услуг «Пчёлка»— это платформа, которая позволяет быстро находить нужных вам людей для решения личных, бытовых, бизнес и других задач.
+    <string name="about_service_text"> Биржа Сервисных Услуг «Пчёлка»— это платформа, которая позволяет быстро находить нужных вам людей для решения личных, бытовых, бизнес и других задач.
 </string>
 
+    <string name="settings">Настройки</string>
+
+    <!--ProfileActivity Strings-->
+    <string name="profile_toolbar_title">Профиль</string>
+    <string name="profile_executor_phone">Телефон:</string>
+    <string name="profile_executor_conto">Баланс:</string>
+
+    <!--DescriptionActivity Strings-->
+    <string name="rate_tv">Ставка:</string>
+    <string name="departure_tv">Выезд по городу:</string>
+    <string name="score_tv">Итог:</string>
+
+    <!--LoginActivity Strings-->
+    <string name="hint_phone_et">Телефон</string>
+    <string name="hint_pass_et">Пароль</string>
+    <string name="login_capture">Вход</string>
+    <string name="submit_btn">Отправить</string>
+
+    <!--SettingsActivity Strings-->
+    <string name="set_ringtone">Звук на уведомления</string>
+    <string name="notification_settings">Уведомления</string>
+    <string name="app_header_name" />
 
 </resources>
+

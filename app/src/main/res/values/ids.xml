@@ -95,6 +95,10 @@
     <item name="third_number" type="id"></item>
     <item name="fourth_number" type="id"></item>
     <item name="myFab" type="id" />
+    <item name="app_login_capture" type="id" />
+    <item name="app_name" type="id" />
+    <item name="input_password" type="id" />
+    <item name="app_header_name" type="id" />
 
 
 </resources>

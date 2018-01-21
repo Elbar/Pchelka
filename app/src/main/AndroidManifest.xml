@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kg.vista.beeserviceclient"
+    package="com.kg.vista.pchelka"
     android:installLocation="auto">
 
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -11,17 +11,17 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
-        android:name="com.kg.vista.beeserviceclient.boot.App"
+        android:name="com.kg.vista.pchelka.boot.App"
         android:allowBackup="true"
         android:hardwareAccelerated="false"
-        android:largeHeap="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/BeeTheme">
 
         <activity
-            android:name=".ui.activity.LaunchActivity"
+            android:name="com.kg.vista.pchelka.ui.activity.LaunchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/BeeTheme"
             android:windowSoftInputMode="stateHidden">
@@ -34,44 +34,49 @@
         </activity>
 
         <activity
-            android:name=".ui.activity.DrawerActivity"
+            android:name="com.kg.vista.pchelka.ui.activity.DrawerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name=".ui.activity.ChooseCategoryActivity"
+            android:name="com.kg.vista.pchelka.ui.activity.ChooseCategoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".ui.activity.ChooseSubCategoryActivity"
+            android:name="com.kg.vista.pchelka.ui.activity.ChooseSubCategoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
 
 
         <activity
-            android:name=".ui.activity.DescriptionActivity"
+            android:name="com.kg.vista.pchelka.ui.activity.DescriptionActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name=".ui.activity.MyRequestActivity"
+            android:name="com.kg.vista.pchelka.ui.activity.MyRequestActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name=".ui.activity.RequestDescActivity"
+            android:name="com.kg.vista.pchelka.ui.activity.RequestDescActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".ui.activity.AboutActivity"
+            android:name="com.kg.vista.pchelka.ui.activity.AboutActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name=".ui.activity.OrderTaxiActivity"
+            android:name="com.kg.vista.pchelka.ui.activity.OrderTaxiActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
+
+        <activity
+            android:name="com.kg.vista.pchelka.ui.activity.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Design.NoActionBar" />
 
 
     </application>
